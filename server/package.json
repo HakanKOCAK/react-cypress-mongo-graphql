@@ -1,0 +1,23 @@
+{
+  "name": "foodorderapp",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.js"
+  },
+  "author": "Hakan KOCAK",
+  "license": "MIT",
+  "dependencies": {
+    "apollo-server-core": "^3.5.0",
+    "apollo-server-express": "^3.5.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "graphql": "^16.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
