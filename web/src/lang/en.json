@@ -1,0 +1,24 @@
+{
+    "translation": {
+        "appDescription": "Fooder is a getir/YemekSepeti replica created by Hakan Kocak. Only purpose of the app is to try out some technologies, which you can find in this page, and it is not a real life app.",
+        "alreadyHaveAnAccount": "Already have an account?",
+        "confirmPassword": "Confirm password",
+        "dontHaveAnAccount": "Don't have an accout?",
+        "email": "Email",
+        "emailInUse": "Email already in use",
+        "home": "Home",
+        "invalidCredentials": "Invalid credentials",
+        "invalidEmail": "Invalid email address",
+        "invalidPassword": "Invalid password",
+        "login": "Login",
+        "minLength": "Minimum length",
+        "name": "Name",
+        "password": "Password",
+        "passwordsDontMatch": "Passwords don't match",
+        "register": "Register",
+        "required": "Required",
+        "surname": "Surname",
+        "techStack": "Tech Stack",
+        "whatIsFooder": "What is Fooder?"
+    }
+}

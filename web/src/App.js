@@ -1,19 +1,20 @@
 import React from 'react';
 import {
   ChakraProvider,
-  Box,
-  Text,
-  theme,
+  theme
 } from '@chakra-ui/react';
+import TokenProvider from './auth/TokenProvider';
+import CustomApolloProvider from './CustomApolloProvider';
+import Routes from './Routing/Routes';
 
-function App() {
+export const App = () => {
   return (
     <ChakraProvider theme={theme}>
-      <Box textAlign="center" fontSize="xl">
-        <Text>
-          Hello.
-        </Text>
-      </Box>
+      <TokenProvider>
+        <CustomApolloProvider>
+          <Routes />
+        </CustomApolloProvider>
+      </TokenProvider>
     </ChakraProvider>
   );
 }

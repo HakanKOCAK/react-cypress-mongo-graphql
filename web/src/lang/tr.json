@@ -1,0 +1,24 @@
+{
+    "translation": {
+        "appDescription": "Fooder Hakan Kocak tarafından yapılmış, YemekSepeti/getir benzeri bir uygulamadır. Programın tek amacı bu sayfada da görebileceğinizi teknojoleri denemektir ve bir ürün değildir.",
+        "alreadyHaveAnAccount": "Zaten bir hesabınız var mı?",
+        "confirmPassword": "Şifreyi onayla",
+        "dontHaveAnAccount": "Hesabınız yok mu?",
+        "email": "Email",
+        "emailInUse": "Email adresi kullanımda",
+        "home": "Anasayfa",
+        "invalidCredentials": "Hatalı bilgi",
+        "invalidEmail": "Hatalı email adresi",
+        "invalidPassword": "Hatalı şifre",
+        "login": "Giriş",
+        "minLength": "Minimum uzunluk",
+        "name": "Ad",
+        "password": "Şifre",
+        "passwordsDontMatch": "Şifreler farklı olamaz",
+        "register": "Kayıt ol",
+        "required": "Zorunlu",
+        "surname": "Soyad",
+        "techStack": "Kullanılan Teknolojiler",
+        "whatIsFooder": "Fooder nedir?"
+    }
+}

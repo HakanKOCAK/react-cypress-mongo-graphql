@@ -1,0 +1,31 @@
+import React, {
+  useState,
+  useContext,
+  createContext,
+  useEffect
+} from 'react';
+import { useQuery } from '@apollo/client';
+import { me } from '../graphql/queries';
+
+//This a wrapper component to check if there is an authenticated user
+
+const AuthContext = createContext({ user: null });
+
+export const useAuth = () => {
+  return useContext(AuthContext);
+};
+
+
+const AuthProvider = ({ children }) => {
+  const [user, setUser] = useState(null);
+  const { data } = useQuery(me);
+
+
+  useEffect(() => {
+    if (data && data.me) setUser(data.me);
+  }, [data]);
+
+  return <AuthContext.Provider value={user}>{children}</AuthContext.Provider>
+}
+
+export default AuthProvider
