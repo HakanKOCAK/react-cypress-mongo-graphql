@@ -17,8 +17,10 @@
         "passwordsDontMatch": "Passwords don't match",
         "register": "Register",
         "required": "Required",
+        "seeTestResults": "To see the test results simply run",
         "surname": "Surname",
         "techStack": "Tech Stack",
+        "testedWithCypress": "Tested with Cypress",
         "whatIsFooder": "What is Fooder?"
     }
 }

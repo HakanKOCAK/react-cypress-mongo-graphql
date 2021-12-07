@@ -110,6 +110,7 @@ const Login = () => {
                                     name="email"
                                     placeholder={t('email')}
                                     label={t('email')}
+                                    data-cy="email-input"
                                 />
                                 <Box mt={4}>
                                     <InputField
@@ -117,6 +118,7 @@ const Login = () => {
                                         placeholder={t('password')}
                                         label={t('password')}
                                         type="password"
+                                        data-cy="password-input"
                                     />
                                 </Box>
                                 {errors.login && (
@@ -133,6 +135,7 @@ const Login = () => {
                                         type="submit"
                                         isLoading={isSubmitting}
                                         colorScheme="teal"
+                                        data-cy="login-button"
                                     >
                                         {t('login')}
                                     </Button>

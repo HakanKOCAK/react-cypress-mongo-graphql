@@ -130,6 +130,7 @@ const Register = () => {
                     name="name"
                     placeholder={t('name')}
                     label={t('name')}
+                    data-cy="name-input"
                   />
 
                   <Box mt={4}>
@@ -137,6 +138,7 @@ const Register = () => {
                       name="surname"
                       placeholder={t('surname')}
                       label={t('surname')}
+                      data-cy="surname-input"
                     />
                   </Box>
 
@@ -145,6 +147,7 @@ const Register = () => {
                       name="email"
                       placeholder={t('email')}
                       label={t('email')}
+                      data-cy="email-input"
                     />
                   </Box>
 
@@ -154,6 +157,7 @@ const Register = () => {
                       placeholder={t('password')}
                       label={t('password')}
                       type="password"
+                      data-cy="password-input"
                     />
                   </Box>
 
@@ -163,6 +167,7 @@ const Register = () => {
                       placeholder={t('confirmPassword')}
                       label={t('confirmPassword')}
                       type="password"
+                      data-cy="confirm-password-input"
                     />
                   </Box>
 
@@ -184,6 +189,7 @@ const Register = () => {
                       type="submit"
                       isLoading={isSubmitting}
                       colorScheme="teal"
+                      data-cy="register-button"
                     >
                       {t('register')}
                     </Button>

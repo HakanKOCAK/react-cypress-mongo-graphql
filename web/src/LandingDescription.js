@@ -7,7 +7,8 @@ import {
   Heading,
   List,
   HStack,
-  ListIcon
+  ListIcon,
+  Code
 } from "@chakra-ui/layout";
 import { Image } from "@chakra-ui/image";
 import { useTranslation } from "react-i18next";
@@ -22,7 +23,7 @@ const containerStyles = {
 };
 
 export default function Description() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   return (
     <Box h="100%" {...containerStyles}>
       <Container>
@@ -65,14 +66,20 @@ export default function Description() {
             </HStack>
           </ListItem>
           <ListItem letterSpacing={2}>
+            <HStack>
+              <ListIcon as={() => <Image src="cypress.ico" alt="Cypress" boxSize="20px" />} />
+              <Text>Cypress</Text>
+            </HStack>
+          </ListItem>
+          <ListItem letterSpacing={2}>
             <Text>Express.js</Text>
           </ListItem>
         </List>
       </Container>
       <Container overflowY="auto">
-        <Heading size="xl">What is Lorem Ipsum?</Heading>
+        <Heading size="xl">{t('testedWithCypress')}</Heading>
         <Text letterSpacing={1.2}>
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+          {t('seeTestResults')} <Code>npx cypress open</Code> {i18n.language === 'tr' ? 'komutunu çalıştırınız.' : '.'}
         </Text>
       </Container>
     </Box >

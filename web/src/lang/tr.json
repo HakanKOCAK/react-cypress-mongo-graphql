@@ -17,8 +17,10 @@
         "passwordsDontMatch": "Şifreler farklı olamaz",
         "register": "Kayıt ol",
         "required": "Zorunlu",
+        "seeTestResults": "Test sonuçlarını görmek için",
         "surname": "Soyad",
         "techStack": "Kullanılan Teknolojiler",
+        "testedWithCypress": "Cypress ile test edildi",
         "whatIsFooder": "Fooder nedir?"
     }
 }
