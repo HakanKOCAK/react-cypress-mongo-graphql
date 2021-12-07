@@ -76,10 +76,10 @@ const Login = () => {
     };
 
     return (
-        <GridItem colSpan={1}>
+        <GridItem>
             <Center h="100%" boxShadow="xl" rounded="md" bg="white">
                 <VStack p={5}>
-                    <Brand />
+                    <Brand containerStyles={{ mb: '5' }} headingStyles={{ size: 'xl' }} />
 
                     <Center mb={5}>
                         <Heading size="sm">{t('login')}</Heading>

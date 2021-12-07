@@ -76,10 +76,10 @@ const Register = () => {
   };
 
   return (
-    <GridItem colSpan={1}>
+    <GridItem>
       <Center h="100%" boxShadow="xl" rounded="md" bg="white">
-        <VStack p={5} w="100%">
-          <Brand />
+        <VStack p={5}>
+          <Brand containerStyles={{ mb: '5' }} headingStyles={{ size: 'xl' }} />
 
           <Center mb={5}>
             <Heading size="sm">{t('register')}</Heading>
