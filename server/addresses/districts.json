@@ -1,0 +1,47 @@
+{
+  "Ankara": {
+    "Cankaya": [
+      "Bahcelievler",
+      "Beytepe",
+      "Cayyolu",
+      "Emek",
+      "Kizilay"
+    ],
+    "Golbasi": [
+      "Ahiboz",
+      "Boyalik",
+      "Eymir"
+    ]
+  },
+  "Izmir": {
+    "Bornova": [
+      "Birlik",
+      "Doganlar"
+    ],
+    "Karsiyaka": [
+      "Atakent",
+      "Bostanli",
+      "Cumhuriyet"
+    ]
+  },
+  "Istanbul": {
+    "Besiktas": [
+      "Arnavutkoy",
+      "Bebek",
+      "Konaklar",
+      "Kultur",
+      "Levent",
+      "Yildiz"
+    ],
+    "Kadikoy": [
+      "Acibadem",
+      "Bostanci",
+      "Caferaga",
+      "Dumlupinar",
+      "Erenkoy",
+      "Fikirtepe",
+      "Goztepe",
+      "Kozyatagi"
+    ]
+  }
+}

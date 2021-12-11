@@ -1,0 +1,105 @@
+import React, { useRef, useState } from 'react'
+import PropTypes from 'prop-types';
+import {
+  AlertDialog,
+  AlertDialogBody,
+  AlertDialogContent,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogOverlay,
+  Button,
+  Text
+} from '@chakra-ui/react';
+import { useTranslation } from 'react-i18next';
+
+const CustomAlertDialog = ({
+  confirmButtonColorScheme,
+  dialogHeader,
+  dialogBody,
+  onConfirmText,
+  isOpen,
+  onClose,
+  onConfirm
+}) => {
+  const { t } = useTranslation();
+
+  //Set action button to loading if there is an async method.
+  const [isLoading, setIsLoading] = useState(false);
+
+  //To focus to cancel when first opened to make sure something crucial doesnt happen unwillingly
+  const cancelRef = useRef(null);
+
+  //Sets error message
+  const [actionErrors, setActionErrors] = useState('');
+
+  const onDialogClose = () => {
+    setActionErrors('');
+    return onClose();
+  }
+
+  return (
+    <AlertDialog
+      isCentered
+      isOpen={isOpen}
+      leastDestructiveRef={cancelRef}
+      onClose={onDialogClose}
+    >
+      <AlertDialogOverlay>
+        <AlertDialogContent>
+          <AlertDialogHeader fontWeight="bold">
+            {dialogHeader}
+          </AlertDialogHeader>
+
+          <AlertDialogBody>
+            {dialogBody}
+            {actionErrors && (
+              <Text mt={3} color="red.400">{actionErrors}</Text>
+            )}
+          </AlertDialogBody>
+
+          <AlertDialogFooter>
+            <Button ref={cancelRef} onClick={onDialogClose} mr={3}>
+              {t('cancel')}
+            </Button>
+
+            {
+              onConfirmText && onConfirm && (
+                <Button
+                  isLoading={isLoading}
+                  colorScheme={confirmButtonColorScheme}
+                  onClick={async () => {
+                    setIsLoading(true)
+                    try {
+                      await onConfirm();
+                      onDialogClose();
+                    } catch (error) {
+                      console.log(error);
+                      //Could be more detailed error handling...
+                      setActionErrors(t('serverError'))
+                    } finally {
+                      setIsLoading(false);
+                    }
+                  }}
+                >
+                  {onConfirmText}
+                </Button>
+              )
+            }
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialogOverlay>
+    </AlertDialog>
+  )
+};
+
+CustomAlertDialog.propTypes = {
+  confirmButtonColorScheme: PropTypes.string.isRequired,
+  dialogHeader: PropTypes.string.isRequired,
+  dialogBody: PropTypes.string.isRequired,
+  isOpen: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired,
+  onConfirm: PropTypes.func,
+  onConfirmText: PropTypes.string
+}
+
+export default CustomAlertDialog
