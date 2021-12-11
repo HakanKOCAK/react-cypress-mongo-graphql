@@ -22,11 +22,11 @@ const Nav = () => {
         px={{ base: 4 }}
         align="center"
       >
-        <Box flex={{ base: 1 }}>
-          <Brand containerStyles={{}} onClick={() => navigate('/')} />
+        <Box w="50%">
+          <Brand containerStyles={{ mb: 0, w: '200px' }} onClick={() => navigate('/')} />
         </Box>
         <HStack
-          flex={{ base: 1, md: 0 }}
+          w="50%"
           justify="flex-end"
           spacing={6}
         >
