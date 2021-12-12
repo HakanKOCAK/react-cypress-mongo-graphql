@@ -5,8 +5,9 @@ import {
   ModalBody,
   ModalHeader,
   HStack,
-  ModalFooter
-  , Button,
+  FormErrorMessage,
+  ModalFooter,
+  Button,
   Modal,
   ModalOverlay,
   ModalContent,
@@ -30,12 +31,23 @@ import { addAddressMutation } from '../../graphql/mutations';
 
 const NewAddress = ({ isOpen, onClose }) => {
   const { t } = useTranslation();
+  //Check if submitting
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  //To fetch counties/districts from server
   const [selectedCity, setSelectedCity] = useState('');
   const [selectedCounty, setSelectedCounty] = useState('');
+
+  //Query cities on render
   const { data: cityData, loading: citiesLoading } = useQuery(getCities);
+
+  //To lazy query counties when city selected
   const [fetchCounty, { data: countyData, loading: countiesLoading }] = useLazyQuery(getCounties);
+
+  //To lazy query district when county selected
   const [fetchDistrict, { data: districtData, loading: districtsLoading }] = useLazyQuery(getDistricts);
+
+  //Add address mutation and update to cache if successfull
   const [addAddress] = useMutation(addAddressMutation, {
     update: (store, { data }) => {
       if (!data) {
@@ -70,6 +82,7 @@ const NewAddress = ({ isOpen, onClose }) => {
   });
 
   useEffect(() => {
+    //Fetch counties of selected city on change
     setSelectedCounty('');
     if (selectedCity) {
       fetchCounty({
@@ -81,6 +94,7 @@ const NewAddress = ({ isOpen, onClose }) => {
   }, [selectedCity, fetchCounty]);
 
   useEffect(() => {
+    //Fetch districts of selected city/county
     if (selectedCity && selectedCounty) {
       fetchDistrict({
         variables: {
@@ -102,9 +116,10 @@ const NewAddress = ({ isOpen, onClose }) => {
 
       onClose();
     } catch (error) {
+      //Just a basic error handling could be improved based on possible server responses...
       console.error(error);
       if (error.message) {
-        setErrors({ addAddress: error.message });
+        setErrors({ addAddress: t('serverError') });
       }
     } finally {
       setIsSubmitting(false);
@@ -136,11 +151,14 @@ const NewAddress = ({ isOpen, onClose }) => {
               }}
               validate={(values) => {
                 const errors = {};
-                Object.entries(values).forEach(([key, val]) => {
+
+                //Sets each field as required
+                Object.entries(values).forEach(([key, val], index) => {
                   if (!val) {
                     errors[key] = t('required')
                   }
                 })
+
                 return errors;
               }}
               onSubmit={handleSubmit}
@@ -221,6 +239,9 @@ const NewAddress = ({ isOpen, onClose }) => {
                       label={`${t('flat')}*`}
                     />
                   </HStack>
+                  {errors.addAddress && (
+                    <FormErrorMessage size="sm">{t(errors.addAddress)}</FormErrorMessage>
+                  )}
                 </Form>
               )}
             </Formik>
