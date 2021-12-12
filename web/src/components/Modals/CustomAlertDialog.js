@@ -58,7 +58,7 @@ const CustomAlertDialog = ({
           </AlertDialogBody>
 
           <AlertDialogFooter>
-            <Button ref={cancelRef} onClick={onDialogClose} mr={3}>
+            <Button ref={cancelRef} onClick={onDialogClose} mr={3} data-cy="dialog-close-btn">
               {t('cancel')}
             </Button>
 
@@ -80,6 +80,7 @@ const CustomAlertDialog = ({
                       setIsLoading(false);
                     }
                   }}
+                  data-cy="dialog-confirm-btn"
                 >
                   {onConfirmText}
                 </Button>

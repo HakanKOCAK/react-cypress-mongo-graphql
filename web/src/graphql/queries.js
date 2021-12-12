@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client'
 
 export const me = gql`
-query{
+query Me{
   me{
     id,
     email,
@@ -27,19 +27,19 @@ query MyAddresses {
 `;
 
 export const getCities = gql`
-query Query {
+query Cities {
   cities
 }
 `;
 
 export const getCounties = gql`
-query Query($city: String!) {
+query Counties($city: String!) {
   counties(city: $city)
 }
 `;
 
 export const getDistricts = gql`
-query Query($city: String!, $county: String!) {
+query Districts($city: String!, $county: String!) {
   districts(city: $city, county: $county)
 }
 `;

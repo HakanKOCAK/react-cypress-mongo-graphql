@@ -56,6 +56,7 @@ const Address = ({
         rounded="3xl"
         bg="gray.100"
         w="620px"
+        data-cy={`address${details.id}`}
         {...containerStyle}
       >
         <HStack
@@ -101,7 +102,7 @@ const Address = ({
         </HStack>
         {/* Check if an action icon exists and render */}
         {actionIcon && (
-          <HStack w="7%" justifyContent="center" onClick={actionIconOnClick} cursor="pointer">
+          <HStack w="7%" justifyContent="center" onClick={actionIconOnClick} cursor="pointer" data-cy={`delete-btn${details.id}`}>
             {actionIcon}
           </HStack>
         )}

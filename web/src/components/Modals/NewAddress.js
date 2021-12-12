@@ -136,8 +136,10 @@ const NewAddress = ({ isOpen, onClose }) => {
     >
       <ModalOverlay>
         <ModalContent>
-          <ModalCloseButton />
+          <ModalCloseButton data-cy="new-address-close-btn" />
+
           <ModalHeader>{t('newAddress')}</ModalHeader>
+
           <ModalBody>
             <Formik
               initialValues={{
@@ -169,6 +171,7 @@ const NewAddress = ({ isOpen, onClose }) => {
                     name="title"
                     label={`${t('title')}*`}
                     placeholder={t('title')}
+                    data-cy="title-select"
                     options={[t('home'), t('other'), t('work')].sort()}
                   />
 
@@ -189,6 +192,7 @@ const NewAddress = ({ isOpen, onClose }) => {
                     }}
                     label={`${t('city')}*`}
                     options={(cityData && cityData.cities) || []}
+                    data-cy="city-select"
                   />
 
                   <SelectField
@@ -207,6 +211,7 @@ const NewAddress = ({ isOpen, onClose }) => {
                       return handleChange(event);
                     }}
                     options={(countyData && countyData.counties) || []}
+                    data-cy="county-select"
                   />
 
                   <SelectField
@@ -215,6 +220,7 @@ const NewAddress = ({ isOpen, onClose }) => {
                     disabled={districtsLoading || !values.city || !values.county}
                     label={`${t('district')}*`}
                     options={(districtData && districtData.districts) || []}
+                    data-cy="district-select"
                   />
 
                   <InputField
@@ -222,6 +228,7 @@ const NewAddress = ({ isOpen, onClose }) => {
                     placeholder={t('address')}
                     textArea
                     label={`${t('address')}*`}
+                    data-cy="address-input"
                   />
 
                   <HStack spacing={5}>
@@ -230,6 +237,7 @@ const NewAddress = ({ isOpen, onClose }) => {
                       placeholder={t('floor')}
                       type="number"
                       label={`${t('floor')}*`}
+                      data-cy="floor-input"
                     />
 
                     <InputField
@@ -237,6 +245,7 @@ const NewAddress = ({ isOpen, onClose }) => {
                       placeholder={t('flat')}
                       type="number"
                       label={`${t('flat')}*`}
+                      data-cy="flat-input"
                     />
                   </HStack>
                   {errors.addAddress && (
@@ -253,6 +262,7 @@ const NewAddress = ({ isOpen, onClose }) => {
               isLoading={isSubmitting}
               mr={5}
               colorScheme="teal"
+              data-cy="new-address-save-btn"
             >
               {t('save')}
             </Button>

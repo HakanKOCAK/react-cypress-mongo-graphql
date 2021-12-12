@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import {
   Box,
@@ -104,7 +104,7 @@ const AddressModal = ({
           onClose={() => setNewAddressDialogOpen(false)}
         />
         <ModalContent>
-          <ModalCloseButton />
+          <ModalCloseButton data-cy="address-list-close-btn" />
 
           <ModalHeader>{t('myAddresses')}</ModalHeader>
 
@@ -114,6 +114,7 @@ const AddressModal = ({
               mb={5}
               colorScheme="teal"
               onClick={() => setNewAddressDialogOpen(true)}
+              data-cy="add-address-btn"
             >
               {t('addAnAddress')}
             </Button>
