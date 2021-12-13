@@ -28,21 +28,21 @@ const Nav = () => {
         <HStack
           w="50%"
           justify="flex-end"
-          spacing={6}
+          spacing={5}
         >
           {user ? (
             <Button onClick={() => navigate('/login')}>profile</Button>
           ) : (
             <>
               <Button
-                w="100px"
+                variant="link"
                 colorScheme="teal"
                 onClick={() => navigate('/login')}
               >
                 {t('login')}
               </Button>
               <Button
-                w="100px"
+                variant="link"
                 colorScheme="teal"
                 onClick={() => navigate('/register')}
               >
