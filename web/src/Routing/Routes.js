@@ -7,11 +7,11 @@ import {
 } from 'react-router-dom';
 import PrivateRoute from './Private';
 import PublicRoute from './Public';
-import Login from '../auth/Login'
-import Register from '../auth/Register';
-import Home from '../Home';
+import Login from '../pages/Login'
+import Register from '../pages/Register';
+import Home from '../pages/Home';
 import AuthProvider from '../auth/AuthProvider';
-import Nav from '../Nav';
+import Nav from '../components/Nav';
 import { Box } from '@chakra-ui/layout';
 import AuthWrapper from '../components/AuthWrapper';
 

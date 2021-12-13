@@ -2,7 +2,7 @@ import React from 'react'
 import {
   Grid, GridItem,
 } from '@chakra-ui/layout';
-import Description from '../LandingDescription';
+import Description from './LandingDescription';
 
 const AuthWrapper = ({ children }) => {
   return (

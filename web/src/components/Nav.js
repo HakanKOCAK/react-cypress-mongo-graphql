@@ -2,13 +2,13 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Box, Flex, HStack } from '@chakra-ui/layout';
 import { useNavigate } from 'react-router';
-import { useAuth } from './auth/AuthProvider';
+import { useAuth } from '../auth/AuthProvider';
 import { Button } from '@chakra-ui/button';
-import Brand from './components/Brand';
+import Brand from './Brand';
 import { Image, Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/react';
 import { ChevronDownIcon } from '@chakra-ui/icons';
 import { useMutation } from '@apollo/client';
-import { logoutMutation } from './graphql/mutations';
+import { logoutMutation } from '../graphql/mutations';
 
 const Nav = () => {
   const navigate = useNavigate();

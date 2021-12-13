@@ -16,7 +16,7 @@ import { useMutation } from '@apollo/client';
 import { loginMutation } from '../graphql/mutations';
 import { me } from '../graphql/queries';
 import { Link } from 'react-router-dom';
-import { useToken } from './TokenProvider';
+import { useToken } from '../auth/TokenProvider';
 import Brand from '../components/Brand';
 
 

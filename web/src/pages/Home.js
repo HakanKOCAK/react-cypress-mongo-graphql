@@ -5,12 +5,12 @@ import {
     Heading
 } from '@chakra-ui/react';
 import { useQuery } from '@apollo/client'
-import { myAddresses } from './graphql/queries';
+import { myAddresses } from '../graphql/queries';
 import { useTranslation } from 'react-i18next';
-import Loading from './components/Loading';
-import Address from './components/Address';
+import Loading from '../components/Loading';
+import Address from '../components/Address';
 import { ChevronDownIcon } from '@chakra-ui/icons';
-import AddressModal from './components/Modals/AddressList';
+import AddressModal from '../components/Modals/AddressList';
 import { isEmpty } from 'lodash';
 
 //Page that user is redirected after authentication
