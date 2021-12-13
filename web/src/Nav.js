@@ -5,13 +5,17 @@ import { useNavigate } from 'react-router';
 import { useAuth } from './auth/AuthProvider';
 import { Button } from '@chakra-ui/button';
 import Brand from './components/Brand';
+import { Image, Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/react';
+import { ChevronDownIcon } from '@chakra-ui/icons';
+import { useMutation } from '@apollo/client';
+import { logoutMutation } from './graphql/mutations';
 
 const Nav = () => {
   const navigate = useNavigate();
-
+  const [logout] = useMutation(logoutMutation)
   const { t } = useTranslation();
 
-  const user = useAuth();
+  const auth = useAuth();
 
   return (
     <Box>
@@ -30,8 +34,36 @@ const Nav = () => {
           justify="flex-end"
           spacing={5}
         >
-          {user ? (
-            <Button onClick={() => navigate('/login')}>profile</Button>
+          {auth.user ? (
+            <Menu>
+              <MenuButton
+                _hover={{ textDecoration: 'underline' }}
+                lineHeight="normal"
+                fontWeight="semibold"
+                fontSize="md"
+                color="teal.500"
+              >
+                {auth.user.name} {auth.user.surname} <ChevronDownIcon />
+              </MenuButton>
+              <MenuList>
+                <MenuItem
+                  icon={<Image src="logout.svg" alt="Logout" boxSize="15px" />}
+                  onClick={async () => {
+                    try {
+                      const res = await logout();
+                      if (res) {
+                        auth.setUser(null);
+                      }
+                    } catch (error) {
+                      console.log(error);
+                    }
+                  }
+                  }
+                >
+                  {t('logout')}
+                </MenuItem>
+              </MenuList>
+            </Menu>
           ) : (
             <>
               <Button

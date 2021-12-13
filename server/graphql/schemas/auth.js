@@ -10,7 +10,11 @@ type AuthData {
 const authDefs = {
     types: [AuthData],
     queries: ['me: AuthData'],
-    mutations: ['register(name: String!, surname: String!, email: String!, password: String!): AuthData', 'login(email: String!, password: String!): AuthData']
+    mutations: [
+        'register(name: String!, surname: String!, email: String!, password: String!): AuthData',
+        'login(email: String!, password: String!): AuthData',
+        'logout: Boolean'
+    ]
 };
 
 export default authDefs;

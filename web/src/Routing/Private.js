@@ -3,10 +3,10 @@ import { useAuth } from "../auth/AuthProvider";
 
 //This the private route only accessible if user authenticated
 const PrivateRoute = ({ children }) => {
-  const user = useAuth();
+  const auth = useAuth();
   const location = useLocation();
 
-  if (!user) {
+  if (!auth.user) {
     return <Navigate to="/login" state={{ from: location }} />;
   }
 

@@ -5,10 +5,10 @@ import { useAuth } from "../auth/AuthProvider";
 
 //This the public route only accessible if user is not authenticated
 const PublicRoute = ({ children, redirectTo = '/home' }) => {
-  const user = useAuth();
+  const auth = useAuth();
   const location = useLocation();
 
-  if (!user) {
+  if (!auth.user) {
     return <Box h="100%">
       {children}
     </Box>

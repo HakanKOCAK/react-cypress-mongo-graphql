@@ -23,6 +23,7 @@
         "invalidEmail": "Hatalı email adresi",
         "invalidPassword": "Hatalı şifre",
         "login": "Giriş",
+        "logout": "Çıkış yap",
         "minLength": "Minimum uzunluk",
         "myAddresses": "Adreslerim",
         "name": "Ad",

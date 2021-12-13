@@ -97,6 +97,12 @@ const authResolver = {
             console.log(error);
             return null;
         }
+    },
+    //Logout user
+    logout: async (_, { res }) => {
+        setRefreshToken({ res, token: '' });
+
+        return true;
     }
 };
 

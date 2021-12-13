@@ -44,3 +44,9 @@ mutation DeleteAddress($id: String!) {
   deleteAddress(id: $id)
 }
 `;
+
+export const logoutMutation = gql`
+mutation Logout {
+  logout
+}
+`;

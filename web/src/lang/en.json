@@ -23,6 +23,7 @@
         "invalidEmail": "Invalid email address",
         "invalidPassword": "Invalid password",
         "login": "Login",
+        "logout": "Logout",
         "minLength": "Minimum length",
         "myAddresses": "My Adresses",
         "name": "Name",
