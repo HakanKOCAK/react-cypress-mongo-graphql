@@ -19,7 +19,8 @@ const Address = ({
   containerStyle,
   details,
   icon,
-  onClick
+  onClick,
+  cursor
 }) => {
   const { t } = useTranslation();
 
@@ -60,7 +61,7 @@ const Address = ({
       >
         <HStack
           spacing={5}
-          cursor="pointer"
+          cursor={cursor}
           p={3}
           onClick={onClick}
         >
@@ -134,6 +135,7 @@ Address.propTypes = {
   actionIcon: PropTypes.element,
   actionIconOnClick: PropTypes.func,
   containerStyle: PropTypes.object,
+  cursor: PropTypes.string,
   details: PropTypes.shape({
     id: PropTypes.string,
     address: PropTypes.string,

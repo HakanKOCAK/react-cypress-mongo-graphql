@@ -37,37 +37,37 @@ export default function Description() {
         <List spacing={3} w="100%" style={{ columnCount: 3 }}>
           <ListItem letterSpacing={2} w="33%">
             <HStack>
-              <ListIcon as={() => <Image src="logo512.png" alt="React.js" boxSize="20px" />} />
+              <ListIcon as={() => <Image src="/logo512.png" alt="React.js" boxSize="20px" />} />
               <Text>React.js</Text>
             </HStack>
           </ListItem>
           <ListItem letterSpacing={2}>
             <HStack>
-              <ListIcon as={() => <Image src="nodejs.svg" bg="black" alt="Node.js" boxSize="20px" />} />
+              <ListIcon as={() => <Image src="/nodejs.svg" bg="black" alt="Node.js" boxSize="20px" />} />
               <Text>Node.js</Text>
             </HStack>
           </ListItem>
           <ListItem letterSpacing={2}>
             <HStack>
-              <ListIcon as={() => <Image src="apollo.svg" alt="Apollo" boxSize="20px" />} />
+              <ListIcon as={() => <Image src="/apollo.svg" alt="Apollo" boxSize="20px" />} />
               <Text>Apollo</Text>
             </HStack>
           </ListItem>
           <ListItem letterSpacing={2}>
             <HStack>
-              <ListIcon as={() => <Image src="mongodb.svg" alt="MongoDB" boxSize="20px" />} />
+              <ListIcon as={() => <Image src="/mongodb.svg" alt="MongoDB" boxSize="20px" />} />
               <Text>MongoDB</Text>
             </HStack>
           </ListItem>
           <ListItem letterSpacing={2}>
             <HStack>
-              <ListIcon as={() => <Image src="graphql.png" alt="GraphQL" boxSize="20px" />} />
+              <ListIcon as={() => <Image src="/graphql.png" alt="GraphQL" boxSize="20px" />} />
               <Text>GraphQL</Text>
             </HStack>
           </ListItem>
           <ListItem letterSpacing={2}>
             <HStack>
-              <ListIcon as={() => <Image src="cypress.ico" alt="Cypress" boxSize="20px" />} />
+              <ListIcon as={() => <Image src="/cypress.ico" alt="Cypress" boxSize="20px" />} />
               <Text>Cypress</Text>
             </HStack>
           </ListItem>

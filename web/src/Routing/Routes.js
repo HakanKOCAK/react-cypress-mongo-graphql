@@ -1,19 +1,27 @@
 import React from 'react'
+import { Box } from '@chakra-ui/layout';
+import Nav from '../components/Nav';
 import {
     BrowserRouter,
     Route,
     Routes,
     Navigate
 } from 'react-router-dom';
+
+import AuthProvider from '../auth/AuthProvider';
 import PrivateRoute from './Private';
 import PublicRoute from './Public';
+
+import AuthWrapper from '../components/AuthWrapper';
 import Login from '../pages/Login'
 import Register from '../pages/Register';
+
 import Home from '../pages/Home';
-import AuthProvider from '../auth/AuthProvider';
-import Nav from '../components/Nav';
-import { Box } from '@chakra-ui/layout';
-import AuthWrapper from '../components/AuthWrapper';
+import Account from '../pages/Account/Account';
+
+import AccountWrapper from '../components/AccountWrapper';
+import Addresses from '../pages/Account/Addresses';
+import CreditCards from '../pages/Account/CreditCards';
 
 export default function AppRoutes() {
     const height = window.innerHeight;
@@ -24,7 +32,7 @@ export default function AppRoutes() {
                     <Nav />
                     <Box h={`${parseInt(height) - 60}px`} w="100%" p={5} overflowY>
                         <Routes>
-                            <Route path="/" element={<Navigate replace to="/home" />} />
+                            <Route exact path="/" element={<Navigate replace to="/home" />} />
                             <Route
                                 exact path='/login'
                                 element={
@@ -50,6 +58,31 @@ export default function AppRoutes() {
                                 element={
                                     <PrivateRoute>
                                         <Home />
+                                    </PrivateRoute>
+                                }
+                            />
+                            <Route
+                                exact path='/account'
+                                element={
+                                    <PrivateRoute>
+                                        <AccountWrapper Children={Account} />
+                                    </PrivateRoute>
+                                }
+                            >
+                            </Route>
+                            <Route
+                                exact path='/account/addresses'
+                                element={
+                                    <PrivateRoute>
+                                        <AccountWrapper Children={Addresses} />
+                                    </PrivateRoute>
+                                }
+                            />
+                            <Route
+                                exact path='/account/credit-cards'
+                                element={
+                                    <PrivateRoute>
+                                        <AccountWrapper Children={CreditCards} />
                                     </PrivateRoute>
                                 }
                             />

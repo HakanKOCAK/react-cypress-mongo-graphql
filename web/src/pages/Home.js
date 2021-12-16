@@ -8,7 +8,7 @@ import { useQuery } from '@apollo/client'
 import { myAddresses } from '../graphql/queries';
 import { useTranslation } from 'react-i18next';
 import Loading from '../components/Loading';
-import Address from '../components/Address';
+import Address from '../components/Address/Address';
 import { ChevronDownIcon } from '@chakra-ui/icons';
 import AddressModal from '../components/Modals/AddressList';
 import { isEmpty } from 'lodash';
@@ -63,8 +63,9 @@ const Home = () => {
                 selectedId={selectedAddress.id}
             />
             <Address
-                icon={`${selectedAddress.title}.png`}
+                icon={`/${selectedAddress.title}.png`}
                 details={selectedAddress}
+                cursor="pointer"
                 actionIcon={<ChevronDownIcon />}
                 actionIconOnClick={() => {
                     setModalOpen(true)

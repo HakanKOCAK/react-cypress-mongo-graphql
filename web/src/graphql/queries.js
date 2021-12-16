@@ -43,3 +43,14 @@ query Districts($city: String!, $county: String!) {
   districts(city: $city, county: $county)
 }
 `;
+
+export const myCreditCards = gql`
+query MyCreditCards {
+  myCreditCards {
+    id
+    description
+    issuer
+    number
+  }
+}
+`;

@@ -10,7 +10,7 @@ const Brand = ({ containerStyles, animation, headingStyles, onClick }) => {
   };
 
   const defaultHeadingStyles = {
-    size: '2xl'
+    fontSize: ['xl', '3xl', '4xl']
   }
 
   return (

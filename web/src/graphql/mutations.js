@@ -50,3 +50,21 @@ mutation Logout {
   logout
 }
 `;
+
+export const addCreditCardMutation = gql`
+mutation Mutation($cardNumber: String!, $cardHolder: String!, $cvc: String!, $expiry: String!, $description: String!, $issuer: String) {
+  addCreditCard(cardNumber: $cardNumber, cardHolder: $cardHolder, cvc: $cvc, expiry: $expiry, description: $description, issuer: $issuer) {
+    id
+    description
+    issuer
+    number
+  }
+}
+`;
+
+export const deleteCreditCardMutation = gql`
+mutation DeleteCreditCard($id: String!) {
+  deleteCreditCard(id: $id)
+}
+`;
+
