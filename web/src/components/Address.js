@@ -51,7 +51,6 @@ const Address = ({
   return (
     <Flex justifyContent="center">
       <HStack
-        spacing={1}
         boxShadow="xl"
         rounded="3xl"
         bg="gray.100"
@@ -60,21 +59,34 @@ const Address = ({
         {...containerStyle}
       >
         <HStack
+          spacing={5}
           cursor="pointer"
           p={3}
           onClick={onClick}
         >
-          <Box w="10%">
+          <Box w={['15%', '13%', '10%']}>
             <Icon as={() => <Image src={icon} alt="House" borderRadius="full" />} />
           </Box>
 
-          <Box w="16%">
+          <Box display={{ base: 'none', sm: 'block' }}>
             <Heading fontSize={['xs', 'md', 'xl']}>{details.title.toUpperCase()}</Heading>
           </Box>
 
-          <Box w="62%" h="60px">
+          <Box>
             <HStack>
-              <Heading fontSize="xs">{`${details.city}/${details.county}/${details.district}`}</Heading>
+              <Heading
+                fontSize="xs"
+                display={{ base: 'none', sm: 'block' }}
+              >
+                {`${details.city}/${details.county}/${details.district}`}
+              </Heading>
+
+              <Heading
+                fontSize="xs"
+                display={{ base: 'block', sm: 'none' }}
+              >
+                {details.title.toUpperCase()}
+              </Heading>
             </HStack>
 
             <HStack>
@@ -86,7 +98,7 @@ const Address = ({
               </Text>
             </HStack>
 
-            <HStack>
+            <HStack display={{ base: 'none', sm: 'flex' }}>
               <HStack mr={5}>
                 <Heading fontSize="xs">{t('floor')}:</Heading>
                 <Text fontSize="xs">{details.floor}</Text>
@@ -102,12 +114,19 @@ const Address = ({
         </HStack>
         {/* Check if an action icon exists and render */}
         {actionIcon && (
-          <HStack w="7%" justifyContent="center" onClick={actionIconOnClick} cursor="pointer" data-cy={`delete-btn${details.id}`}>
+          <HStack
+            w="70px"
+            alignItems="center"
+            justifyContent="center"
+            onClick={actionIconOnClick}
+            cursor="pointer"
+            data-cy={`delete-btn${details.id}`}
+          >
             {actionIcon}
           </HStack>
         )}
       </HStack>
-    </Flex>
+    </Flex >
   )
 }
 
