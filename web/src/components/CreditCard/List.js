@@ -54,13 +54,31 @@ const CreditCards = () => {
     );
   }
 
-  if (isEmpty(data) || isEmpty(data.myCreditCards)) {
-    return (
-      <Heading size="md" textAlign="center">
-        {t('youDontHaveAnyCards')}
-      </Heading>
-    );
+  const getBody = () => {
+    if (isEmpty(data) || isEmpty(data.myCreditCards)) {
+      return (
+        <Heading size="md" textAlign="center">
+          {t('youDontHaveAnyCards')}
+        </Heading>
+      );
+    }
+
+    return data.myCreditCards.map((item) => (
+      <CreditCard
+        actionIcon={<DeleteIcon />}
+        actionIconOnClick={() => {
+          //Opens the delete dialog
+          setDeleteDialogItemId(item.id);
+          setDeleteDialogBody(`${t('areYouSureWantToDelete')}: ${item.description}?`);
+          setDeleteDialogOpen(true);
+        }}
+        key={item.id}
+        details={item}
+      />
+    ));
   }
+
+
   return (
     <>
       <DeleteDialog
@@ -95,21 +113,7 @@ const CreditCards = () => {
           {t('addACreditCard')}
         </Button>
       </Center>
-      {
-        data.myCreditCards.map((item) => (
-          <CreditCard
-            actionIcon={<DeleteIcon />}
-            actionIconOnClick={() => {
-              //Opens the delete dialog
-              setDeleteDialogItemId(item.id);
-              setDeleteDialogBody(`${t('areYouSureWantToDelete')}: ${item.description}?`);
-              setDeleteDialogOpen(true);
-            }}
-            key={item.id}
-            details={item}
-          />
-        ))
-      }
+      {getBody()}
     </>
   )
 
