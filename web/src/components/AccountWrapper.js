@@ -20,7 +20,20 @@ const AccountWrapper = ({ Children }) => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const location = useLocation();
-  const [selected, setSelected] = useState('myAddresses');
+
+  const getSelectedOnRender = () => {
+    const { pathname } = location;
+    switch (pathname) {
+      case '/account/addresses':
+        return 'myAddresses';
+      case '/account/credit-cards':
+        return 'myCards'
+
+      default:
+        break;
+    }
+  }
+  const [selected, setSelected] = useState(getSelectedOnRender());
 
   const list = [
     {
