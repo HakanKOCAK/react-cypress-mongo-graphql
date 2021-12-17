@@ -277,6 +277,7 @@ const CreditCardModal = ({ isOpen, onClose }) => {
                 value={description}
                 onChange={handleChange}
                 type="text"
+                data-cy="description-input"
                 onFocus={() => {
                   return setInputFocusList((prev) => ({ ...prev, description: true }))
                 }}
@@ -291,6 +292,7 @@ const CreditCardModal = ({ isOpen, onClose }) => {
                 isInvalid={inputFocusList.cardNumber && !isCardValid({ field: 'cardNumber' })}
                 value={cardNumber}
                 onChange={handleChange}
+                data-cy="number-input"
                 type="number"
                 onFocus={() => {
                   setFocusedInput('number');
@@ -308,6 +310,7 @@ const CreditCardModal = ({ isOpen, onClose }) => {
                 placeholder={t('cardHolder')}
                 value={cardHolder}
                 onChange={handleChange}
+                data-cy="holder-input"
                 type="text"
                 onFocus={() => {
                   setFocusedInput('name');
@@ -328,6 +331,7 @@ const CreditCardModal = ({ isOpen, onClose }) => {
                   w="100%"
                   isInvalid={inputFocusList.expiry && !isCardValid({ field: 'expiry' })}
                   value={expiry}
+                  data-cy="expiry-input"
                   onChange={(value) => handleExpiryChange(value)}>
                   <NumberInputField
                     placeholder={t('expiry')}
@@ -348,6 +352,7 @@ const CreditCardModal = ({ isOpen, onClose }) => {
                   isInvalid={inputFocusList.cvc && !isCardValid({ field: 'cvc' })}
                   placeholder="CVC"
                   value={cvc}
+                  data-cy="cvc-input"
                   maxLength={issuer === 'amex' ? 4 : 3}
                   onChange={handleChange}
                   type="text"
@@ -374,6 +379,7 @@ const CreditCardModal = ({ isOpen, onClose }) => {
               mr={5}
               w="85px"
               colorScheme="teal"
+              data-cy="save-card-btn"
               isLoading={isSubmitting}
               onClick={handleSubmit}
             >
@@ -383,6 +389,7 @@ const CreditCardModal = ({ isOpen, onClose }) => {
             <Button
               colorScheme="pink"
               w="85px"
+              data-cy="new-card-cancel-btn"
               onClick={handleClose}
             >
               {t('cancel')}

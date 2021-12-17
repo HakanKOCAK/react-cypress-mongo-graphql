@@ -107,6 +107,7 @@ const AccountWrapper = ({ Children }) => {
                   cursor="pointer"
                   _hover={{ bg: 'gray.100' }}
                   key={index}
+                  data-cy={`${item.id}-btn`}
                   {...getStyle(selected === item.id)}
                   onClick={() => handleClick({ id: item.id, route: item.route })}
                 >

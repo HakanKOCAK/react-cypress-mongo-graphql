@@ -60,6 +60,7 @@ const CreditCard = ({
           justifyContent="center"
           onClick={actionIconOnClick}
           cursor="pointer"
+          data-cy={`delete-card-${details.id}-btn`}
         >
           {actionIcon}
         </HStack>

@@ -52,7 +52,7 @@ mutation Logout {
 `;
 
 export const addCreditCardMutation = gql`
-mutation Mutation($cardNumber: String!, $cardHolder: String!, $cvc: String!, $expiry: String!, $description: String!, $issuer: String) {
+mutation AddCreditCard($cardNumber: String!, $cardHolder: String!, $cvc: String!, $expiry: String!, $description: String!, $issuer: String) {
   addCreditCard(cardNumber: $cardNumber, cardHolder: $cardHolder, cvc: $cvc, expiry: $expiry, description: $description, issuer: $issuer) {
     id
     description
