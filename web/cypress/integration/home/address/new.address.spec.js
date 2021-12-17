@@ -97,7 +97,7 @@ describe('New Address', () => {
       cy.wait('@gqlMyAddressesQuery')
       cy.contains('Please select an address').click()
       cy.wait('@gqlCitiesQuery');
-      cy.get('[data-cy="add-address-btn"]').click()
+      cy.contains('Add an address').click()
       cy.get('[data-cy="new-address-close-btn"]').click()
       cy.contains('New Address').should('not.exist')
     })
@@ -108,7 +108,7 @@ describe('New Address', () => {
       cy.wait('@gqlMyAddressesQuery')
       cy.wait('@gqlCitiesQuery');
       cy.contains('Please select an address').click()
-      cy.get('[data-cy="add-address-btn"]').click()
+      cy.contains('Add an address').click()
     })
 
     context('Title Field', () => {
@@ -256,7 +256,7 @@ describe('New Address', () => {
       cy.wait('@gqlMyAddressesQuery')
       cy.wait('@gqlCitiesQuery')
       cy.contains('Please select an address').click()
-      cy.get('[data-cy="add-address-btn"]').click()
+      cy.contains('Add an address').click()
       cy.get('[data-cy="title-select"]').select('Home')
       cy.get('[data-cy="city-select"]').select('Istanbul')
       cy.wait('@gqlCountiesQuery')

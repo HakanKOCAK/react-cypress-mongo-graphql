@@ -125,7 +125,7 @@ describe('Address List', () => {
     }).as('gqlQueries');
 
     cy.contains('Please select an address').click()
-    cy.contains('My Adresses').should('be.visible')
+    cy.contains('My Addresses').should('be.visible')
   })
 
   it('should close address list when close button clicked', () => {
@@ -267,7 +267,7 @@ describe('Address List', () => {
     }).as('gqlQueries');
 
     cy.contains('Please select an address').click()
-    cy.get('[data-cy="add-address-btn"]').click()
+    cy.contains('Add an address').click()
     cy.contains('New Address').should('be.visible')
   })
 
