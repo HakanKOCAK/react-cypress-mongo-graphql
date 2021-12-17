@@ -67,7 +67,12 @@ const defaults = {
     'Ankara',
     'Istanbul',
     'Izmir'
-  ]
+  ],
+  counties: [
+    'Besiktas',
+    'Kadikoy'
+  ],
+  districts: ['Arnavutkoy', 'Bebek', 'Konaklar', 'Kultur', 'Levent', 'Yildiz']
 };
 
 Cypress.Commands.add(
@@ -116,6 +121,14 @@ Cypress.Commands.add(
         req.reply((res) => {
           res.body.data.cities = defaults.cities
         })
+      } else if (req.body.operationName === 'Counties' && type === 'counties') {
+        req.reply((res) => {
+          res.body.data.counties = defaults.counties
+        })
+      } else if (req.body.operationName === 'Districts' && type === 'districts') {
+        req.reply((res) => {
+          res.body.data.districts = defaults.districts
+        })
       }
     })
   }
@@ -125,7 +138,25 @@ Cypress.Commands.add(
   'gqlMutation',
   ({ type, opts, variables }) => {
     return cy.intercept('POST', 'http://localhost:4000/graphql', (req) => {
-      if (req.body.operationName === 'AddCreditCard' && type === 'addCreditCard') {
+      if (req.body.operationName === 'Login' && type === 'login') {
+        req.reply((res) => {
+          res.body.data.login = {
+            ...variables,
+            '__typename': 'AuthData'
+
+          }
+          res.body.errors = undefined
+        });
+      } else if (req.body.operationName === 'Register' && type === 'register') {
+        req.reply((res) => {
+          res.body.data.register = {
+            ...variables,
+            '__typename': 'AuthData'
+
+          }
+          res.body.errors = undefined
+        });
+      } else if (req.body.operationName === 'AddCreditCard' && type === 'addCreditCard') {
         req.reply((res) => {
           res.body.data.addCreditCard = {
             id: opts.isEmpty ? '0' : defaults.cards.length.toString(),
@@ -139,6 +170,21 @@ Cypress.Commands.add(
         req.reply((res) => {
           res.body.data.deleteCreditCard = variables.id;
           res.body.errors = undefined;
+        })
+      } else if (req.body.operationName === 'AddAddress' && type === 'addAddress') {
+        req.reply((res) => {
+          res.body.data.addAddress = {
+            id: opts.isEmpty ? '0' : defaults.addresses.length.toString(),
+            ...variables,
+            '__typename': 'Address'
+
+          }
+          res.body.errors = undefined
+        })
+      } else if (req.body.operationName === 'DeleteAddress' && type === 'deleteAddress') {
+        req.reply((res) => {
+          res.body.data.deleteAddress = variables.id
+          res.body.errors = undefined
         })
       }
     });

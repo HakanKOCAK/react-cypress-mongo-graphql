@@ -4,18 +4,6 @@ describe('Register tests', () => {
   beforeEach(() => {
     //Go to register
     cy.visit('/register');
-
-    //Assume no authenticated user
-    cy.intercept('http://localhost:4000/refresh_token', {
-      body: { accessToken: '' }
-    }).as('refreshToken');
-
-    cy.intercept('POST', 'http://localhost:4000/graphql', (req) => {
-      req.reply((res) => {
-        res.body.data.me = null;
-      })
-    }).as('gqlMeQuery');
-
   });
 
   it('should display required message when name input is empty', () => {
@@ -99,19 +87,22 @@ describe('Register tests', () => {
   });
 
   it('should redirect to home page when register is successful', () => {
+    const variables = {
+      id: 'randomId',
+      name: 'Hakan',
+      surname: 'Kocak',
+      email: 'random@mail.com',
+      accessToken: 'accessToken'
+    }
     //Mock request
-    cy.intercept('POST', 'http://localhost:4000/graphql', {
-      body: { data: { register: { id: 'randomId', name: 'Hakan', surname: 'Kocak', email: 'random@email.com', accessToken: 'accessToken' } } }
-    }).as('gqlRegisterMutation');
-
+    cy.gqlMutation({ type: 'register', variables });
+    cy.gqlQuery({ type: 'myAddresses', opts: { isEmpty: false } });
     cy.get('[data-cy="name-input"]').type('Hakan');
     cy.get('[data-cy="surname-input"]').type('Hakan');
     cy.get('[data-cy="email-input"]').type('random@mail.com');
     cy.get('[data-cy="password-input"]').type('123456');
     cy.get('[data-cy="confirm-password-input"]').type('123456');
     cy.get('[data-cy="register-button"]').click('');
-
-    cy.wait('@gqlRegisterMutation');
     cy.url().should('include', '/home')
   });
 });

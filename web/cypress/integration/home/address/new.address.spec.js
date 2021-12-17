@@ -7,106 +7,25 @@ describe('New Address', () => {
     cy.visit('/home');
 
     //Assume there is an authenticated user
-    cy.intercept('http://localhost:4000/refresh_token', {
-      body: {
-        accessToken: 'accessToken'
-      }
-    }).as('refreshToken');
-
-    cy.intercept('POST', 'http://localhost:4000/graphql', (req) => {
-      if (req.body.operationName === 'Me') {
-        req.reply((res) => {
-          res.body.data.me = {
-            id: 'randomId',
-            email: 'random@mail.com',
-            name: 'Hakan',
-            surname: 'Kocak'
-          }
-        })
-      }
-    }).as('gqlMeQuery')
-
-    cy.intercept('POST', 'http://localhost:4000/graphql', (req) => {
-      if (req.body.operationName === 'MyAddresses') {
-        req.reply((res) => {
-          res.body.data.myAddresses = [
-            {
-              id: '0',
-              address: 'Home adress',
-              city: 'Istanbul',
-              county: 'Besiktas',
-              district: 'Bebek',
-              flat: 2,
-              floor: 3,
-              title: 'home'
-            },
-
-            {
-              id: '1',
-              address: 'Other address',
-              city: 'Ankara',
-              county: 'Cankaya',
-              district: 'Bilkent',
-              flat: 2,
-              floor: 3,
-              title: 'other'
-            }
-          ]
-          res.body.errors = undefined
-        })
-      }
-    }).as('gqlMyAddressesQuery')
-    cy.intercept('POST', 'http://localhost:4000/graphql', (req) => {
-      if (req.body.operationName === 'Cities') {
-        req.reply((res) => {
-          res.body.data.cities = [
-            'Ankara',
-            'Istanbul',
-            'Izmir'
-          ]
-        })
-      }
-    }).as('gqlCitiesQuery')
-
-    cy.intercept('POST', 'http://localhost:4000/graphql', (req) => {
-      if (req.body.operationName === 'Counties') {
-        req.reply((res) => {
-          res.body.data.counties = [
-            'Besiktas',
-            'Kadikoy',
-          ]
-        })
-      }
-    }).as('gqlCountiesQuery')
-
-    cy.intercept('POST', 'http://localhost:4000/graphql', (req) => {
-      if (req.body.operationName === 'Districts') {
-        req.reply((res) => {
-          res.body.data.districts = [
-            'Arnavutkoy', 'Bebek', 'Konaklar', 'Kultur', 'Levent', 'Yildiz'
-          ]
-        })
-      }
-    }).as('gqlDistrictsQuery')
-
-    cy.wait('@gqlMeQuery')
+    cy.refreshToken()
+    cy.gqlQuery({ type: 'me' });
   })
 
   context('Modal Tests', () => {
     it('should close new address model when close button clicked', () => {
-      cy.wait('@gqlMyAddressesQuery')
-      cy.contains('Please select an address').click()
-      cy.wait('@gqlCitiesQuery');
-      cy.contains('Add an address').click()
-      cy.get('[data-cy="new-address-close-btn"]').click()
-      cy.contains('New Address').should('not.exist')
+      cy.gqlQuery({ type: 'myAddresses', opts: { isEmpty: false } });
+      cy.gqlQuery({ type: 'cities' });
+      cy.contains('Please select an address').click();
+      cy.contains('Add an address').click();
+      cy.get('[data-cy="new-address-close-btn"]').click();
+      cy.contains('New Address').should('not.exist');
     })
   })
 
   context('Field Tests', () => {
     beforeEach(() => {
-      cy.wait('@gqlMyAddressesQuery')
-      cy.wait('@gqlCitiesQuery');
+      cy.gqlQuery({ type: 'myAddresses', opts: { isEmpty: false } });
+      cy.gqlQuery({ type: 'cities' });
       cy.contains('Please select an address').click()
       cy.contains('Add an address').click()
     })
@@ -128,7 +47,7 @@ describe('New Address', () => {
     context('City Field', () => {
       it('should have value Istanbul when Istanbul is selected', () => {
         cy.get('[data-cy="city-select"]').select('Istanbul');
-        cy.wait('@gqlCountiesQuery');
+        cy.gqlQuery({ type: 'counties' })
         cy.get('[data-cy="city-select"]').should('have.value', 'Istanbul')
       })
       it('should display required when city is not selected', () => {
@@ -145,15 +64,15 @@ describe('New Address', () => {
 
       it('should have value Besiktas when Besiktas is selected', () => {
         cy.get('[data-cy="city-select"]').select('Istanbul');
-        cy.wait('@gqlCountiesQuery');
+        cy.gqlQuery({ type: 'counties' });
         cy.get('[data-cy="county-select"]').select('Besiktas');
-        cy.wait('@gqlDistrictsQuery');
+        cy.gqlQuery({ type: 'districts' });
         cy.get('[data-cy="county-select"]').should('have.value', 'Besiktas')
       })
 
       it('should display required when county is not selected', () => {
         cy.get('[data-cy="city-select"]').select('Istanbul')
-        cy.wait('@gqlCountiesQuery');
+        cy.gqlQuery({ type: 'counties' });
         cy.get('[data-cy="county-select"]').select('');
         cy.get('[data-cy="address-input"]').focus()
         cy.contains('Required').should('be.visible')
@@ -167,25 +86,25 @@ describe('New Address', () => {
 
       it('should be disabled if county is not selected', () => {
         cy.get('[data-cy="city-select"]').select('Istanbul')
-        cy.wait('@gqlCountiesQuery');
+        cy.gqlQuery({ type: 'counties' });
         cy.get('[data-cy="district-select"]').should('be.disabled')
       })
 
 
       it('should have value Bebek when Bebek is selected', () => {
         cy.get('[data-cy="city-select"]').select('Istanbul');
-        cy.wait('@gqlCountiesQuery');
+        cy.gqlQuery({ type: 'counties' });
         cy.get('[data-cy="county-select"]').select('Besiktas');
-        cy.wait('@gqlDistrictsQuery');
+        cy.gqlQuery({ type: 'districts' });
         cy.get('[data-cy="district-select"]').select('Bebek')
         cy.get('[data-cy="district-select"]').should('have.value', 'Bebek')
       })
 
       it('should display required when district is not selected', () => {
         cy.get('[data-cy="city-select"]').select('Istanbul')
-        cy.wait('@gqlCountiesQuery');
+        cy.gqlQuery({ type: 'counties' });
         cy.get('[data-cy="county-select"]').select('Besiktas');
-        cy.wait('@gqlDistrictsQuery');
+        cy.gqlQuery({ type: 'districts' });
         cy.get('[data-cy="district-select"]').select('');
         cy.get('[data-cy="address-input"]').focus()
         cy.contains('Required').should('be.visible')
@@ -234,40 +153,36 @@ describe('New Address', () => {
 
   context('Add a new address', () => {
     it('should add a new address when submit is clicked', () => {
-      cy.intercept('POST', 'http://localhost:4000/graphql', (req) => {
-        if (req.body.operationName === 'AddAddress') {
-          req.reply((res) => {
-            res.body.data.addAddress = {
-              id: '2',
-              address: 'This is a new address',
-              city: 'Istanbul',
-              county: 'Besiktas',
-              district: 'Levent',
-              flat: 3,
-              floor: 1,
-              title: 'home',
-              '__typename': 'Address'
-            }
-            res.body.errors = undefined
-          })
-        }
-      }).as('gqlAddAddressMutation');
+      const variables = {
+        address: 'This is a new address',
+        city: 'Istanbul',
+        county: 'Besiktas',
+        district: 'Levent',
+        flat: 3,
+        floor: 1,
+        title: 'home',
+      };
 
-      cy.wait('@gqlMyAddressesQuery')
-      cy.wait('@gqlCitiesQuery')
+      cy.gqlMutation({
+        type: 'addAddress',
+        opts: { isEmpty: false },
+        variables
+      })
+
+      cy.gqlQuery({ type: 'myAddresses', opts: { isEmpty: false } });
+      cy.gqlQuery({ type: 'cities' });
       cy.contains('Please select an address').click()
       cy.contains('Add an address').click()
       cy.get('[data-cy="title-select"]').select('Home')
       cy.get('[data-cy="city-select"]').select('Istanbul')
-      cy.wait('@gqlCountiesQuery')
+      cy.gqlQuery({ type: 'counties' });
       cy.get('[data-cy="county-select"]').select('Besiktas')
-      cy.wait('@gqlDistrictsQuery')
+      cy.gqlQuery({ type: 'districts' });
       cy.get('[data-cy="district-select"]').select('Levent')
       cy.get('[data-cy="address-input"]').type('This is a new address')
       cy.get('[data-cy="floor-input"]').type('1')
       cy.get('[data-cy="flat-input"]').type('3')
       cy.get('[data-cy="new-address-save-btn"]').click()
-      cy.wait('@gqlAddAddressMutation')
       cy.contains('Add an address').should('be.visible')
       cy.contains('p', 'This is a new address').should('be.visible')
     })

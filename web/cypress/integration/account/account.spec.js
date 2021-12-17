@@ -13,9 +13,9 @@ describe('Account tests', () => {
   it('should redirect to /account/addresses when my addresses clicked', () => {
     //Assume there is an authenticated user
     cy.refreshToken();
-    cy.gqlMeQuery();
-    cy.gqlMyAddresses({ isEmpty: true });
-    cy.gqlCitiesQuery();
+    cy.gqlQuery({ type: 'me' });
+    cy.gqlQuery({ type: 'myAddresses', opts: { isEmpty: true } });
+    cy.gqlQuery({ type: 'cities' });
 
     cy.get('[data-cy="myAddresses-btn"]').click().should('have.css', 'background-color', 'rgb(178, 245, 234)');
     cy.url().should('contain', '/addresses');
@@ -24,10 +24,10 @@ describe('Account tests', () => {
   it('should redirect to /account/credit-cards when my cards clicked', () => {
     //Assume there is an authenticated user
     cy.refreshToken();
-    cy.gqlMeQuery();
-    cy.gqlMyAddresses({ isEmpty: true });
-    cy.gqlMyCreditCards({ isEmpty: true });
-    cy.gqlCitiesQuery();
+    cy.gqlQuery({ type: 'me' });
+    cy.gqlQuery({ type: 'myAddresses', opts: { isEmpty: true } });
+    cy.gqlQuery({ type: 'myCreditCards', opts: { isEmpty: true } });
+    cy.gqlQuery({ type: 'cities' });
 
     cy.get('[data-cy="myCards-btn"]').click().should('have.css', 'background-color', 'rgb(178, 245, 234)');
     cy.url().should('contain', '/credit-cards');

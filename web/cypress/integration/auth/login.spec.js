@@ -4,18 +4,6 @@ describe('Login tests', () => {
   beforeEach(() => {
     //Go to login
     cy.visit('/login');
-
-    //Assume no authenticated user
-    cy.intercept('http://localhost:4000/refresh_token', {
-      body: { accessToken: '' }
-    }).as('refreshToken');
-
-    cy.intercept('POST', 'http://localhost:4000/graphql', (req) => {
-      req.reply((res) => {
-        res.body.data.me = null;
-      })
-    }).as('gqlMeQuery');
-
   });
 
   it('should display required message when email is empty and login button clicked', () => {
@@ -57,16 +45,19 @@ describe('Login tests', () => {
   });
 
   it('should redirect to home page when login is successful', () => {
+    const variables = {
+      id: 'randomId',
+      name: 'Hakan',
+      surname: 'Kocak',
+      email: 'random@mail.com',
+      accessToken: 'accessToken'
+    }
     //Mock request
-    cy.intercept('POST', 'http://localhost:4000/graphql', {
-      body: { data: { login: { id: 'randomId', name: 'Hakan', surname: 'Kocak', email: 'random@email.com', accessToken: 'accessToken' } } }
-    }).as('gqlLoginMutation');
-
-    cy.get('[data-cy="email-input"]').type('random@email.com');
+    cy.gqlQuery({ type: 'myAddresses', opts: { isEmpty: false } });
+    cy.gqlMutation({ type: 'login', variables })
+    cy.get('[data-cy="email-input"]').type('random@mail.com');
     cy.get('[data-cy="password-input"]').type('123456');
     cy.get('[data-cy="login-button"]').click();
-
-    cy.wait('@gqlLoginMutation');
     cy.url().should('include', '/home')
   });
 });
