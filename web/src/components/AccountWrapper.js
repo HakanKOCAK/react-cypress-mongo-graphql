@@ -30,7 +30,7 @@ const AccountWrapper = ({ Children }) => {
         return 'myCards'
 
       default:
-        break;
+        return 'myAddresses';
     }
   }
   const [selected, setSelected] = useState(getSelectedOnRender());
