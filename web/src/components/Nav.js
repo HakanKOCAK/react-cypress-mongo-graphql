@@ -26,7 +26,7 @@ const Nav = () => {
         px={{ base: 4 }}
         align="center"
       >
-        <Box w="50%">
+        <Box w="50%" data-cy="navbar-fooder-container">
           <Brand containerStyles={{ mb: 0, w: '200px', justifyContent: 'flex-start' }} onClick={() => navigate('/')} />
         </Box>
         <HStack
@@ -40,6 +40,7 @@ const Nav = () => {
                 variant="link"
                 colorScheme="pink"
                 fontSize={['sm', 'md']}
+                data-cy="navbar-go-back-to-home-btn"
                 onClick={() => navigate('/home')}
               >
                 <ArrowBackIcon mr={1} />
@@ -55,6 +56,7 @@ const Nav = () => {
                 fontWeight="semibold"
                 fontSize={['sm', 'md']}
                 color="teal.500"
+                data-cy="navbar-user-btn"
               >
                 <HStack spacing={1}>
                   <Text>{auth.user.name}</Text>
@@ -65,11 +67,13 @@ const Nav = () => {
               <MenuList>
                 <MenuItem
                   icon={<Image src="/profile.svg" alt="Profile" boxSize="15px" />}
+                  data-cy="navbar-go-to-account-btn"
                   onClick={() => navigate('/account')}
                 >
                   {t('account')}
                 </MenuItem>
                 <MenuItem
+                  data-cy="navbar-logout-btn"
                   icon={<Image src="/logout.svg" alt="Logout" boxSize="15px" />}
                   onClick={async () => {
                     try {
@@ -92,6 +96,7 @@ const Nav = () => {
               <Button
                 variant="link"
                 colorScheme="teal"
+                data-cy="navbar-login-btn"
                 onClick={() => navigate('/login')}
               >
                 {t('login')}
@@ -99,6 +104,7 @@ const Nav = () => {
               <Button
                 variant="link"
                 colorScheme="teal"
+                data-cy="navbar-register-btn"
                 onClick={() => navigate('/register')}
               >
                 {t('register')}
