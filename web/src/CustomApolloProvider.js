@@ -10,6 +10,7 @@ import { setContext } from '@apollo/client/link/context'
 import { useToken } from './auth/TokenProvider'
 import { TokenRefreshLink } from 'apollo-link-token-refresh';
 import jwtDecode from 'jwt-decode';
+import apiUrl from './utils/apiUrl';
 
 
 const CustomApolloProvider = (props) => {
@@ -30,7 +31,7 @@ const CustomApolloProvider = (props) => {
 
 
     const httpLink = new HttpLink({
-      uri: `${process.env.REACT_APP_API_URL}/graphql`,
+      uri: `${apiUrl}/graphql`,
       credentials: 'include'
     });
 
@@ -65,7 +66,7 @@ const CustomApolloProvider = (props) => {
           },
           fetchAccessToken: async () => {
             //Fetches new access token
-            return fetch(`${process.env.REACT_APP_API_URL}/refresh_token`, {
+            return fetch(`${apiUrl}/refresh_token`, {
               method: 'POST',
               credentials: 'include'
             });
