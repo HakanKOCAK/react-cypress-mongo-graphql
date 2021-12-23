@@ -12,7 +12,7 @@ import {
 } from '@chakra-ui/layout'
 import { useTranslation } from 'react-i18next';
 
-//This is the address container in home and screen and address list
+//This is the address container in restaurants and screen and address list
 const Address = ({
   actionIcon,
   actionIconOnClick,
@@ -24,7 +24,7 @@ const Address = ({
 }) => {
   const { t } = useTranslation();
 
-  //Check if there is no address -> Only can be rendered by Home screen if user does not have selected address
+  //Check if there is no address -> Only can be rendered by Restaurants screen if user does not have selected address
   if (!details.address) {
     return (
       <Flex justifyContent="center">

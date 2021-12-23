@@ -3,8 +3,8 @@
 describe('New Address', () => {
 
   beforeEach(() => {
-    //Go to home
-    cy.visit('/home');
+    //Go to restaurants
+    cy.visit('/restaurants');
 
     //Assume there is an authenticated user
     cy.refreshToken()

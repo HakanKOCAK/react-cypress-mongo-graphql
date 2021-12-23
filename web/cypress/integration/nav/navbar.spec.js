@@ -18,7 +18,7 @@ describe('Navbar Tests', () => {
     });
 
     it('navbar should display login and register button when there is not an authenticated user', () => {
-      cy.visit('/home');
+      cy.visit('/restaurants');
       cy.get('[data-cy="navbar-login-btn"]').should('be.visible');
       cy.get('[data-cy="navbar-register-btn"]').should('be.visible');
     });
@@ -46,7 +46,7 @@ describe('Navbar Tests', () => {
 
   context('Tests with authenticated user', () => {
     beforeEach(() => {
-      cy.visit('/home');
+      cy.visit('/restaurants');
       cy.refreshToken();
       cy.gqlQuery({ type: 'me' });
       cy.gqlQuery({ type: 'myAddresses', opts: { isEmpty: true } });
@@ -73,24 +73,24 @@ describe('Navbar Tests', () => {
       cy.url().should('contain', '/account');
     });
 
-    it('<- Home button should be visible when user is not at home page', () => {
+    it('<- Restaurants button should be visible when user is not at restaurants page', () => {
       cy.get('[data-cy="navbar-user-btn"]').click();
       cy.contains('Account').click();
-      cy.get('[data-cy="navbar-go-back-to-home-btn"]').should('be.visible')
+      cy.get('[data-cy="navbar-go-back-to-restaurants-btn"]').should('be.visible')
     });
 
-    it('should navigate to home page when fooder clicked', () => {
+    it('should navigate to restaurants page when fooder clicked', () => {
       cy.get('[data-cy="navbar-user-btn"]').click();
       cy.contains('Account').click();
       cy.get('[data-cy="navbar-fooder-container"]').children().click();
-      cy.url().should('contain', '/home');
+      cy.url().should('contain', '/restaurants');
     });
 
-    it('should navigate to home page when <- Home button clicked', () => {
+    it('should navigate to restaurants page when <- Restaurants button clicked', () => {
       cy.get('[data-cy="navbar-user-btn"]').click();
       cy.contains('Account').click();
-      cy.get('[data-cy="navbar-go-back-to-home-btn"]').click();
-      cy.url().should('contain', '/home');
+      cy.get('[data-cy="navbar-go-back-to-restaurants-btn"]').click();
+      cy.url().should('contain', '/restaurants');
     });
 
     it('should logout user navigate to login page logout clicked', () => {

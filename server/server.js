@@ -1,4 +1,5 @@
 import express from "express";
+import path from "path";
 import { ApolloServer } from "apollo-server-express";
 import { ApolloServerPluginInlineTrace } from "apollo-server-core";
 import cors from "cors";
@@ -8,9 +9,15 @@ import resolvers from "./graphql/resolvers/index.js";
 import schema from "./graphql/schemas/index.js"
 import refreshToken from "./refreshToken.js";
 
+//To create default restaurants
+import { createDefaultRestaurants } from "./helpers/restaurant.js";
+
 (async () => {
     try {
         await connectDB();
+        console.log("MongoDb connected");
+        await createDefaultRestaurants();
+        console.log("Default Restaurants created");
     } catch (error) {
         console.log(error);
         return;
@@ -23,6 +30,7 @@ import refreshToken from "./refreshToken.js";
     }));
 
     app.use(cookieParser());
+    app.use(express.static(path.join(path.resolve(), 'public', 'images')))
     app.get('/', (_, res) => res.send('Server is running'));
     app.use('/refresh_token', refreshToken);
 

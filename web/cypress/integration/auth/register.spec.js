@@ -86,7 +86,7 @@ describe('Register tests', () => {
 
   });
 
-  it('should redirect to home page when register is successful', () => {
+  it('should redirect to restaurants page when register is successful', () => {
     const variables = {
       id: 'randomId',
       name: 'Hakan',
@@ -103,6 +103,6 @@ describe('Register tests', () => {
     cy.get('[data-cy="password-input"]').type('123456');
     cy.get('[data-cy="confirm-password-input"]').type('123456');
     cy.get('[data-cy="register-button"]').click('');
-    cy.url().should('include', '/home')
+    cy.url().should('include', '/restaurants')
   });
 });

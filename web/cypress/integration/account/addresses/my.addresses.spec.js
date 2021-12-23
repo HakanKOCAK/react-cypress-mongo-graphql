@@ -27,6 +27,6 @@ describe('My Addresses Tests', () => {
   });
 
 
-  context('Remained address tests could be found under /home/address check out the spec files', () => null)
+  context('Remained address tests could be found under /restaurants/address check out the spec files', () => null)
 
 })

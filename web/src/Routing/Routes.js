@@ -16,7 +16,7 @@ import AuthWrapper from '../components/AuthWrapper';
 import Login from '../pages/Login'
 import Register from '../pages/Register';
 
-import Home from '../pages/Home';
+import Restaurants from '../pages/Restaurants';
 import Account from '../pages/Account/Account';
 
 import AccountWrapper from '../components/AccountWrapper';
@@ -32,7 +32,7 @@ export default function AppRoutes() {
                     <Nav />
                     <Box h={`${parseInt(height) - 60}px`} w="100%" p={5} overflowY>
                         <Routes>
-                            <Route exact path="/" element={<Navigate replace to="/home" />} />
+                            <Route exact path="/" element={<Navigate replace to="/restaurants" />} />
                             <Route
                                 exact path='/login'
                                 element={
@@ -54,10 +54,10 @@ export default function AppRoutes() {
                                 }
                             />
                             <Route
-                                exact path='/home'
+                                exact path='/restaurants'
                                 element={
                                     <PrivateRoute>
-                                        <Home />
+                                        <Restaurants />
                                     </PrivateRoute>
                                 }
                             />

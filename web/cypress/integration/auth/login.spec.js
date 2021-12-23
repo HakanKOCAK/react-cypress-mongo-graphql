@@ -44,7 +44,7 @@ describe('Login tests', () => {
 
   });
 
-  it('should redirect to home page when login is successful', () => {
+  it('should redirect to restaurants page when login is successful', () => {
     const variables = {
       id: 'randomId',
       name: 'Hakan',
@@ -58,6 +58,6 @@ describe('Login tests', () => {
     cy.get('[data-cy="email-input"]').type('random@mail.com');
     cy.get('[data-cy="password-input"]').type('123456');
     cy.get('[data-cy="login-button"]').click();
-    cy.url().should('include', '/home')
+    cy.url().should('include', '/restaurants')
   });
 });

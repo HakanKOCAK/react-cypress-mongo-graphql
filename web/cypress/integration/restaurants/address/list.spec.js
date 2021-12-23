@@ -2,8 +2,8 @@
 
 describe('Address List', () => {
   beforeEach(() => {
-    //Go to home
-    cy.visit('/home');
+    //Go to restaurants
+    cy.visit('/restaurants');
   })
 
   it('should redirect to /login when authenticated user is not exists', () => {

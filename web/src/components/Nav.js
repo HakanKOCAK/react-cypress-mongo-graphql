@@ -35,16 +35,16 @@ const Nav = () => {
           spacing={5}
         >
           {
-            auth.user && location.pathname !== '/home' && (
+            auth.user && location.pathname !== '/restaurants' && (
               <Button
                 variant="link"
                 colorScheme="pink"
                 fontSize={['sm', 'md']}
-                data-cy="navbar-go-back-to-home-btn"
-                onClick={() => navigate('/home')}
+                data-cy="navbar-go-back-to-restaurants-btn"
+                onClick={() => navigate('/restaurants')}
               >
                 <ArrowBackIcon mr={1} />
-                {t('home')}
+                {t('restaurants')}
               </Button>
             )
           }

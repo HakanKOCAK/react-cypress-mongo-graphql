@@ -54,3 +54,20 @@ query MyCreditCards {
   }
 }
 `;
+
+export const getRestaurantsQuery = gql`
+query Restaurants($city: String!, $county: String!, $district: String!) {
+  restaurants(city: $city, county: $county, district: $district) {
+    city
+    county
+    cuisine
+    deliveryDetails {
+      minAmount
+      estimatedDeliveryTime
+    }
+    image
+    name
+    servedDistricts
+  }
+}
+`;

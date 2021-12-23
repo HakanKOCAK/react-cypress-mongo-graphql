@@ -1,0 +1,782 @@
+[
+  {
+    "city": "Ankara",
+    "county": "Cankaya",
+    "cuisine": [
+      "Hamburger",
+      "Pizza"
+    ],
+    "deliveryDetails": {
+      "Bahcelievler": {
+        "minAmount": "10$",
+        "estimatedDeliveryTime": "25"
+      },
+      "Beytepe": {
+        "minAmount": "13$",
+        "estimatedDeliveryTime": "40"
+      },
+      "Cayyolu": {
+        "minAmount": "20$",
+        "estimatedDeliveryTime": "45"
+      }
+    },
+    "image": "burger.svg",
+    "name": "Fast and Food Ank",
+    "servedDistricts": [
+      "Bahcelievler",
+      "Beytepe",
+      "Cayyolu"
+    ]
+  },
+  {
+    "city": "Ankara",
+    "county": "Cankaya",
+    "cuisine": [
+      "Hamburger"
+    ],
+    "deliveryDetails": {
+      "Emek": {
+        "minAmount": "10$",
+        "estimatedDeliveryTime": "20"
+      },
+      "Kizilay": {
+        "minAmount": "15$",
+        "estimatedDeliveryTime": "40"
+      }
+    },
+    "image": "burger.svg",
+    "name": "OnlyBurger",
+    "servedDistricts": [
+      "Emek",
+      "Kizilay"
+    ]
+  },
+  {
+    "city": "Ankara",
+    "county": "Cankaya",
+    "cuisine": [
+      "Kebab"
+    ],
+    "deliveryDetails": {
+      "Bahcelievler": {
+        "minAmount": "10$",
+        "estimatedDeliveryTime": "20"
+      },
+      "Beytepe": {
+        "minAmount": "12$",
+        "estimatedDeliveryTime": "40"
+      },
+      "Cayyolu": {
+        "minAmount": "15$",
+        "estimatedDeliveryTime": "45"
+      },
+      "Emek": {
+        "minAmount": "10$",
+        "estimatedDeliveryTime": "25"
+      }
+    },
+    "image": "kebab.svg",
+    "name": "My Kebap",
+    "servedDistricts": [
+      "Bahcelievler",
+      "Beytepe",
+      "Cayyolu",
+      "Emek"
+    ]
+  },
+  {
+    "city": "Ankara",
+    "county": "Cankaya",
+    "cuisine": [
+      "Falafel"
+    ],
+    "deliveryDetails": {
+      "Bahcelievler": {
+        "minAmount": "13$",
+        "estimatedDeliveryTime": "20"
+      },
+      "Beytepe": {
+        "minAmount": "18$",
+        "estimatedDeliveryTime": "40"
+      },
+      "Cayyolu": {
+        "minAmount": "20$",
+        "estimatedDeliveryTime": "45"
+      },
+      "Emek": {
+        "minAmount": "15$",
+        "estimatedDeliveryTime": "25"
+      },
+      "Kizilay": {
+        "minAmount": "18$",
+        "estimatedDeliveryTime": "30"
+      }
+    },
+    "image": "falafel.png",
+    "name": "Falllllafel",
+    "servedDistricts": [
+      "Bahcelievler",
+      "Beytepe",
+      "Cayyolu",
+      "Emek",
+      "Kizilay"
+    ]
+  },
+  {
+    "city": "Ankara",
+    "county": "Golbasi",
+    "cuisine": [
+      "Falafel"
+    ],
+    "deliveryDetails": {
+      "Ahiboz": {
+        "minAmount": "15$",
+        "estimatedDeliveryTime": "20"
+      },
+      "Boyalik": {
+        "minAmount": "18$",
+        "estimatedDeliveryTime": "40"
+      },
+      "Eymir": {
+        "minAmount": "20$",
+        "estimatedDeliveryTime": "45"
+      }
+    },
+    "image": "falafel.png",
+    "name": "Golbasi Falafel",
+    "servedDistricts": [
+      "Ahiboz",
+      "Boyalik",
+      "Eymir"
+    ]
+  },
+  {
+    "city": "Ankara",
+    "county": "Golbasi",
+    "cuisine": [
+      "Hamburger"
+    ],
+    "deliveryDetails": {
+      "Ahiboz": {
+        "minAmount": "10$",
+        "estimatedDeliveryTime": "25"
+      },
+      "Boyalik": {
+        "minAmount": "13$",
+        "estimatedDeliveryTime": "45"
+      },
+      "Eymir": {
+        "minAmount": "15$",
+        "estimatedDeliveryTime": "50"
+      }
+    },
+    "image": "burger.svg",
+    "name": "Golbasi Burger",
+    "servedDistricts": [
+      "Ahiboz",
+      "Boyalik",
+      "Eymir"
+    ]
+  },
+  {
+    "city": "Ankara",
+    "county": "Golbasi",
+    "cuisine": [
+      "Pizza"
+    ],
+    "deliveryDetails": {
+      "Ahiboz": {
+        "minAmount": "10$",
+        "estimatedDeliveryTime": "15"
+      },
+      "Boyalik": {
+        "minAmount": "13$",
+        "estimatedDeliveryTime": "35"
+      },
+      "Eymir": {
+        "minAmount": "15$",
+        "estimatedDeliveryTime": "40"
+      }
+    },
+    "image": "pizza.svg",
+    "name": "Golbasi Pizza",
+    "servedDistricts": [
+      "Ahiboz",
+      "Boyalik",
+      "Eymir"
+    ]
+  },
+  {
+    "city": "Ankara",
+    "county": "Golbasi",
+    "cuisine": [
+      "Kebab"
+    ],
+    "deliveryDetails": {
+      "Ahiboz": {
+        "minAmount": "5$",
+        "estimatedDeliveryTime": "20"
+      }
+    },
+    "image": "kebab.svg",
+    "name": "Golbasi Kebab",
+    "servedDistricts": [
+      "Ahiboz"
+    ]
+  },
+  {
+    "city": "Ankara",
+    "county": "Golbasi",
+    "cuisine": [
+      "Pizza",
+      "Hamburger"
+    ],
+    "deliveryDetails": {
+      "Boyalik": {
+        "minAmount": "10$",
+        "estimatedDeliveryTime": "35"
+      },
+      "Eymir": {
+        "minAmount": "15$",
+        "estimatedDeliveryTime": "40"
+      }
+    },
+    "image": "pizza.svg",
+    "name": "Fast and Food",
+    "servedDistricts": [
+      "Boyalik",
+      "Eymir"
+    ]
+  },
+  {
+    "city": "Istanbul",
+    "county": "Besiktas",
+    "cuisine": [
+      "Hamburger",
+      "Pizza"
+    ],
+    "deliveryDetails": {
+      "Arnavutkoy": {
+        "minAmount": "10$",
+        "estimatedDeliveryTime": "35"
+      },
+      "Bebek": {
+        "minAmount": "15$",
+        "estimatedDeliveryTime": "45"
+      }
+    },
+    "image": "burger.svg",
+    "name": "Fast and Food",
+    "servedDistricts": [
+      "Arnavutkoy",
+      "Bebek"
+    ]
+  },
+  {
+    "city": "Istanbul",
+    "county": "Besiktas",
+    "cuisine": [
+      "Pizza"
+    ],
+    "deliveryDetails": {
+      "Arnavutkoy": {
+        "minAmount": "10$",
+        "estimatedDeliveryTime": "35"
+      },
+      "Bebek": {
+        "minAmount": "15$",
+        "estimatedDeliveryTime": "45"
+      },
+      "Konaklar": {
+        "minAmount": "20$",
+        "estimatedDeliveryTime": "45"
+      },
+      "Kultur": {
+        "minAmount": "20$",
+        "estimatedDeliveryTime": "50"
+      }
+    },
+    "image": "pizza.svg",
+    "name": "Just Pizza",
+    "servedDistricts": [
+      "Arnavutkoy",
+      "Bebek",
+      "Konaklar",
+      "Kultur"
+    ]
+  },
+  {
+    "city": "Istanbul",
+    "county": "Besiktas",
+    "cuisine": [
+      "Hamburger"
+    ],
+    "deliveryDetails": {
+      "Konaklar": {
+        "minAmount": "15$",
+        "estimatedDeliveryTime": "45"
+      },
+      "Kultur": {
+        "minAmount": "18$",
+        "estimatedDeliveryTime": "50"
+      },
+      "Levent": {
+        "minAmount": "20$",
+        "estimatedDeliveryTime": "50"
+      },
+      "Yildiz": {
+        "minAmount": "20$",
+        "estimatedDeliveryTime": "50"
+      }
+    },
+    "image": "burger.svg",
+    "name": "Just Burger",
+    "servedDistricts": [
+      "Konaklar",
+      "Kultur",
+      "Levent",
+      "Yildiz"
+    ]
+  },
+  {
+    "city": "Istanbul",
+    "county": "Besiktas",
+    "cuisine": [
+      "Kebab"
+    ],
+    "deliveryDetails": {
+      "Kultur": {
+        "minAmount": "18$",
+        "estimatedDeliveryTime": "40"
+      },
+      "Levent": {
+        "minAmount": "20$",
+        "estimatedDeliveryTime": "45"
+      },
+      "Yildiz": {
+        "minAmount": "20$",
+        "estimatedDeliveryTime": "45"
+      }
+    },
+    "image": "kebab.svg",
+    "name": "Kebabci",
+    "servedDistricts": [
+      "Levent",
+      "Yildiz",
+      "Kultur"
+    ]
+  },
+  {
+    "city": "Istanbul",
+    "county": "Kadikoy",
+    "cuisine": [
+      "Falafel"
+    ],
+    "deliveryDetails": {
+      "Acibadem": {
+        "minAmount": "10$",
+        "estimatedDeliveryTime": "30"
+      },
+      "Bostanci": {
+        "minAmount": "10$",
+        "estimatedDeliveryTime": "30"
+      },
+      "Caferaga": {
+        "minAmount": "15$",
+        "estimatedDeliveryTime": "40"
+      }
+    },
+    "image": "falafel.png",
+    "name": "Falafeller",
+    "servedDistricts": [
+      "Acibadem",
+      "Bostanci",
+      "Caferaga"
+    ]
+  },
+  {
+    "city": "Istanbul",
+    "county": "Kadikoy",
+    "cuisine": [
+      "Hamburger"
+    ],
+    "deliveryDetails": {
+      "Bostanci": {
+        "minAmount": "13$",
+        "estimatedDeliveryTime": "30"
+      },
+      "Caferaga": {
+        "minAmount": "18$",
+        "estimatedDeliveryTime": "35"
+      },
+      "Dumlupinar": {
+        "minAmount": "18$",
+        "estimatedDeliveryTime": "35"
+      },
+      "Erenkoy": {
+        "minAmount": "20$",
+        "estimatedDeliveryTime": "40"
+      }
+    },
+    "image": "burger.svg",
+    "name": "Awesomeger",
+    "servedDistricts": [
+      "Bostanci",
+      "Caferaga",
+      "Dumlupinar",
+      "Erenkoy"
+    ]
+  },
+  {
+    "city": "Istanbul",
+    "county": "Kadikoy",
+    "cuisine": [
+      "Pizza"
+    ],
+    "deliveryDetails": {
+      "Dumlupinar": {
+        "minAmount": "15$",
+        "estimatedDeliveryTime": "30"
+      },
+      "Erenkoy": {
+        "minAmount": "18$",
+        "estimatedDeliveryTime": "35"
+      },
+      "Fikirtepe": {
+        "minAmount": "20$",
+        "estimatedDeliveryTime": "40"
+      }
+    },
+    "image": "pizza.svg",
+    "name": "Pizza&Pizza",
+    "servedDistricts": [
+      "Dumlupinar",
+      "Erenkoy",
+      "Fikirtepe"
+    ]
+  },
+  {
+    "city": "Istanbul",
+    "county": "Kadikoy",
+    "cuisine": [
+      "Kebab"
+    ],
+    "deliveryDetails": {
+      "Erenkoy": {
+        "minAmount": "10$",
+        "estimatedDeliveryTime": "25"
+      },
+      "Fikirtepe": {
+        "minAmount": "13$",
+        "estimatedDeliveryTime": "30"
+      },
+      "Goztepe": {
+        "minAmount": "15$",
+        "estimatedDeliveryTime": "35"
+      },
+      "Kozyatagi": {
+        "minAmount": "15$",
+        "estimatedDeliveryTime": "35"
+      }
+    },
+    "image": "kebab.svg",
+    "name": "Best Kebab",
+    "servedDistricts": [
+      "Erenkoy",
+      "Fikirtepe",
+      "Goztepe",
+      "Kozyatagi"
+    ]
+  },
+  {
+    "city": "Istanbul",
+    "county": "Kadikoy",
+    "cuisine": [
+      "Hamburger",
+      "Pizza"
+    ],
+    "deliveryDetails": {
+      "Acibadem": {
+        "minAmount": "18$",
+        "estimatedDeliveryTime": "40"
+      },
+      "Bostanci": {
+        "minAmount": "20$",
+        "estimatedDeliveryTime": "45"
+      },
+      "Caferaga": {
+        "minAmount": "20$",
+        "estimatedDeliveryTime": "45"
+      },
+      "Dumlupinar": {
+        "minAmount": "13$",
+        "estimatedDeliveryTime": "30"
+      },
+      "Erenkoy": {
+        "minAmount": "10$",
+        "estimatedDeliveryTime": "25"
+      },
+      "Fikirtepe": {
+        "minAmount": "13$",
+        "estimatedDeliveryTime": "30"
+      },
+      "Goztepe": {
+        "minAmount": "15$",
+        "estimatedDeliveryTime": "35"
+      },
+      "Kozyatagi": {
+        "minAmount": "15$",
+        "estimatedDeliveryTime": "35"
+      }
+    },
+    "image": "burger.svg",
+    "name": "Burger&Pizza",
+    "servedDistricts": [
+      "Acibadem",
+      "Bostanci",
+      "Caferaga",
+      "Dumlupinar",
+      "Erenkoy",
+      "Fikirtepe",
+      "Goztepe",
+      "Kozyatagi"
+    ]
+  },
+  {
+    "city": "Izmir",
+    "county": "Bornova",
+    "cuisine": [
+      "Hamburger",
+      "Pizza"
+    ],
+    "deliveryDetails": {
+      "Birlik": {
+        "minAmount": "10$",
+        "estimatedDeliveryTime": "25"
+      },
+      "Doganlar": {
+        "minAmount": "10$",
+        "estimatedDeliveryTime": "25"
+      }
+    },
+    "image": "burger.svg",
+    "name": "Bornova's Fastest Food",
+    "servedDistricts": [
+      "Birlik",
+      "Doganlar"
+    ]
+  },
+  {
+    "city": "Izmir",
+    "county": "Bornova",
+    "cuisine": [
+      "Kebab"
+    ],
+    "deliveryDetails": {
+      "Birlik": {
+        "minAmount": "12$",
+        "estimatedDeliveryTime": "25"
+      },
+      "Doganlar": {
+        "minAmount": "14$",
+        "estimatedDeliveryTime": "25"
+      }
+    },
+    "image": "kebab.svg",
+    "name": "Don't We Love Kebap",
+    "servedDistricts": [
+      "Birlik",
+      "Doganlar"
+    ]
+  },
+  {
+    "city": "Izmir",
+    "county": "Bornova",
+    "cuisine": [
+      "Pizza"
+    ],
+    "deliveryDetails": {
+      "Birlik": {
+        "minAmount": "15$",
+        "estimatedDeliveryTime": "35"
+      }
+    },
+    "image": "pizza.svg",
+    "name": "Italian Pizza",
+    "servedDistricts": [
+      "Birlik"
+    ]
+  },
+  {
+    "city": "Izmir",
+    "county": "Bornova",
+    "cuisine": [
+      "Falafel"
+    ],
+    "deliveryDetails": {
+      "Doganlar": {
+        "minAmount": "15$",
+        "estimatedDeliveryTime": "30"
+      }
+    },
+    "image": "falafel.png",
+    "name": "Kofteci",
+    "servedDistricts": [
+      "Doganlar"
+    ]
+  },
+  {
+    "city": "Izmir",
+    "county": "Bornova",
+    "cuisine": [
+      "Falafel"
+    ],
+    "deliveryDetails": {
+      "Birlik": {
+        "minAmount": "15$",
+        "estimatedDeliveryTime": "30"
+      },
+      "Doganlar": {
+        "minAmount": "18$",
+        "estimatedDeliveryTime": "35"
+      }
+    },
+    "image": "falafel.png",
+    "name": "Koftecix",
+    "servedDistricts": [
+      "Birlik",
+      "Doganlar"
+    ]
+  },
+  {
+    "city": "Izmir",
+    "county": "Karsiyaka",
+    "cuisine": [
+      "Falafel"
+    ],
+    "deliveryDetails": {
+      "Atakent": {
+        "minAmount": "15$",
+        "estimatedDeliveryTime": "25"
+      },
+      "Bostanli": {
+        "minAmount": "18$",
+        "estimatedDeliveryTime": "30"
+      },
+      "Cumhuriyet": {
+        "minAmount": "20$",
+        "estimatedDeliveryTime": "35"
+      }
+    },
+    "image": "falafel.png",
+    "name": "Koftecix",
+    "servedDistricts": [
+      "Atakent",
+      "Bostanli",
+      "Cumhuriyet"
+    ]
+  },
+  {
+    "city": "Izmir",
+    "county": "Karsiyaka",
+    "cuisine": [
+      "Pizza"
+    ],
+    "deliveryDetails": {
+      "Atakent": {
+        "minAmount": "15$",
+        "estimatedDeliveryTime": "25"
+      },
+      "Bostanli": {
+        "minAmount": "18$",
+        "estimatedDeliveryTime": "30"
+      }
+    },
+    "image": "pizza.svg",
+    "name": "Karsi Pizza",
+    "servedDistricts": [
+      "Atakent",
+      "Bostanli"
+    ]
+  },
+  {
+    "city": "Izmir",
+    "county": "Karsiyaka",
+    "cuisine": [
+      "Hamburger"
+    ],
+    "deliveryDetails": {
+      "Bostanli": {
+        "minAmount": "12$",
+        "estimatedDeliveryTime": "30"
+      },
+      "Cumhuriyet": {
+        "minAmount": "15$",
+        "estimatedDeliveryTime": "35"
+      }
+    },
+    "image": "burger.svg",
+    "name": "Yeah Burger",
+    "servedDistricts": [
+      "Bostanli",
+      "Cumhuriyet"
+    ]
+  },
+  {
+    "city": "Izmir",
+    "county": "Karsiyaka",
+    "cuisine": [
+      "Pizza",
+      "Hamburger"
+    ],
+    "deliveryDetails": {
+      "Atakent": {
+        "minAmount": "15$",
+        "estimatedDeliveryTime": "25"
+      },
+      "Bostanli": {
+        "minAmount": "18$",
+        "estimatedDeliveryTime": "30"
+      },
+      "Cumhuriyet": {
+        "minAmount": "20$",
+        "estimatedDeliveryTime": "35"
+      }
+    },
+    "image": "burger.svg",
+    "name": "Fastest Karsiyaka",
+    "servedDistricts": [
+      "Atakent",
+      "Bostanli",
+      "Cumhuriyet"
+    ]
+  },
+  {
+    "city": "Izmir",
+    "county": "Karsiyaka",
+    "cuisine": [
+      "Kebap"
+    ],
+    "deliveryDetails": {
+      "Atakent": {
+        "minAmount": "10$",
+        "estimatedDeliveryTime": "25"
+      },
+      "Bostanli": {
+        "minAmount": "12$",
+        "estimatedDeliveryTime": "30"
+      },
+      "Cumhuriyet": {
+        "minAmount": "14$",
+        "estimatedDeliveryTime": "35"
+      }
+    },
+    "image": "kebab.svg",
+    "name": "Alo Kebab",
+    "servedDistricts": [
+      "Atakent",
+      "Bostanli",
+      "Cumhuriyet"
+    ]
+  }
+]

@@ -13,7 +13,7 @@ const PublicRoute = ({ children }) => {
     </Box>
   }
 
-  const from = location.state && location.state.from ? location.state.from : '/home';
+  const from = location.state && location.state.from ? location.state.from : '/restaurants';
   //redirectTo is to set which route should user forwarded if not authenticated
   return (
     <Box h="100%">
