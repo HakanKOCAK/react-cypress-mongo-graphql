@@ -50,7 +50,7 @@ const RestaurantListItem = ({ details }) => {
         <HStack w="100%" justifyContent="flex-end">
           <HStack spacing={0.5}>
             <Text fontSize={['9px', '12px', '12px']} fontWeight="semibold">{t('minimum')}:</Text>
-            <Text fontSize={['9px', '12px', '12px']}>{deliveryDetails.minAmount}</Text>
+            <Text fontSize={['9px', '12px', '12px']}>{deliveryDetails.minAmount}$</Text>
             <Text fontSize={['9px', '12px', '12px']}>,</Text>
           </HStack>
           <HStack>

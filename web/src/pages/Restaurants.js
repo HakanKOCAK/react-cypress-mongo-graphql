@@ -80,29 +80,17 @@ const Restaurants = () => {
         const key = splitted[0];
         const order = splitted[1];
 
-        const getValue = (key, value) => {
-            //parse value to integer if its minimum basket amount or estimated delivery time 
-            //for healthy comparison
-            if (key === 'deliveryDetails.estimatedDeliveryTime') {
-                return parseInt(value);
-            } else if (key === 'deliveryDetails.minAmount') {
-                return parseInt(value.split('$')[0]);
-            }
-
-            return value;
-        }
-
         const sorted = cloneDeep(list).sort((a, b) => {
             //get function comes from lodash and it allows to get a value from an object.
             // for example in this case our object is restaurant = {
             //     ...
             //     deliveryDetails: {
-            //         minAmount: '10$',
-            //         estimatedDeliveryTime: '40'
+            //         minAmount: 10,
+            //         estimatedDeliveryTime: 40
             //     }
             // } 
             // so we can get the min amount like this: get(restaurant, 'deliveryDetails.minAmount')
-            if (getValue(key, get(a, key)) > getValue(key, get(b, key))) {
+            if (get(a, key) > get(b, key)) {
                 //reverse it if descending
                 if (order === 'desc') {
                     return -1;
@@ -110,7 +98,7 @@ const Restaurants = () => {
                 return 1
             };
 
-            if (getValue(key, get(a, key)) < getValue(key, get(b, key))) {
+            if (get(a, key) < get(b, key)) {
                 //reverse it if descending
                 if (order === 'desc') {
                     return 1;
@@ -140,9 +128,9 @@ const Restaurants = () => {
                 //To check if satisfies the given filter
                 let result = true;
 
-                //Parse minimum basket amount or estimated delivery time of restaurant to integer.
-                const minAmountOfRestaurant = parseInt(r.deliveryDetails.minAmount.split('$')[0]);
-                const maxArrivalOfRestaurant = parseInt(r.deliveryDetails.estimatedDeliveryTime);
+                //set minimum basket amount and estimated delivery time of restaurant to a variable
+                const minAmountOfRestaurant = r.deliveryDetails.minAmount;
+                const maxArrivalOfRestaurant = r.deliveryDetails.estimatedDeliveryTime;
 
                 //Using every here to escape if not satisfies
                 filters.every((opt) => {
@@ -162,12 +150,12 @@ const Restaurants = () => {
                         }
                     } else if (opt.filterBy === 'minAmount') {
                         //Check if restaurant's min basket amount is lower or equals to desired amount 
-                        if (!(minAmountOfRestaurant <= parseInt(opt.filterValue))) {
+                        if (!(minAmountOfRestaurant <= opt.filterValue)) {
                             result = false;
                         }
                     } else if (opt.filterBy === 'maxArrival') {
                         //Check if restaurant's estimated delivery time is lower or equals to desired delivery time 
-                        if (!(maxArrivalOfRestaurant <= parseInt(opt.filterValue))) {
+                        if (!(maxArrivalOfRestaurant <= opt.filterValue)) {
                             result = false;
                         }
                     }

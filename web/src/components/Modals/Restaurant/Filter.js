@@ -162,28 +162,28 @@ const RestaurantFilter = ({
                   mt={3}
                   ml={-2.5}
                 >
-                  10
+                  10min
                 </SliderMark>
                 <SliderMark
                   value={30}
                   mt={3}
                   ml={-2.5}
                 >
-                  30
+                  30min
                 </SliderMark>
                 <SliderMark
                   value={45}
                   mt={3}
                   ml={-2.5}
                 >
-                  45
+                  45min
                 </SliderMark>
                 <SliderMark
                   value={60}
                   mt={3}
                   ml={-2.5}
                 >
-                  60
+                  60min
                 </SliderMark>
                 <SliderTrack>
                   <SliderFilledTrack bg="teal.400" />
@@ -220,9 +220,7 @@ const RestaurantFilter = ({
 
                 //Check if max arrival is updated and add to filters
                 if (!isEqual(maxArrival, modalMaxArrival)) {
-                  if (!isEqual(minAmount, modalMinAmount)) {
-                    filters.push({ filterBy: 'maxArrival', filterValue: modalMaxArrival });
-                  }
+                  filters.push({ filterBy: 'maxArrival', filterValue: modalMaxArrival });
                 }
 
                 //Set filters (comes from props).
