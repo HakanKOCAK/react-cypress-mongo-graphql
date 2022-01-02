@@ -1,0 +1,127 @@
+{
+  "optionals": {
+    "hamburger": [
+      "pickles",
+      "ketchup",
+      "mustard"
+    ],
+    "cheeseburger": [
+      "pickles",
+      "ketchup"
+    ],
+    "chickenburger": [
+      "lettuce",
+      "mayonnaise"
+    ],
+    "quarterPounder": [
+      "pickles",
+      "onions",
+      "ketchup",
+      "mustard"
+    ]
+  },
+  "burgerDetails": {
+    "hamburger": {
+      "possiblePrices": [
+        6,
+        7,
+        8
+      ],
+      "includes": [
+        "beef"
+      ],
+      "optionals": "hamburger"
+    },
+    "cheeseburger": {
+      "possiblePrices": [
+        7,
+        8,
+        9
+      ],
+      "includes": [
+        "beef",
+        "cheddarCheese"
+      ],
+      "optionals": "cheeseburger"
+    },
+    "chickenburger": {
+      "possiblePrices": [
+        5,
+        6,
+        7
+      ],
+      "includes": [
+        "chicken"
+      ],
+      "optionals": "chickenburger"
+    },
+    "doubleHamburger": {
+      "possiblePrices": [
+        11,
+        12,
+        13
+      ],
+      "includes": [
+        "beef"
+      ],
+      "optionals": "hamburger"
+    },
+    "doubleCheeseburger": {
+      "possiblePrices": [
+        12,
+        13,
+        14
+      ],
+      "includes": [
+        "beef",
+        "cheddarCheese"
+      ],
+      "optionals": "cheeseburger"
+    },
+    "doubleChickenburger": {
+      "possiblePrices": [
+        10,
+        11,
+        12
+      ],
+      "includes": [
+        "chicken"
+      ],
+      "optionals": "chickenburger"
+    },
+    "quarterPounder": {
+      "possiblePrices": [
+        8,
+        9,
+        10
+      ],
+      "includes": [
+        "beef",
+        "cheddarCheese"
+      ],
+      "optionals": "quarterPounder"
+    },
+    "doubleQuarterPounder": {
+      "possiblePrices": [
+        13,
+        14,
+        15
+      ],
+      "includes": [
+        "beef",
+        "cheddarCheese"
+      ],
+      "optionals": "quarterPounder"
+    }
+  },
+  "burgers": [
+    "hamburger",
+    "cheeseburger",
+    "chickenburger",
+    "doubleHamburger",
+    "doubleCheeseburger",
+    "doubleChickenburger",
+    "quarterPounder",
+    "doubleQuarterPounder"
+  ]
+}

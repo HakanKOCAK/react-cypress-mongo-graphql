@@ -1,0 +1,18 @@
+{
+  "possiblePrices": [
+    0.5,
+    0.6,
+    0.7
+  ],
+  "sauces": [
+    "ketchup",
+    "mayonnaise",
+    "bbq",
+    "ranch",
+    "mustard",
+    "honeyMustard",
+    "sweetNSour",
+    "buffalo",
+    "tartar"
+  ]
+}

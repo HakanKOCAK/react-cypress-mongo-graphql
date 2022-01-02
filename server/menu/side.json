@@ -1,0 +1,68 @@
+{
+  "sizeDetails": {
+    "sizePriceConstant": [
+      2,
+      2.5,
+      3
+    ],
+    "classic": [
+      "small",
+      "medium",
+      "large"
+    ],
+    "piece": [
+      "4pcs",
+      "6pcs",
+      "8pcs"
+    ]
+  },
+  "sideDetails": {
+    "fries": {
+      "possiblePrices": [
+        3.5,
+        4,
+        5
+      ],
+      "sizeDetails": "classic"
+    },
+    "nuggets": {
+      "possiblePrices": [
+        5,
+        6,
+        7
+      ],
+      "sizeDetails": "piece"
+    },
+    "onionRings": {
+      "possiblePrices": [
+        4,
+        5,
+        6
+      ],
+      "sizeDetails": "piece"
+    },
+    "chickenFries": {
+      "possiblePrices": [
+        5,
+        6,
+        7
+      ],
+      "sizeDetails": "piece"
+    },
+    "mozarellaSticks": {
+      "possiblePrices": [
+        4.5,
+        5.25,
+        6
+      ],
+      "sizeDetails": "piece"
+    }
+  },
+  "sides": [
+    "fries",
+    "nuggets",
+    "onionRings",
+    "chickenFries",
+    "mozarellaSticks"
+  ]
+}

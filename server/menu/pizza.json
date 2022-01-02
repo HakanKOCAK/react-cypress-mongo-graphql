@@ -1,0 +1,118 @@
+{
+  "optionals": {
+    "margherita": [
+      "tomatoes",
+      "basil"
+    ],
+    "pepperoni": [],
+    "hawaiian": [
+      "ham"
+    ],
+    "vegetarian": [
+      "mushrooms",
+      "greenPeppers",
+      "sweetCorn"
+    ],
+    "bbqChicken": [
+      "redOnion",
+      "greenPeppers",
+      "sweetCorn"
+    ],
+    "meaty": []
+  },
+  "pizzaDetails": {
+    "margherita": {
+      "possiblePrices": [
+        7,
+        8,
+        10
+      ],
+      "includes": [
+        "mozzarella"
+      ],
+      "optionals": "margherita"
+    },
+    "pepperoni": {
+      "possiblePrices": [
+        9,
+        10,
+        11
+      ],
+      "includes": [
+        "mozzarella",
+        "pepperoni"
+      ],
+      "optionals": "pepperoni"
+    },
+    "hawaiian": {
+      "possiblePrices": [
+        9,
+        10,
+        11
+      ],
+      "includes": [
+        "mozzarella",
+        "pineapple"
+      ],
+      "optionals": "hawaiian"
+    },
+    "vegetarian": {
+      "possiblePrices": [
+        9,
+        10,
+        11
+      ],
+      "includes": [
+        "mozzarella"
+      ],
+      "optionals": "vegetarian"
+    },
+    "bbqChicken": {
+      "possiblePrices": [
+        11,
+        12,
+        13
+      ],
+      "includes": [
+        "mozzarella",
+        "chicken",
+        "bbqSauce"
+      ],
+      "optionals": "bbqChicken"
+    },
+    "meaty": {
+      "possiblePrices": [
+        11,
+        12,
+        13
+      ],
+      "includes": [
+        "mozzarella",
+        "pepperoni",
+        "ham",
+        "pork"
+      ],
+      "optionals": "meaty"
+    }
+  },
+  "pizzas": [
+    "margherita",
+    "pepperoni",
+    "hawaiian",
+    "vegetarian",
+    "bbqChicken",
+    "meaty"
+  ],
+  "pizzaSizeDetails": {
+    "sizes": [
+      "small",
+      "medium",
+      "large"
+    ],
+    "sizePriceConstant": [
+      5.5,
+      6,
+      6.5
+    ]
+  }
+}

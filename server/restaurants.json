@@ -8,16 +8,16 @@
     ],
     "deliveryDetails": {
       "Bahcelievler": {
-        "minAmount": "10$",
-        "estimatedDeliveryTime": "25"
+        "minAmount": 10,
+        "estimatedDeliveryTime": 25
       },
       "Beytepe": {
-        "minAmount": "13$",
-        "estimatedDeliveryTime": "40"
+        "minAmount": 13,
+        "estimatedDeliveryTime": 40
       },
       "Cayyolu": {
-        "minAmount": "20$",
-        "estimatedDeliveryTime": "45"
+        "minAmount": 20,
+        "estimatedDeliveryTime": 45
       }
     },
     "image": "burger.svg",
@@ -36,12 +36,12 @@
     ],
     "deliveryDetails": {
       "Emek": {
-        "minAmount": "10$",
-        "estimatedDeliveryTime": "20"
+        "minAmount": 10,
+        "estimatedDeliveryTime": 20
       },
       "Kizilay": {
-        "minAmount": "15$",
-        "estimatedDeliveryTime": "40"
+        "minAmount": 15,
+        "estimatedDeliveryTime": 40
       }
     },
     "image": "burger.svg",
@@ -59,24 +59,24 @@
     ],
     "deliveryDetails": {
       "Bahcelievler": {
-        "minAmount": "10$",
-        "estimatedDeliveryTime": "20"
+        "minAmount": 10,
+        "estimatedDeliveryTime": 20
       },
       "Beytepe": {
-        "minAmount": "12$",
-        "estimatedDeliveryTime": "40"
+        "minAmount": 12,
+        "estimatedDeliveryTime": 40
       },
       "Cayyolu": {
-        "minAmount": "15$",
-        "estimatedDeliveryTime": "45"
+        "minAmount": 15,
+        "estimatedDeliveryTime": 45
       },
       "Emek": {
-        "minAmount": "10$",
-        "estimatedDeliveryTime": "25"
+        "minAmount": 10,
+        "estimatedDeliveryTime": 25
       }
     },
     "image": "kebab.svg",
-    "name": "My Kebap",
+    "name": "My Kebab",
     "servedDistricts": [
       "Bahcelievler",
       "Beytepe",
@@ -92,24 +92,24 @@
     ],
     "deliveryDetails": {
       "Bahcelievler": {
-        "minAmount": "13$",
-        "estimatedDeliveryTime": "20"
+        "minAmount": 13,
+        "estimatedDeliveryTime": 20
       },
       "Beytepe": {
-        "minAmount": "18$",
-        "estimatedDeliveryTime": "40"
+        "minAmount": 18,
+        "estimatedDeliveryTime": 40
       },
       "Cayyolu": {
-        "minAmount": "20$",
-        "estimatedDeliveryTime": "45"
+        "minAmount": 20,
+        "estimatedDeliveryTime": 45
       },
       "Emek": {
-        "minAmount": "15$",
-        "estimatedDeliveryTime": "25"
+        "minAmount": 15,
+        "estimatedDeliveryTime": 25
       },
       "Kizilay": {
-        "minAmount": "18$",
-        "estimatedDeliveryTime": "30"
+        "minAmount": 18,
+        "estimatedDeliveryTime": 30
       }
     },
     "image": "falafel.png",
@@ -130,16 +130,16 @@
     ],
     "deliveryDetails": {
       "Ahiboz": {
-        "minAmount": "15$",
-        "estimatedDeliveryTime": "20"
+        "minAmount": 15,
+        "estimatedDeliveryTime": 20
       },
       "Boyalik": {
-        "minAmount": "18$",
-        "estimatedDeliveryTime": "40"
+        "minAmount": 18,
+        "estimatedDeliveryTime": 40
       },
       "Eymir": {
-        "minAmount": "20$",
-        "estimatedDeliveryTime": "45"
+        "minAmount": 20,
+        "estimatedDeliveryTime": 45
       }
     },
     "image": "falafel.png",
@@ -158,16 +158,16 @@
     ],
     "deliveryDetails": {
       "Ahiboz": {
-        "minAmount": "10$",
-        "estimatedDeliveryTime": "25"
+        "minAmount": 10,
+        "estimatedDeliveryTime": 25
       },
       "Boyalik": {
-        "minAmount": "13$",
-        "estimatedDeliveryTime": "45"
+        "minAmount": 13,
+        "estimatedDeliveryTime": 45
       },
       "Eymir": {
-        "minAmount": "15$",
-        "estimatedDeliveryTime": "50"
+        "minAmount": 15,
+        "estimatedDeliveryTime": 50
       }
     },
     "image": "burger.svg",
@@ -186,16 +186,16 @@
     ],
     "deliveryDetails": {
       "Ahiboz": {
-        "minAmount": "10$",
-        "estimatedDeliveryTime": "15"
+        "minAmount": 10,
+        "estimatedDeliveryTime": 15
       },
       "Boyalik": {
-        "minAmount": "13$",
-        "estimatedDeliveryTime": "35"
+        "minAmount": 13,
+        "estimatedDeliveryTime": 35
       },
       "Eymir": {
-        "minAmount": "15$",
-        "estimatedDeliveryTime": "40"
+        "minAmount": 15,
+        "estimatedDeliveryTime": 40
       }
     },
     "image": "pizza.svg",
@@ -214,8 +214,8 @@
     ],
     "deliveryDetails": {
       "Ahiboz": {
-        "minAmount": "5$",
-        "estimatedDeliveryTime": "20"
+        "minAmount": 5,
+        "estimatedDeliveryTime": 20
       }
     },
     "image": "kebab.svg",
@@ -233,15 +233,39 @@
     ],
     "deliveryDetails": {
       "Boyalik": {
-        "minAmount": "10$",
-        "estimatedDeliveryTime": "35"
+        "minAmount": 10,
+        "estimatedDeliveryTime": 35
       },
       "Eymir": {
-        "minAmount": "15$",
-        "estimatedDeliveryTime": "40"
+        "minAmount": 15,
+        "estimatedDeliveryTime": 40
       }
     },
     "image": "pizza.svg",
+    "name": "Fast and Food Ank",
+    "servedDistricts": [
+      "Bahcelievler",
+      "Beytepe",
+      "Cayyolu"
+    ]
+  },
+  {
+    "city": "Ankara",
+    "county": "Cankaya",
+    "cuisine": [
+      "Hamburger"
+    ],
+    "deliveryDetails": {
+      "Emek": {
+        "minAmount": 10,
+        "estimatedDeliveryTime": 20
+      },
+      "Kizilay": {
+        "minAmount": 15,
+        "estimatedDeliveryTime": 40
+      }
+    },
+    "image": "burger.svg",
     "name": "Fast and Food",
     "servedDistricts": [
       "Boyalik",
@@ -257,12 +281,36 @@
     ],
     "deliveryDetails": {
       "Arnavutkoy": {
-        "minAmount": "10$",
-        "estimatedDeliveryTime": "35"
+        "minAmount": 10,
+        "estimatedDeliveryTime": 35
       },
       "Bebek": {
-        "minAmount": "15$",
-        "estimatedDeliveryTime": "45"
+        "minAmount": 15,
+        "estimatedDeliveryTime": 45
+      }
+    },
+    "image": "burger.svg",
+    "name": "Fast and Food Ank",
+    "servedDistricts": [
+      "Bahcelievler",
+      "Beytepe",
+      "Cayyolu"
+    ]
+  },
+  {
+    "city": "Ankara",
+    "county": "Cankaya",
+    "cuisine": [
+      "Hamburger"
+    ],
+    "deliveryDetails": {
+      "Emek": {
+        "minAmount": 10,
+        "estimatedDeliveryTime": 20
+      },
+      "Kizilay": {
+        "minAmount": 15,
+        "estimatedDeliveryTime": 40
       }
     },
     "image": "burger.svg",
@@ -280,20 +328,20 @@
     ],
     "deliveryDetails": {
       "Arnavutkoy": {
-        "minAmount": "10$",
-        "estimatedDeliveryTime": "35"
+        "minAmount": 10,
+        "estimatedDeliveryTime": 35
       },
       "Bebek": {
-        "minAmount": "15$",
-        "estimatedDeliveryTime": "45"
+        "minAmount": 15,
+        "estimatedDeliveryTime": 45
       },
       "Konaklar": {
-        "minAmount": "20$",
-        "estimatedDeliveryTime": "45"
+        "minAmount": 20,
+        "estimatedDeliveryTime": 45
       },
       "Kultur": {
-        "minAmount": "20$",
-        "estimatedDeliveryTime": "50"
+        "minAmount": 20,
+        "estimatedDeliveryTime": 50
       }
     },
     "image": "pizza.svg",
@@ -313,20 +361,20 @@
     ],
     "deliveryDetails": {
       "Konaklar": {
-        "minAmount": "15$",
-        "estimatedDeliveryTime": "45"
+        "minAmount": 15,
+        "estimatedDeliveryTime": 45
       },
       "Kultur": {
-        "minAmount": "18$",
-        "estimatedDeliveryTime": "50"
+        "minAmount": 18,
+        "estimatedDeliveryTime": 50
       },
       "Levent": {
-        "minAmount": "20$",
-        "estimatedDeliveryTime": "50"
+        "minAmount": 20,
+        "estimatedDeliveryTime": 50
       },
       "Yildiz": {
-        "minAmount": "20$",
-        "estimatedDeliveryTime": "50"
+        "minAmount": 20,
+        "estimatedDeliveryTime": 50
       }
     },
     "image": "burger.svg",
@@ -346,16 +394,16 @@
     ],
     "deliveryDetails": {
       "Kultur": {
-        "minAmount": "18$",
-        "estimatedDeliveryTime": "40"
+        "minAmount": 18,
+        "estimatedDeliveryTime": 40
       },
       "Levent": {
-        "minAmount": "20$",
-        "estimatedDeliveryTime": "45"
+        "minAmount": 20,
+        "estimatedDeliveryTime": 45
       },
       "Yildiz": {
-        "minAmount": "20$",
-        "estimatedDeliveryTime": "45"
+        "minAmount": 20,
+        "estimatedDeliveryTime": 45
       }
     },
     "image": "kebab.svg",
@@ -374,16 +422,16 @@
     ],
     "deliveryDetails": {
       "Acibadem": {
-        "minAmount": "10$",
-        "estimatedDeliveryTime": "30"
+        "minAmount": 10,
+        "estimatedDeliveryTime": 30
       },
       "Bostanci": {
-        "minAmount": "10$",
-        "estimatedDeliveryTime": "30"
+        "minAmount": 10,
+        "estimatedDeliveryTime": 30
       },
       "Caferaga": {
-        "minAmount": "15$",
-        "estimatedDeliveryTime": "40"
+        "minAmount": 15,
+        "estimatedDeliveryTime": 40
       }
     },
     "image": "falafel.png",
@@ -402,20 +450,20 @@
     ],
     "deliveryDetails": {
       "Bostanci": {
-        "minAmount": "13$",
-        "estimatedDeliveryTime": "30"
+        "minAmount": 13,
+        "estimatedDeliveryTime": 30
       },
       "Caferaga": {
-        "minAmount": "18$",
-        "estimatedDeliveryTime": "35"
+        "minAmount": 18,
+        "estimatedDeliveryTime": 35
       },
       "Dumlupinar": {
-        "minAmount": "18$",
-        "estimatedDeliveryTime": "35"
+        "minAmount": 18,
+        "estimatedDeliveryTime": 35
       },
       "Erenkoy": {
-        "minAmount": "20$",
-        "estimatedDeliveryTime": "40"
+        "minAmount": 20,
+        "estimatedDeliveryTime": 40
       }
     },
     "image": "burger.svg",
@@ -435,16 +483,16 @@
     ],
     "deliveryDetails": {
       "Dumlupinar": {
-        "minAmount": "15$",
-        "estimatedDeliveryTime": "30"
+        "minAmount": 15,
+        "estimatedDeliveryTime": 30
       },
       "Erenkoy": {
-        "minAmount": "18$",
-        "estimatedDeliveryTime": "35"
+        "minAmount": 18,
+        "estimatedDeliveryTime": 35
       },
       "Fikirtepe": {
-        "minAmount": "20$",
-        "estimatedDeliveryTime": "40"
+        "minAmount": 20,
+        "estimatedDeliveryTime": 40
       }
     },
     "image": "pizza.svg",
@@ -463,20 +511,20 @@
     ],
     "deliveryDetails": {
       "Erenkoy": {
-        "minAmount": "10$",
-        "estimatedDeliveryTime": "25"
+        "minAmount": 10,
+        "estimatedDeliveryTime": 25
       },
       "Fikirtepe": {
-        "minAmount": "13$",
-        "estimatedDeliveryTime": "30"
+        "minAmount": 13,
+        "estimatedDeliveryTime": 30
       },
       "Goztepe": {
-        "minAmount": "15$",
-        "estimatedDeliveryTime": "35"
+        "minAmount": 15,
+        "estimatedDeliveryTime": 35
       },
       "Kozyatagi": {
-        "minAmount": "15$",
-        "estimatedDeliveryTime": "35"
+        "minAmount": 15,
+        "estimatedDeliveryTime": 35
       }
     },
     "image": "kebab.svg",
@@ -497,36 +545,36 @@
     ],
     "deliveryDetails": {
       "Acibadem": {
-        "minAmount": "18$",
-        "estimatedDeliveryTime": "40"
+        "minAmount": 18,
+        "estimatedDeliveryTime": 40
       },
       "Bostanci": {
-        "minAmount": "20$",
-        "estimatedDeliveryTime": "45"
+        "minAmount": 20,
+        "estimatedDeliveryTime": 45
       },
       "Caferaga": {
-        "minAmount": "20$",
-        "estimatedDeliveryTime": "45"
+        "minAmount": 20,
+        "estimatedDeliveryTime": 45
       },
       "Dumlupinar": {
-        "minAmount": "13$",
-        "estimatedDeliveryTime": "30"
+        "minAmount": 13,
+        "estimatedDeliveryTime": 30
       },
       "Erenkoy": {
-        "minAmount": "10$",
-        "estimatedDeliveryTime": "25"
+        "minAmount": 10,
+        "estimatedDeliveryTime": 25
       },
       "Fikirtepe": {
-        "minAmount": "13$",
-        "estimatedDeliveryTime": "30"
+        "minAmount": 13,
+        "estimatedDeliveryTime": 30
       },
       "Goztepe": {
-        "minAmount": "15$",
-        "estimatedDeliveryTime": "35"
+        "minAmount": 15,
+        "estimatedDeliveryTime": 35
       },
       "Kozyatagi": {
-        "minAmount": "15$",
-        "estimatedDeliveryTime": "35"
+        "minAmount": 15,
+        "estimatedDeliveryTime": 35
       }
     },
     "image": "burger.svg",
@@ -551,12 +599,12 @@
     ],
     "deliveryDetails": {
       "Birlik": {
-        "minAmount": "10$",
-        "estimatedDeliveryTime": "25"
+        "minAmount": 10,
+        "estimatedDeliveryTime": 25
       },
       "Doganlar": {
-        "minAmount": "10$",
-        "estimatedDeliveryTime": "25"
+        "minAmount": 10,
+        "estimatedDeliveryTime": 25
       }
     },
     "image": "burger.svg",
@@ -574,16 +622,16 @@
     ],
     "deliveryDetails": {
       "Birlik": {
-        "minAmount": "12$",
-        "estimatedDeliveryTime": "25"
+        "minAmount": 12,
+        "estimatedDeliveryTime": 25
       },
       "Doganlar": {
-        "minAmount": "14$",
-        "estimatedDeliveryTime": "25"
+        "minAmount": 14,
+        "estimatedDeliveryTime": 25
       }
     },
     "image": "kebab.svg",
-    "name": "Don't We Love Kebap",
+    "name": "Don't We Love Kebab",
     "servedDistricts": [
       "Birlik",
       "Doganlar"
@@ -597,8 +645,8 @@
     ],
     "deliveryDetails": {
       "Birlik": {
-        "minAmount": "15$",
-        "estimatedDeliveryTime": "35"
+        "minAmount": 15,
+        "estimatedDeliveryTime": 35
       }
     },
     "image": "pizza.svg",
@@ -615,8 +663,8 @@
     ],
     "deliveryDetails": {
       "Doganlar": {
-        "minAmount": "15$",
-        "estimatedDeliveryTime": "30"
+        "minAmount": 15,
+        "estimatedDeliveryTime": 30
       }
     },
     "image": "falafel.png",
@@ -633,12 +681,12 @@
     ],
     "deliveryDetails": {
       "Birlik": {
-        "minAmount": "15$",
-        "estimatedDeliveryTime": "30"
+        "minAmount": 15,
+        "estimatedDeliveryTime": 30
       },
       "Doganlar": {
-        "minAmount": "18$",
-        "estimatedDeliveryTime": "35"
+        "minAmount": 18,
+        "estimatedDeliveryTime": 35
       }
     },
     "image": "falafel.png",
@@ -656,16 +704,16 @@
     ],
     "deliveryDetails": {
       "Atakent": {
-        "minAmount": "15$",
-        "estimatedDeliveryTime": "25"
+        "minAmount": 15,
+        "estimatedDeliveryTime": 25
       },
       "Bostanli": {
-        "minAmount": "18$",
-        "estimatedDeliveryTime": "30"
+        "minAmount": 18,
+        "estimatedDeliveryTime": 30
       },
       "Cumhuriyet": {
-        "minAmount": "20$",
-        "estimatedDeliveryTime": "35"
+        "minAmount": 20,
+        "estimatedDeliveryTime": 35
       }
     },
     "image": "falafel.png",
@@ -684,12 +732,12 @@
     ],
     "deliveryDetails": {
       "Atakent": {
-        "minAmount": "15$",
-        "estimatedDeliveryTime": "25"
+        "minAmount": 15,
+        "estimatedDeliveryTime": 25
       },
       "Bostanli": {
-        "minAmount": "18$",
-        "estimatedDeliveryTime": "30"
+        "minAmount": 18,
+        "estimatedDeliveryTime": 30
       }
     },
     "image": "pizza.svg",
@@ -707,12 +755,12 @@
     ],
     "deliveryDetails": {
       "Bostanli": {
-        "minAmount": "12$",
-        "estimatedDeliveryTime": "30"
+        "minAmount": 12,
+        "estimatedDeliveryTime": 30
       },
       "Cumhuriyet": {
-        "minAmount": "15$",
-        "estimatedDeliveryTime": "35"
+        "minAmount": 15,
+        "estimatedDeliveryTime": 35
       }
     },
     "image": "burger.svg",
@@ -731,16 +779,16 @@
     ],
     "deliveryDetails": {
       "Atakent": {
-        "minAmount": "15$",
-        "estimatedDeliveryTime": "25"
+        "minAmount": 15,
+        "estimatedDeliveryTime": 25
       },
       "Bostanli": {
-        "minAmount": "18$",
-        "estimatedDeliveryTime": "30"
+        "minAmount": 18,
+        "estimatedDeliveryTime": 30
       },
       "Cumhuriyet": {
-        "minAmount": "20$",
-        "estimatedDeliveryTime": "35"
+        "minAmount": 20,
+        "estimatedDeliveryTime": 35
       }
     },
     "image": "burger.svg",
@@ -755,20 +803,20 @@
     "city": "Izmir",
     "county": "Karsiyaka",
     "cuisine": [
-      "Kebap"
+      "Kebab"
     ],
     "deliveryDetails": {
       "Atakent": {
-        "minAmount": "10$",
-        "estimatedDeliveryTime": "25"
+        "minAmount": 10,
+        "estimatedDeliveryTime": 25
       },
       "Bostanli": {
-        "minAmount": "12$",
-        "estimatedDeliveryTime": "30"
+        "minAmount": 12,
+        "estimatedDeliveryTime": 30
       },
       "Cumhuriyet": {
-        "minAmount": "14$",
-        "estimatedDeliveryTime": "35"
+        "minAmount": 14,
+        "estimatedDeliveryTime": 35
       }
     },
     "image": "kebab.svg",

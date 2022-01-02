@@ -1,0 +1,70 @@
+{
+  "details": {
+    "coke": {
+      "possiblePrices": [
+        2,
+        2.5,
+        3
+      ],
+      "types": [
+        "normal",
+        "light",
+        "zero"
+      ]
+    },
+    "iceTea": {
+      "possiblePrices": [
+        2,
+        2.5,
+        3
+      ],
+      "types": [
+        "peach",
+        "lemon"
+      ]
+    },
+    "sprite": {
+      "possiblePrices": [
+        2,
+        2.5,
+        3
+      ],
+      "types": [
+        "normal",
+        "light",
+        "zero"
+      ]
+    },
+    "fruitJuice": {
+      "possiblePrices": [
+        2,
+        2.5,
+        3
+      ],
+      "types": [
+        "peach",
+        "orange",
+        "apple",
+        "cherry"
+      ]
+    },
+    "water": {
+      "possiblePrices": [
+        0.75,
+        1,
+        1.25
+      ],
+      "types": [
+        "still",
+        "sparkling"
+      ]
+    }
+  },
+  "drinks": [
+    "coke",
+    "iceTea",
+    "sprite",
+    "fruitJuice",
+    "water"
+  ]
+}

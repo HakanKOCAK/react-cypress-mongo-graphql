@@ -17,7 +17,6 @@ import { createDefaultRestaurants } from "./helpers/restaurant.js";
         await connectDB();
         console.log("MongoDb connected");
         await createDefaultRestaurants();
-        console.log("Default Restaurants created");
     } catch (error) {
         console.log(error);
         return;

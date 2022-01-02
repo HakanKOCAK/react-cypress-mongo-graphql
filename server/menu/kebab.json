@@ -1,0 +1,102 @@
+{
+  "optionals": {
+    "chickenDonerKebab": [
+      "pickles",
+      "onions",
+      "tomatoes",
+      "ketchup"
+    ],
+    "steakDonerKebab": [
+      "pickles",
+      "onions",
+      "tomatoes"
+    ]
+  },
+  "kebabDetails": {
+    "chickenDonerKebab": {
+      "possiblePrices": [
+        7,
+        8,
+        9
+      ],
+      "optionals": "chickenDonerKebab"
+    },
+    "steakDonerKebab": {
+      "possiblePrices": [
+        9,
+        10,
+        11
+      ],
+      "optionals": "steakDonerKebab"
+    },
+    "shishKebab": {
+      "possiblePrices": [
+        13,
+        14,
+        15
+      ],
+      "sides": [
+        "friedTomatoes",
+        "friedGreenPeppers",
+        "onion",
+        "lavash"
+      ]
+    },
+    "chickenShishKebab": {
+      "possiblePrices": [
+        12,
+        13,
+        14
+      ],
+      "sides": [
+        "friedTomatoes",
+        "friedGreenPeppers",
+        "onion",
+        "lavash"
+      ]
+    },
+    "adanaKebab": {
+      "possiblePrices": [
+        13,
+        14,
+        15
+      ],
+      "sides": [
+        "friedTomatoes",
+        "friedGreenPeppers",
+        "onion",
+        "lavash",
+        "rice"
+      ]
+    },
+    "iskenderKebab": {
+      "possiblePrices": [
+        13,
+        14,
+        15
+      ],
+      "sides": [
+        "friedTomatoes",
+        "friedGreenPeppers",
+        "yoghurt",
+        "pitaBread"
+      ]
+    },
+    "kibbeh": {
+      "possiblePrices": [
+        4,
+        5,
+        6
+      ]
+    }
+  },
+  "kebabs": [
+    "chickenDonerKebab",
+    "steakDonerKebab",
+    "shishKebab",
+    "chickenShishKebab",
+    "adanaKebab",
+    "iskenderKebab",
+    "kibbeh"
+  ]
+}
