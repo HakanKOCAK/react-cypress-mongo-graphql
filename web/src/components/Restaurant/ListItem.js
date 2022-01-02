@@ -10,9 +10,12 @@ import {
 import apiUrl from '../../utils/apiUrl';
 import { useTranslation } from 'react-i18next';
 import { ChevronRightIcon } from '@chakra-ui/icons';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const RestaurantListItem = ({ details }) => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
+  const location = useLocation();
   const { image, name, cuisine, deliveryDetails } = details;
   return (
     <HStack
@@ -24,11 +27,12 @@ const RestaurantListItem = ({ details }) => {
       h="110px"
       bg="gray.100"
       cursor="pointer"
+      onClick={() => navigate(`/restaurants/${details.id}`, { state: { details, from: location } })}
     >
       <Image
         src={`${apiUrl}/${image}`}
         alt={image.split('.')[0]}
-        boxSize="70px"
+        boxSize={['50px', '60px', '70px']}
       />
       <VStack w="100%" alignItems="flex-start" h="100%" p={2}>
         <Heading fontSize={['xs', 'md', 'xl']}>{name}</Heading>
@@ -65,6 +69,7 @@ const RestaurantListItem = ({ details }) => {
 
 RestaurantListItem.propTypes = {
   details: PropTypes.shape({
+    id: PropTypes.string.isRequired,
     image: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     cuisine: PropTypes.array.isRequired,

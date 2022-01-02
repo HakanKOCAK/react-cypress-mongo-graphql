@@ -16,15 +16,16 @@ import {
     MenuItemOption
 } from '@chakra-ui/react';
 import { useLazyQuery, useQuery } from '@apollo/client'
-import { getRestaurantsQuery, myAddresses } from '../graphql/queries';
+import { getRestaurantsQuery, myAddresses } from '../../graphql/queries';
 import { useTranslation } from 'react-i18next';
-import Loading from '../components/Loading';
-import Address from '../components/Address/Address';
+import Loading from '../../components/Loading';
+import Address from '../../components/Address/Address';
 import { ChevronDownIcon } from '@chakra-ui/icons';
-import AddressModal from '../components/Modals/AddressList';
+import AddressModal from '../../components/Modals/AddressList';
 import { isEmpty, get, cloneDeep } from 'lodash';
-import RestaurantListItem from '../components/Restaurant/ListItem';
-import RestaurantFilter from '../components/Modals/Restaurant/Filter';
+import RestaurantListItem from '../../components/Restaurant/ListItem';
+import RestaurantFilter from '../../components/Modals/Restaurant/Filter';
+import { Outlet } from 'react-router-dom';
 
 //Page that user is redirected after authentication
 const Restaurants = () => {
@@ -356,7 +357,8 @@ const Restaurants = () => {
                 </Flex>
                 {getRestaurantView()}
             </Box>
-        </Box >
+            <Outlet />
+        </Box>
     );
 }
 

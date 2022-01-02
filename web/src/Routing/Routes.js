@@ -16,12 +16,14 @@ import AuthWrapper from '../components/AuthWrapper';
 import Login from '../pages/Login'
 import Register from '../pages/Register';
 
-import Restaurants from '../pages/Restaurants';
+import Restaurants from '../pages/Restaurant/Restaurants';
 import Account from '../pages/Account/Account';
 
 import AccountWrapper from '../components/AccountWrapper';
 import Addresses from '../pages/Account/Addresses';
 import CreditCards from '../pages/Account/CreditCards';
+import { Restaurant } from '../pages/Restaurant/Restaurant';
+import RestaurantLayout from '../pages/Restaurant/RestaurantLayout';
 
 export default function AppRoutes() {
     const height = window.innerHeight;
@@ -57,10 +59,28 @@ export default function AppRoutes() {
                                 exact path='/restaurants'
                                 element={
                                     <PrivateRoute>
-                                        <Restaurants />
+                                        <RestaurantLayout />
                                     </PrivateRoute>
                                 }
-                            />
+                            >
+                                <Route
+                                    path="/restaurants/:restaurantId"
+                                    element={
+                                        <PrivateRoute>
+                                            <Restaurant />
+                                        </PrivateRoute>
+                                    }
+                                />
+                                <Route
+                                    index
+                                    element={
+                                        <PrivateRoute>
+                                            <Restaurants />
+                                        </PrivateRoute>
+                                    }
+                                />
+                            </Route>
+
                             <Route
                                 exact path='/account'
                                 element={
