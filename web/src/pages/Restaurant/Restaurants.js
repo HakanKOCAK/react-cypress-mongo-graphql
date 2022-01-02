@@ -233,6 +233,10 @@ const Restaurants = () => {
             return <Spinner size="lg" color="pink.500" />;
         }
 
+        if (!selectedAddress.id) {
+            return <Heading size="md">{t('pleaseSelectAnAddress')}</Heading>;
+        }
+
         if (isEmpty(toDisplay)) {
             return <Heading size="md">{t('thereAreNoRestaurantThatDeliversToThisAddressOrSatisfiesGivenFilters')}</Heading>;
         }
@@ -294,6 +298,7 @@ const Restaurants = () => {
 
                                 return <Image src="/filter.svg" boxSize="15px" />
                             }} />}
+                            disabled={!selectedAddress.id}
                             colorScheme="teal"
                             variant="ghost"
                             onClick={() => {
