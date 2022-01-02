@@ -306,6 +306,7 @@ const Restaurants = () => {
 
                                 clearFilters();
                             }}
+                            data-cy="restaurant-list-filter-button"
                         >
                             {!isFiltered ? t('filter') : t('removeFilters')}
                         </Button>
@@ -316,6 +317,7 @@ const Restaurants = () => {
                                 leftIcon={<Icon as={() => <Image src="/sort.svg" boxSize="15px" />} />}
                                 colorScheme="teal"
                                 variant="ghost"
+                                data-cy="restaurant-list-sort-button"
                             >
                                 {t('sort')}
                             </MenuButton>

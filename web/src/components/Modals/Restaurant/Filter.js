@@ -70,24 +70,28 @@ const RestaurantFilter = ({
               <Text fontWeight="semibold">{t('cuisines')}</Text>
               <VStack alignItems="flex-start">
                 <Checkbox
+                  data-cy="filter-falafel-checkbox"
                   onChange={(e) => setModalCuisineFilters((prev) => ({ ...prev, Falafel: e.target.checked }))}
                   isChecked={modalCuisineFilters.Falafel}
                 >
                   Falafel
                 </Checkbox>
                 <Checkbox
+                  data-cy="filter-hamburger-checkbox"
                   onChange={(e) => setModalCuisineFilters((prev) => ({ ...prev, Hamburger: e.target.checked }))}
                   isChecked={modalCuisineFilters.Hamburger}
                 >
                   Hamburger
                 </Checkbox>
                 <Checkbox
+                  data-cy="filter-kebab-checkbox"
                   onChange={(e) => setModalCuisineFilters((prev) => ({ ...prev, Kebab: e.target.checked }))}
                   isChecked={modalCuisineFilters.Kebab}
                 >
                   Kebab
                 </Checkbox>
                 <Checkbox
+                  data-cy="filter-pizza-checkbox"
                   onChange={(e) => setModalCuisineFilters((prev) => ({ ...prev, Pizza: e.target.checked }))}
                   isChecked={modalCuisineFilters.Pizza}
                 >
@@ -140,7 +144,11 @@ const RestaurantFilter = ({
                   isOpen={showMinAmountTooltip}
                   label={modalMinAmount}
                 >
-                  <SliderThumb boxSize={6} bg="pink.400" />
+                  <SliderThumb
+                    boxSize={6}
+                    bg="pink.400"
+                    data-cy="min-amount-slider"
+                  />
                 </Tooltip>
               </Slider>
             </VStack>
@@ -196,7 +204,11 @@ const RestaurantFilter = ({
                   isOpen={showMaxDeliveryTooltip}
                   label={modalMaxArrival}
                 >
-                  <SliderThumb boxSize={6} bg="pink.400" />
+                  <SliderThumb
+                    boxSize={6}
+                    bg="pink.400"
+                    data-cy="delivery-slider"
+                  />
                 </Tooltip>
               </Slider>
             </VStack>
@@ -205,6 +217,7 @@ const RestaurantFilter = ({
             <Button
               mr={5}
               w="80px"
+              data-cy="restaurant-filter-button"
               colorScheme="teal"
               onClick={() => {
                 const filters = [];

@@ -72,7 +72,230 @@ const defaults = {
     'Besiktas',
     'Kadikoy'
   ],
-  districts: ['Arnavutkoy', 'Bebek', 'Konaklar', 'Kultur', 'Levent', 'Yildiz']
+  districts: ['Arnavutkoy', 'Bebek', 'Konaklar', 'Kultur', 'Levent', 'Yildiz'],
+  menu: {
+    hamburger: {
+      drinks: {
+        coke: null,
+        fruitJuice: { price: 3, types: ['cherry', 'orange', 'peach'], '__typename': 'Drink' },
+        iceTea: { price: 3, types: ['lemon', 'peach'], '__typename': 'Drink' },
+        sprite: { price: 3, types: ['light', 'normal'], '__typename': 'Drink' },
+        water: null,
+        '__typename': 'Drinks'
+      },
+      falafelPieceDetails: null,
+      falafels: null,
+      hamburgers: {
+        cheeseburger: null,
+        chickenburger: null,
+        doubleCheeseburger: null,
+        doubleChickenburger: null,
+        doubleHamburger: null,
+        doubleQuarterPounder: null,
+        hamburger: {
+          price: 8,
+          includes: ['beef', 'pickles', 'ketchup', 'mustard'],
+          optionals: ['pickles', 'ketchup', 'mustard'],
+          '__typename': 'Hamburger'
+        },
+        quarterPounder: {
+          price: 10,
+          includes: ['beef', 'cheddarCheese', 'pickles', 'onions', 'ketchup', 'mustard'],
+          optionals: ['pickles', 'onions', 'ketchup', 'mustard'],
+          '__typename': 'Hamburger'
+        }
+      },
+      kebabs: null,
+      mealDetails: {
+        falafel: null,
+        hamburger: [
+          {
+            includes: ['drink', 'fries'],
+            name: 'meal0',
+            priceDetails: {
+              price: 4.5,
+              sizePriceConstant: 4,
+              '__typename': "MealPriceDetails"
+            },
+            '__typename': "MealDetail"
+          }
+        ],
+        kebab: null,
+        pizza: null,
+        '__typename': "MealDetails"
+      },
+      id: 'menuId2',
+      pizzaSizeDetails: null,
+      pizzas: null,
+      sauces: {
+        bbq: 0.7,
+        buffalo: 0.7,
+        honeyMustard: 0.7,
+        ketchup: 0.7,
+        mayonnaise: 0.7,
+        mustard: 0.7,
+        ranch: 0.7,
+        sweetNSour: 0.7,
+        tartar: 0.7,
+        __typename: "Sauces"
+      },
+      sides: {
+        chickenFries: {
+          price: 7,
+          sizeDetails: {
+            options: ['4pcs', '6pcs', '8pcs'],
+            sizePriceConstant: 3,
+            __typename: "SideSizeDetails"
+          },
+          __typename: "Side"
+        },
+        fries: {
+          price: 5,
+          sizeDetails: {
+            options: ['small', 'medium', 'large'],
+            sizePriceConstant: 3,
+            __typename: "SideSizeDetails"
+          },
+          __typename: "Side"
+        },
+        mozarellaSticks: null,
+        nuggets: null,
+        onionRings: {
+          price: 6,
+          sizeDetails: {
+            options: ['4pcs', '6pcs', '8pcs'],
+            sizePriceConstant: 3,
+            __typename: "SideSizeDetails"
+          },
+          __typename: "Side"
+        },
+        '__typename': 'Sides'
+      },
+      sweets: null,
+      '__typename': 'Menu'
+    },
+    pizza: {
+      drinks: {
+        coke: { price: 3, types: ['zero'], '__typename': 'Drink' },
+        fruitJuice: { price: 3, types: ['cherry'], '__typename': 'Drink' },
+        iceTea: null,
+        sprite: null,
+        water: null,
+        '__typename': 'Drinks'
+      },
+      falafelPieceDetails: null,
+      falafels: null,
+      hamburgers: null,
+      id: 'menuId',
+      kebabs: null,
+      mealDetails: null,
+      pizzaSizeDetails: {
+        sizePriceConstant: 6.5,
+        sizes: ['small', 'medium', 'large'],
+        '__typename': 'PizzaSizeDetails'
+      },
+      pizzas: {
+        bbqChicken: null,
+        hawaiian: {
+          includes: ['mozzarella', 'pineapple', 'ham'],
+          optionals: ['ham'],
+          price: 11,
+          '__typename': 'Pizza'
+        },
+        margherita: {
+          includes: ['mozzarella', 'tomatoes', 'basil'],
+          optionals: ['tomatoes', 'basil'],
+          price: 10,
+        },
+        meaty: null,
+        pepperoni: null,
+        vegetarian: null,
+        '__typename': 'Pizza'
+      },
+      sauces: {
+        ketchup: 0.7,
+        bbq: null,
+        buffalo: 0.7,
+        honeyMustard: 0.7,
+        mayonnaise: 0.7,
+        mustard: null,
+        ranch: 0.7,
+        sweetNSour: 0.7,
+        tartar: null,
+        '__typename': 'Sauces'
+      },
+      sides: {
+        chickenFries: {
+          price: 7,
+          sizeDetails: {
+            options: ['4pcs', '6pcs', '8pcs'],
+            sizePriceConstant: 3,
+            '__typename': 'SideSizeDetails'
+          },
+          '__typename': 'Side'
+        },
+        fries: {
+          price: 5,
+          sizeDetails: {
+            options: ['small', 'medium', 'large'],
+            sizePriceConstant: 3,
+            '__typename': 'SideSizeDetails'
+          },
+          '__typename': 'Side'
+        },
+        mozarellaSticks: {
+          price: 6,
+          sizeDetails: {
+            options: ['4pcs', '6pcs', '8pcs'],
+            sizePriceConstant: 3,
+            '__typename': 'SideSizeDetails'
+          },
+          '__typename': 'Side'
+        },
+        nuggets: {
+          price: 7,
+          sizeDetails: {
+            options: ['4pcs', '6pcs', '8pcs'],
+            sizePriceConstant: 3,
+            '__typename': 'SideSizeDetails'
+          },
+          '__typename': 'Side'
+        },
+        onionRings: null,
+        __typename: "Sides"
+      },
+      sweets: null,
+      '__typename': 'Menu'
+    }
+  },
+  restaurants: [
+    {
+      city: "Istanbul",
+      county: "Besiktas",
+      cuisine: ['Pizza'],
+      deliveryDetails: {
+        estimatedDeliveryTime: 45,
+        minAmount: 15
+      },
+      id: '0',
+      image: 'pizza.svg',
+      name: 'Pizza Test Restaurant',
+      servedDistricts: ['Arnavutkoy', 'Bebek', 'Konaklar', 'Kultur']
+    },
+    {
+      city: "Istanbul",
+      county: "Besiktas",
+      cuisine: ['Hamburger'],
+      deliveryDetails: {
+        estimatedDeliveryTime: 40,
+        minAmount: 20
+      },
+      id: '1',
+      image: 'burger.svg',
+      name: 'Hamburger Test Restaurant',
+      servedDistricts: ['Arnavutkoy', 'Bebek', 'Konaklar', 'Kultur']
+    }
+  ]
 };
 
 Cypress.Commands.add(
@@ -128,6 +351,32 @@ Cypress.Commands.add(
       } else if (req.body.operationName === 'Districts' && type === 'districts') {
         req.reply((res) => {
           res.body.data.districts = defaults.districts
+        })
+      } else if (req.body.operationName === 'Restaurants' && type === 'restaurants') {
+        req.reply((res) => {
+          let restaurants = [];
+
+          if (!opts.isEmpty) {
+            restaurants = defaults.restaurants;
+          }
+
+          res.body.data.restaurants = restaurants
+          res.body.errors = undefined
+        })
+      } else if (req.body.operationName === 'Menu' && type === 'menu') {
+        req.reply((res) => {
+          let menu = {};
+
+          //Set requested restaurant's menu based on the type. 
+          //Currently there is only pizza and hamburger menu for test purposes
+          if (opts.pizza) {
+            menu = defaults.menu.pizza;
+          } else if (opts.hamburger) {
+            menu = defaults.menu.hamburger;
+          }
+
+          res.body.data.menu = menu
+          res.body.errors = undefined
         })
       }
     })
