@@ -74,7 +74,7 @@ const Addresses = ({
         key={item.id}
         onClick={() => {
           if (setSelectedAddress) {
-            localStorage.setItem('fooder.last.address', item.id);
+            localStorage.setItem('fooder.last.address', JSON.stringify(item));
             return setSelectedAddress(item)
           }
 

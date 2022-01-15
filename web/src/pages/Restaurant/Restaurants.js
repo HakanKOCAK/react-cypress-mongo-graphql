@@ -183,12 +183,17 @@ const Restaurants = () => {
             }
         }
     }, [filters, setToDisplay, restaurantList, sortBy]);
-
     useEffect(() => {
         //Check if an address is saved to local storage before and if so check if user still have the address
         const lastAddress = localStorage.getItem('fooder.last.address');
         if (lastAddress && !isEmpty(data)) {
-            setSelectedAddress(data.myAddresses.find((a) => a.id === lastAddress) || {});
+            let parsedAddress = {}
+            try {
+                parsedAddress = JSON.parse(lastAddress);
+            } catch (error) {
+                console.log(error);
+            }
+            setSelectedAddress(data.myAddresses.find((a) => a.id === parsedAddress.id) || null);
         }
     }, [setSelectedAddress, data]);
 
