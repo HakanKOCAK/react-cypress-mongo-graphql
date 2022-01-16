@@ -193,7 +193,7 @@ const Restaurants = () => {
             } catch (error) {
                 console.log(error);
             }
-            setSelectedAddress(data.myAddresses.find((a) => a.id === parsedAddress.id) || null);
+            setSelectedAddress(data.myAddresses.find((a) => a.id === parsedAddress.id) || {});
         }
     }, [setSelectedAddress, data]);
 
