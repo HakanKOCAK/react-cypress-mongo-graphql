@@ -5,10 +5,11 @@ import { useNavigate, useLocation } from 'react-router';
 import { useAuth } from '../auth/AuthProvider';
 import { Button } from '@chakra-ui/button';
 import Brand from './Brand';
-import { Image, Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/react';
+import { Icon, Image, Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/react';
 import { ArrowBackIcon, ChevronDownIcon } from '@chakra-ui/icons';
 import { useMutation } from '@apollo/client';
 import { logoutMutation } from '../graphql/mutations';
+import { useCart } from '../cart/CartProvider';
 
 const Nav = () => {
   const navigate = useNavigate();
@@ -16,6 +17,7 @@ const Nav = () => {
   const [logout] = useMutation(logoutMutation)
   const { t } = useTranslation();
   const auth = useAuth();
+  const { cartTotal } = useCart();
 
   return (
     <Box>
@@ -39,12 +41,41 @@ const Nav = () => {
               <Button
                 variant="link"
                 colorScheme="pink"
+                display={{ base: 'none', md: 'block' }}
                 fontSize={['sm', 'md']}
                 data-cy="navbar-go-back-to-restaurants-btn"
                 onClick={() => navigate('/restaurants')}
               >
                 <ArrowBackIcon mr={1} />
                 {t('restaurants')}
+              </Button>
+            )
+          }
+          {
+            auth.user && (
+              <Button
+                variant="link"
+                _hover={{ textStyle: 'none' }}
+                colorScheme="pink"
+                p={1.5}
+                fontSize={['10px', 'sm']}
+                onClick={() => navigate('/cart')}
+              >
+                <Icon as={() => (
+                  <Image
+                    src="/shopping_cart.svg"
+                    alt="Cart"
+                    boxSize={["20px", "23px", "25px"]}
+                  />
+                )}
+                />
+                <Text
+                  top={-3}
+                  left={-1.05}
+                  position="relative"
+                >
+                  {cartTotal.toFixed(2)}$
+                </Text>
               </Button>
             )
           }

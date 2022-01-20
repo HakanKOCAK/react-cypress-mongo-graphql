@@ -68,3 +68,92 @@ mutation DeleteCreditCard($id: String!) {
 }
 `;
 
+export const addCartItemMutation = gql`
+mutation AddCartItem($item: CartItemInput!, $restaurantId: String!, $differentRestaurant: Boolean!) {
+  addCartItem(item: $item, restaurantId: $restaurantId, differentRestaurant: $differentRestaurant) {
+    id
+    drinkType
+    falafelPieces
+    itemType
+    name
+    optionals {
+      basil
+      greenPeppers
+      ham
+      mayonnaise
+      lettuce
+      ketchup
+      mushrooms
+      onions
+      mustard
+      pickles
+      redOnion
+      tomatoes
+      sweetCorn
+    }
+    pizzaSizeOption
+    price
+    quantity
+    selectedMealDetails {
+      mealPrice
+      name
+      size
+      totalPrice
+    }
+    sideSizeOption
+    sweetType
+    totalPrice
+  }
+}
+`;
+
+export const updateCartItemMutation = gql`
+mutation UpdateCartItem($itemId: String!, $details: CartItemInput!) {
+  updateCartItem(itemId: $itemId, details: $details) {
+    id
+    drinkType
+    falafelPieces
+    itemType
+    name
+    optionals {
+      basil
+      greenPeppers
+      ham
+      ketchup
+      lettuce
+      mayonnaise
+      mushrooms
+      mustard
+      onions
+      pickles
+      redOnion
+      tomatoes
+      sweetCorn
+    }
+    pizzaSizeOption
+    price
+    quantity
+    selectedMealDetails {
+      mealPrice
+      name
+      size
+      totalPrice
+    }
+    sideSizeOption
+    sweetType
+    totalPrice
+  }
+}
+`;
+
+export const emptyCartMutation = gql`
+mutation Mutation {
+  emptyCart
+}
+`;
+
+export const deleteCartItemMutation = gql`
+mutation DeleteCartItem($itemId: String!) {
+  deleteCartItem(itemId: $itemId)
+}
+`;

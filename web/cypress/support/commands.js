@@ -158,7 +158,7 @@ const defaults = {
           },
           __typename: "Side"
         },
-        mozarellaSticks: null,
+        mozzarellaSticks: null,
         nuggets: null,
         onionRings: {
           price: 6,
@@ -243,7 +243,7 @@ const defaults = {
           },
           '__typename': 'Side'
         },
-        mozarellaSticks: {
+        mozzarellaSticks: {
           price: 6,
           sizeDetails: {
             options: ['4pcs', '6pcs', '8pcs'],

@@ -85,6 +85,18 @@ const AccountWrapper = ({ Children }) => {
           {t('account')}
         </Button>
       )}
+      {location.pathname === '/account' && (
+        <Button
+          display={{ base: 'block', md: 'none' }}
+          variant="link"
+          mb={2}
+          colorScheme="pink"
+          onClick={() => navigate('/restaurants')}
+        >
+          <ArrowBackIcon />
+          {t('restaurants')}
+        </Button>
+      )}
       <Box display="flex" flexDirection="row" justifyContent="center">
         <VStack
           display={

@@ -1,5 +1,6 @@
 import { hash, verify } from "argon2";
 import { createAccessToken, createRefreshToken, setRefreshToken, verifyAccessToken } from "../../helpers/auth.js";
+import { createUserCart } from "../../helpers/cart.js";
 import { createUser, getUserByEmail, getUserById } from "../../helpers/user.js";
 
 const authResolver = {
@@ -17,8 +18,14 @@ const authResolver = {
             //Create user
             const user = createUser({ name, surname, email, password: hashedPassword });
 
+            //Create user cart
+            const cart = createUserCart({ userId: user._id });
+
             //Save user to db
             await user.save();
+
+            //Save cart to db
+            await cart.save();
 
             //Create tokens
             const accessToken = createAccessToken({ userId: user.id });

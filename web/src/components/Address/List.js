@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useMutation, useQuery } from '@apollo/client';
-import { myAddresses } from '../../graphql/queries';
+import { myAddresses, userCartQuery } from '../../graphql/queries';
 import {
   Button,
   Center,
@@ -14,7 +14,7 @@ import DeleteDialog from '../Modals/CustomAlertDialog';
 import NewAddressDialog from '../Modals/NewAddress';
 import { isEmpty } from 'lodash';
 import { useTranslation } from 'react-i18next';
-import { deleteAddressMutation } from '../../graphql/mutations';
+import { deleteAddressMutation, emptyCartMutation } from '../../graphql/mutations';
 
 const Addresses = ({
   setSelectedAddress,
@@ -22,6 +22,11 @@ const Addresses = ({
   addressContainerCursor
 }) => {
   const { t } = useTranslation();
+
+  //Clear user cart mutation - refetch after its finished cart details..
+  const [emptyCart] = useMutation(emptyCartMutation, {
+    refetchQueries: [userCartQuery]
+  });
 
   const [isNewAddressDialogOpen, setNewAddressDialogOpen] = useState(false);
   //Delete dialog opts
@@ -72,10 +77,15 @@ const Addresses = ({
     return data.myAddresses.map((item) => (
       <Address
         key={item.id}
-        onClick={() => {
+        onClick={async () => {
           if (setSelectedAddress) {
-            localStorage.setItem('fooder.last.address', JSON.stringify(item));
-            return setSelectedAddress(item)
+            //Check clicked item is not already selected
+            if (item.id !== selectedAddress) {
+              //Clear user cart on address change
+              await emptyCart();
+              localStorage.setItem('fooder.last.address', JSON.stringify(item));
+              return setSelectedAddress(item)
+            }
           }
 
           return;

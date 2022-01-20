@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import PropTypes from 'prop-types';
 import {
   AlertDialog,
@@ -17,6 +17,7 @@ const CustomAlertDialog = ({
   dialogHeader,
   dialogBody,
   onConfirmText,
+  isSubmitting,
   isOpen,
   onClose,
   onConfirm
@@ -25,6 +26,10 @@ const CustomAlertDialog = ({
 
   //Set action button to loading if there is an async method.
   const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    setIsLoading(isSubmitting);
+  }, [isSubmitting]);
 
   //To focus to cancel when first opened to make sure something crucial doesnt happen unwillingly
   const cancelRef = useRef(null);
@@ -98,6 +103,7 @@ CustomAlertDialog.propTypes = {
   dialogHeader: PropTypes.string.isRequired,
   dialogBody: PropTypes.string.isRequired,
   isOpen: PropTypes.bool.isRequired,
+  isSubmitting: PropTypes.bool,
   onClose: PropTypes.func.isRequired,
   onConfirm: PropTypes.func,
   onConfirmText: PropTypes.string

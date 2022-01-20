@@ -4,7 +4,7 @@ import { Box, HStack, Text } from '@chakra-ui/react';
 import { ChevronRightIcon } from '@chakra-ui/icons';
 import { useTranslation } from 'react-i18next';
 
-const RestaurantMenuItem = ({ itemType, details }) => {
+const RestaurantMenuItem = ({ details, onClick }) => {
   const { t } = useTranslation();
   return (
     <Box borderBottom="1px" borderColor="gray.300" w="100%">
@@ -12,7 +12,7 @@ const RestaurantMenuItem = ({ itemType, details }) => {
         cursor="pointer"
         w="100%"
         p={2}
-        onClick={() => console.log(`type: ${itemType} \ndetails: ${JSON.stringify(details, null, 2)}`)}
+        onClick={onClick}
         _hover={{ bg: 'gray.100' }}
       >
         <HStack w="100%">
@@ -28,7 +28,6 @@ const RestaurantMenuItem = ({ itemType, details }) => {
 }
 
 RestaurantMenuItem.propTypes = {
-  itemType: PropTypes.string.isRequired,
   details: PropTypes.shape({
     name: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
@@ -40,7 +39,8 @@ RestaurantMenuItem.propTypes = {
       sizePriceConstant: PropTypes.number.isRequired
     }),
     types: PropTypes.array
-  }).isRequired
+  }).isRequired,
+  onClick: PropTypes.func.isRequired
 };
 
 export default RestaurantMenuItem;

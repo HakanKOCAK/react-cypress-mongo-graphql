@@ -2,8 +2,10 @@ import { isEmpty, isArrayLikeObject, isObjectLike } from 'lodash';
 
 const mains = ['kebabs', 'hamburgers', 'pizzas', 'falafels'];
 const other = ['sides', 'drinks', 'sweets', 'sauces'];
+const rest = ['falafelPieceDetails', 'mealDetails', 'pizzaSizeDetails'];
 
-const getDetailsOfObjectLike = (obj) => {
+//Checks every key value pair recursively till its not an object/array like variable and if not empty
+export const getDetailsOfObjectLike = (obj) => {
   const reduced = Object.entries(obj).reduce((reduced, [key, value]) => {
     const copy = { ...reduced };
     if (isObjectLike(value) && !isEmpty(value)) {
@@ -12,7 +14,7 @@ const getDetailsOfObjectLike = (obj) => {
       } else {
         copy[key] = getDetailsOfArrayLike(value);
       }
-    } else if (key !== '__typename' && value) {
+    } else if (key !== '__typename' && value) { //clear __typename since it is coming from graphql and is not required
       copy[key] = value;
     }
 
@@ -21,6 +23,7 @@ const getDetailsOfObjectLike = (obj) => {
   return reduced;
 };
 
+//Checks every key value pair recursively till its not an object/array like variable and push it back.
 const getDetailsOfArrayLike = (arr) => {
   const copy = [];
 
@@ -37,7 +40,10 @@ const getDetailsOfArrayLike = (arr) => {
 };
 
 const prettifyRestaurantMenu = ({ menu = {} }) => {
-  const possibleOptions = [...mains, ...other];
+  //Get possible keys of the menu
+  const possibleOptions = [...mains, ...other, ...rest];
+
+  //Prettifies object like variable.
   const prettifiedMenu = getDetailsOfObjectLike(menu);
   let detailedMenu = {};
   possibleOptions.forEach((key) => {
