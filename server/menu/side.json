@@ -49,7 +49,7 @@
       ],
       "sizeDetails": "piece"
     },
-    "mozarellaSticks": {
+    "mozzarellaSticks": {
       "possiblePrices": [
         4.5,
         5.25,
@@ -63,6 +63,6 @@
     "nuggets",
     "onionRings",
     "chickenFries",
-    "mozarellaSticks"
+    "mozzarellaSticks"
   ]
 }

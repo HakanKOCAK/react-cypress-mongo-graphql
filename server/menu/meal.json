@@ -1,21 +1,21 @@
 {
   "hamburger": {
     "meals": {
-      "meal0": [
+      "Meal0": [
         3.5,
         4,
         4.5
       ]
     },
     "sizePrices": {
-      "meal0": [
+      "Meal0": [
         2,
         3,
         4
       ]
     },
     "includes": {
-      "meal0": [
+      "Meal0": [
         "drink",
         "fries"
       ]
@@ -23,21 +23,21 @@
   },
   "pizza": {
     "meals": {
-      "meal0": [
+      "Meal0": [
         3.5,
         4,
         4.5
       ]
     },
     "sizePrices": {
-      "meal0": [
+      "Meal0": [
         2,
         3,
         4
       ]
     },
     "includes": {
-      "meal0": [
+      "Meal0": [
         "drink",
         "fries"
       ]
@@ -45,56 +45,56 @@
   },
   "kebab": {
     "meals": {
-      "meal0": [
+      "Meal0": [
         3.5,
         4,
         4.5
       ],
-      "meal1": [
+      "Meal1": [
         1.3,
         1.4,
         1.5
       ]
     },
     "sizePrices": {
-      "meal0": [
+      "Meal0": [
         2,
         3,
         4
       ],
-      "meal1": [
+      "Meal1": [
         0.75,
         1,
         1.25
       ]
     },
     "includes": {
-      "meal0": [
+      "Meal0": [
         "drink",
         "fries"
       ],
-      "meal1": [
+      "Meal1": [
         "drink"
       ]
     }
   },
   "falafel": {
     "meals": {
-      "meal0": [
+      "Meal0": [
         1.3,
         1.4,
         1.5
       ]
     },
     "sizePrices": {
-      "meal0": [
+      "Meal0": [
         0.75,
         1,
         1.25
       ]
     },
     "includes": {
-      "meal0": [
+      "Meal0": [
         "drink"
       ]
     }

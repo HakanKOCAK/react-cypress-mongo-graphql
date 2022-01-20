@@ -200,7 +200,7 @@ type Sides {
   nuggets: Side
   onionRings: Side
   chickenFries: Side
-  mozarellaSticks: Side
+  mozzarellaSticks: Side
 }
 `;
 
