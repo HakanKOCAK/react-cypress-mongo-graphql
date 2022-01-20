@@ -113,7 +113,6 @@ const createKebabs = ({ basePriceIndex = 0 }) => {
   //       "possiblePrices": [1, 2, 3],
   //       "optionals": "shishKebab" || undefined,
   //        "sides" : ["item1", "item2"]
-  //       "mealType": "1"
   //     },
   //   }
   // }
@@ -122,7 +121,7 @@ const createKebabs = ({ basePriceIndex = 0 }) => {
     const price = details.possiblePrices[basePriceIndex];
     const optionals = kebabMenu.optionals[details.optionals] || [];
     const sides = details.sides || [];
-    kebabs[k] = { price, optionals, sides, mealType: details.mealType || '' }
+    kebabs[k] = { price, optionals, sides }
   })
 
   return kebabs;
