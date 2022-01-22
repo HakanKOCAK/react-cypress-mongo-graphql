@@ -604,7 +604,7 @@ const Food = ({
                 }}
                 isTruncated
               >
-                {updateModal ? t('update') : t('addToCard')}
+                {updateModal ? t('update') : t('addToCart')}
               </Button>
               <Button
                 colorScheme="pink"
