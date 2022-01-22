@@ -147,7 +147,7 @@ mutation UpdateCartItem($itemId: String!, $details: CartItemInput!) {
 `;
 
 export const emptyCartMutation = gql`
-mutation Mutation {
+mutation EmptyCart {
   emptyCart
 }
 `;

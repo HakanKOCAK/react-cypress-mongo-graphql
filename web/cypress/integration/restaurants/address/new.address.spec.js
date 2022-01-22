@@ -14,6 +14,7 @@ describe('New Address', () => {
   context('Modal Tests', () => {
     it('should close new address model when close button clicked', () => {
       cy.gqlQuery({ type: 'myAddresses', opts: { isEmpty: false } });
+      cy.gqlQuery({ type: 'cart', opts: { isEmpty: true } });
       cy.gqlQuery({ type: 'cities' });
       cy.contains('Please select an address').click();
       cy.contains('Add an address').click();
@@ -25,6 +26,7 @@ describe('New Address', () => {
   context('Field Tests', () => {
     beforeEach(() => {
       cy.gqlQuery({ type: 'myAddresses', opts: { isEmpty: false } });
+      cy.gqlQuery({ type: 'cart', opts: { isEmpty: true } });
       cy.gqlQuery({ type: 'cities' });
       cy.contains('Please select an address').click()
       cy.contains('Add an address').click()
@@ -170,6 +172,7 @@ describe('New Address', () => {
       })
 
       cy.gqlQuery({ type: 'myAddresses', opts: { isEmpty: false } });
+      cy.gqlQuery({ type: 'cart', opts: { isEmpty: true } });
       cy.gqlQuery({ type: 'cities' });
       cy.contains('Please select an address').click()
       cy.contains('Add an address').click()

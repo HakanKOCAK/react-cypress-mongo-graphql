@@ -50,6 +50,7 @@ describe('Navbar Tests', () => {
       cy.refreshToken();
       cy.gqlQuery({ type: 'me' });
       cy.gqlQuery({ type: 'myAddresses', opts: { isEmpty: true } });
+      cy.gqlQuery({ type: 'cart', opts: { isEmpty: true } });
     });
 
     it('navbar should contain button after with auth user\'s name when there is an authenticated user', () => {

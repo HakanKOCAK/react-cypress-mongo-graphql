@@ -13,6 +13,7 @@ describe('Delete Address', () => {
   context('Modal Tests', () => {
     it('should close delete address dialog when close button clicked', () => {
       cy.gqlQuery({ type: 'myAddresses', opts: { isEmpty: false } })
+      cy.gqlQuery({ type: 'cart', opts: { isEmpty: true } });
       cy.contains('Please select an address').click()
       cy.gqlQuery({ type: 'cities' })
       cy.get('[data-cy="delete-btn1"]').click()
@@ -26,6 +27,7 @@ describe('Delete Address', () => {
       cy.gqlMutation({ type: 'deleteAddress', variables: { id: '1' } })
 
       cy.gqlQuery({ type: 'myAddresses', opts: { isEmpty: false } })
+      cy.gqlQuery({ type: 'cart', opts: { isEmpty: true } });
       cy.contains('Please select an address').click()
       cy.gqlQuery({ type: 'cities' })
       cy.get('[data-cy="delete-btn1"]').click()

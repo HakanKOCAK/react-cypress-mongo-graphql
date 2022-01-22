@@ -29,18 +29,29 @@ describe('Address List', () => {
     cy.gqlQuery({ type: 'me' });
 
     cy.gqlQuery({ type: 'myAddresses', opts: { isEmpty: true } })
+    cy.gqlQuery({ type: 'cart', opts: { isEmpty: true } });
 
     cy.contains('Please select an address').should('be.visible')
   })
 
   it('should display address details when there is pre saved address on localStorage', () => {
-    localStorage.setItem('fooder.last.address', '0')
+    localStorage.setItem('fooder.last.address', JSON.stringify({
+      id: '0',
+      address: 'Home adress',
+      city: 'Istanbul',
+      county: 'Besiktas',
+      district: 'Bebek',
+      flat: 2,
+      floor: 3,
+      title: 'home'
+    }));
     //Assume there is an authenticated user
     cy.refreshToken();
     cy.gqlQuery({ type: 'me' });
 
 
     cy.gqlQuery({ type: 'myAddresses', opts: { isEmpty: false } });
+    cy.gqlQuery({ type: 'cart', opts: { isEmpty: true } });
 
     cy.contains('HOME').should('be.visible');
   })
@@ -51,6 +62,7 @@ describe('Address List', () => {
     cy.gqlQuery({ type: 'me' });
 
     cy.gqlQuery({ type: 'myAddresses', opts: { isEmpty: false } });
+    cy.gqlQuery({ type: 'cart', opts: { isEmpty: true } });
     cy.gqlQuery({ type: 'cities' });
 
     cy.contains('Please select an address').click();
@@ -63,6 +75,7 @@ describe('Address List', () => {
     cy.gqlQuery({ type: 'me' });
 
     cy.gqlQuery({ type: 'myAddresses', opts: { isEmpty: false } });
+    cy.gqlQuery({ type: 'cart', opts: { isEmpty: true } });
     cy.gqlQuery({ type: 'cities' });
 
     cy.contains('Please select an address').click()
@@ -76,6 +89,8 @@ describe('Address List', () => {
     cy.gqlQuery({ type: 'me' });
 
     cy.gqlQuery({ type: 'myAddresses', opts: { isEmpty: false } });
+    cy.gqlQuery({ type: 'cart', opts: { isEmpty: true } });
+    cy.gqlMutation({ type: 'emptyCart' });
     cy.gqlQuery({ type: 'cities' });
 
     cy.contains('Please select an address').click()
@@ -88,6 +103,7 @@ describe('Address List', () => {
     cy.gqlQuery({ type: 'me' });
 
     cy.gqlQuery({ type: 'myAddresses', opts: { isEmpty: false } });
+    cy.gqlQuery({ type: 'cart', opts: { isEmpty: true } });
     cy.gqlQuery({ type: 'cities' });
 
     cy.contains('Please select an address').click()
@@ -101,6 +117,7 @@ describe('Address List', () => {
     cy.gqlQuery({ type: 'me' });
 
     cy.gqlQuery({ type: 'myAddresses', opts: { isEmpty: false } });
+    cy.gqlQuery({ type: 'cart', opts: { isEmpty: true } });
     cy.gqlQuery({ type: 'cities' });
 
     cy.contains('Please select an address').click()

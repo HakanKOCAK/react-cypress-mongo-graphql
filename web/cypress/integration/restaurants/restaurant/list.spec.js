@@ -29,6 +29,7 @@ describe('Restaurant List', () => {
 
   it('should display please select an address text and filter and sort buttons should be disabled when there is not a selected address', () => {
     cy.gqlQuery({ type: 'myAddresses', opts: { isEmpty: false } });
+    cy.gqlQuery({ type: 'cart', opts: { isEmpty: true } });
 
     cy.contains('Filter').should('be.disabled');
     cy.contains('Sort').should('be.disabled');
@@ -36,7 +37,17 @@ describe('Restaurant List', () => {
   })
 
   it('should display no restaurant text when address is selected but there is not a restaurant', () => {
-    localStorage.setItem('fooder.last.address', '0');
+    localStorage.setItem('fooder.last.address', JSON.stringify({
+      id: '0',
+      address: 'Home adress',
+      city: 'Istanbul',
+      county: 'Besiktas',
+      district: 'Bebek',
+      flat: 2,
+      floor: 3,
+      title: 'home'
+    }));
+    cy.gqlQuery({ type: 'cart', opts: { isEmpty: true } });
 
     cy.gqlQuery({ type: 'myAddresses', opts: { isEmpty: false } });
     cy.gqlQuery({ type: 'restaurants', opts: { isEmpty: true } });
@@ -44,36 +55,76 @@ describe('Restaurant List', () => {
   });
 
   it('should display restaurant list when restaurant(s) exists for selected address', () => {
-    localStorage.setItem('fooder.last.address', '0');
+    localStorage.setItem('fooder.last.address', JSON.stringify({
+      id: '0',
+      address: 'Home adress',
+      city: 'Istanbul',
+      county: 'Besiktas',
+      district: 'Bebek',
+      flat: 2,
+      floor: 3,
+      title: 'home'
+    }));
 
     cy.gqlQuery({ type: 'myAddresses', opts: { isEmpty: false } });
+    cy.gqlQuery({ type: 'cart', opts: { isEmpty: true } });
     cy.gqlQuery({ type: 'restaurants', opts: { isEmpty: false } });
     cy.contains('Pizza Test Restaurant').should('be.visible');
     cy.contains('Hamburger Test Restaurant').should('be.visible');
   });
 
   it('should open filter modal when filter button clicked', () => {
-    localStorage.setItem('fooder.last.address', '0');
+    localStorage.setItem('fooder.last.address', JSON.stringify({
+      id: '0',
+      address: 'Home adress',
+      city: 'Istanbul',
+      county: 'Besiktas',
+      district: 'Bebek',
+      flat: 2,
+      floor: 3,
+      title: 'home'
+    }));
 
     cy.gqlQuery({ type: 'myAddresses', opts: { isEmpty: false } });
+    cy.gqlQuery({ type: 'cart', opts: { isEmpty: true } });
     cy.gqlQuery({ type: 'restaurants', opts: { isEmpty: false } });
     cy.get('[data-cy="restaurant-list-filter-button"]').click();
     cy.get('header').contains('Filter').should('be.visible');
   });
 
   it('should open sort modal when sort button clicked', () => {
-    localStorage.setItem('fooder.last.address', '0');
+    localStorage.setItem('fooder.last.address', JSON.stringify({
+      id: '0',
+      address: 'Home adress',
+      city: 'Istanbul',
+      county: 'Besiktas',
+      district: 'Bebek',
+      flat: 2,
+      floor: 3,
+      title: 'home'
+    }));
 
     cy.gqlQuery({ type: 'myAddresses', opts: { isEmpty: false } });
+    cy.gqlQuery({ type: 'cart', opts: { isEmpty: true } });
     cy.gqlQuery({ type: 'restaurants', opts: { isEmpty: false } });
     cy.get('[data-cy="restaurant-list-sort-button"]').click();
     cy.get('p').contains('Sort').should('be.visible');
   });
 
   it('should redirect to restaurant page on restaurant click', () => {
-    localStorage.setItem('fooder.last.address', '0');
+    localStorage.setItem('fooder.last.address', JSON.stringify({
+      id: '0',
+      address: 'Home adress',
+      city: 'Istanbul',
+      county: 'Besiktas',
+      district: 'Bebek',
+      flat: 2,
+      floor: 3,
+      title: 'home'
+    }));
 
     cy.gqlQuery({ type: 'myAddresses', opts: { isEmpty: false } });
+    cy.gqlQuery({ type: 'cart', opts: { isEmpty: true } });
     cy.gqlQuery({ type: 'restaurants', opts: { isEmpty: false } });
 
     cy.gqlQuery({ type: 'menu', opts: { pizza: true } });
@@ -85,9 +136,19 @@ describe('Restaurant List', () => {
 
   context('Filter Tests', () => {
     beforeEach(() => {
-      localStorage.setItem('fooder.last.address', '0');
+      localStorage.setItem('fooder.last.address', JSON.stringify({
+        id: '0',
+        address: 'Home adress',
+        city: 'Istanbul',
+        county: 'Besiktas',
+        district: 'Bebek',
+        flat: 2,
+        floor: 3,
+        title: 'home'
+      }));
 
       cy.gqlQuery({ type: 'myAddresses', opts: { isEmpty: false } });
+      cy.gqlQuery({ type: 'cart', opts: { isEmpty: true } });
       cy.gqlQuery({ type: 'restaurants', opts: { isEmpty: false } });
 
       cy.contains('Pizza Test Restaurant').should('be.visible');
@@ -148,13 +209,23 @@ describe('Restaurant List', () => {
 
   context('Sort Tests', () => {
     beforeEach(() => {
-      localStorage.setItem('fooder.last.address', '0');
+      localStorage.setItem('fooder.last.address', JSON.stringify({
+        id: '0',
+        address: 'Home adress',
+        city: 'Istanbul',
+        county: 'Besiktas',
+        district: 'Bebek',
+        flat: 2,
+        floor: 3,
+        title: 'home'
+      }));
 
       //Assume there is an authenticated user
       cy.refreshToken();
       cy.gqlQuery({ type: 'me' });
 
       cy.gqlQuery({ type: 'myAddresses', opts: { isEmpty: false } });
+      cy.gqlQuery({ type: 'cart', opts: { isEmpty: true } });
       cy.gqlQuery({ type: 'restaurants', opts: { isEmpty: false } });
 
       cy.contains('Pizza Test Restaurant').should('be.visible');

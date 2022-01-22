@@ -36,7 +36,6 @@ const defaults = {
       floor: 3,
       title: 'home'
     },
-
     {
       id: '1',
       address: 'Other address',
@@ -48,7 +47,14 @@ const defaults = {
       title: 'other'
     }
   ],
-  cards: [
+  cart: {
+    id: 'cartId',
+    cartTotal: 0,
+    items: [],
+    menu: null,
+    restaurantDetails: null
+  },
+  creditCards: [
     {
       id: '0',
       description: 'My Visa Card',
@@ -332,12 +338,12 @@ Cypress.Commands.add(
         })
       } else if (req.body.operationName === 'MyCreditCards' && type === 'myCreditCards') {
         req.reply((res) => {
-          let cards = []
+          let creditCards = []
           if (!opts.isEmpty) {
-            cards = defaults.cards
+            creditCards = defaults.creditCards
           }
 
-          res.body.data.myCreditCards = cards
+          res.body.data.myCreditCards = creditCards
           res.body.errors = undefined
         })
       } else if (req.body.operationName === 'Cities' && type === 'cities') {
@@ -378,6 +384,16 @@ Cypress.Commands.add(
           res.body.data.menu = menu
           res.body.errors = undefined
         })
+      } else if (req.body.operationName === 'Cart' && type === 'cart') {
+        req.reply((res) => {
+          let cart = { ...defaults.cart };
+          //Will be updated
+          // if(!opts.isEmpty){
+
+          // }
+          res.body.data.cart = cart;
+          res.body.errors = undefined
+        })
       }
     })
   }
@@ -408,7 +424,7 @@ Cypress.Commands.add(
       } else if (req.body.operationName === 'AddCreditCard' && type === 'addCreditCard') {
         req.reply((res) => {
           res.body.data.addCreditCard = {
-            id: opts.isEmpty ? '0' : defaults.cards.length.toString(),
+            id: opts.isEmpty ? '0' : defaults.creditCards.length.toString(),
             ...variables,
             '__typename': 'CreditCard'
 
@@ -433,6 +449,11 @@ Cypress.Commands.add(
       } else if (req.body.operationName === 'DeleteAddress' && type === 'deleteAddress') {
         req.reply((res) => {
           res.body.data.deleteAddress = variables.id
+          res.body.errors = undefined
+        })
+      } else if (req.body.operationName === 'EmptyCart' && type === 'emptyCart') {
+        req.reply((res) => {
+          res.body.data.cart = defaults.cart
           res.body.errors = undefined
         })
       }
