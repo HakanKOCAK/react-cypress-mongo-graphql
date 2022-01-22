@@ -68,14 +68,16 @@ const Cart = () => {
   };
 
   const getItemNameForDeleteDialog = (details) => {
-    if (details.itemType === 'falafel' || details.itemType === 'pizza') {
-      return `${t(details.name)} ${t(details.itemType)}`;
-    } else if (details.temType === 'drink') {
-      return `${t(details.name)}: ${t(details.drinkType)}`;
-    } else if (details.itemType === 'sweet') {
-      return `${t(details.name)}${details.sweetType ? `:${details.sweetType}` : ''}`;
+    const itemType = details.item.itemType;
+    const itemName = details.item.itemDetails.name;
+    if (itemType === 'falafel' || itemType === 'pizza') {
+      return `${t(itemName)} ${t(itemType)}`;
+    } else if (itemType === 'drink') {
+      return `${t(itemName)}: ${t(details.drinkType)}`;
+    } else if (itemType === 'sweet') {
+      return `${t(itemName)}${details.sweetType ? `: ${t(details.sweetType)}` : ''}`;
     }
-    return details.name;
+    return itemName;
   };
 
   return (
