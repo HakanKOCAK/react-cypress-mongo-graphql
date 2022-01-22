@@ -572,6 +572,7 @@ const Food = ({
                 disabled={modalQuantity === 1}
                 colorScheme="teal"
                 fontSize="13px"
+                data-cy="food-modal-decrease-quantity"
                 onClick={() => handleQuantityChange(-1)}
                 icon={<MinusIcon />}
               />
@@ -580,6 +581,7 @@ const Food = ({
                 variant="ghost"
                 colorScheme="teal"
                 fontSize="13px"
+                data-cy="food-modal-increase-quantity"
                 onClick={() => handleQuantityChange(1)}
                 icon={<AddIcon />}
               />
@@ -587,7 +589,13 @@ const Food = ({
           </ModalBody>
           <ModalFooter p={[1, 2, 3]}>
             <Flex w="30%" justifyContent="flex-start">
-              <Text fontWeight="semibold" fontSize={['12px', '15px', '18px']}>{`${t('total')}: $${modalTotalPrice.toFixed(2)}`}</Text>
+              <Text
+                fontWeight="semibold"
+                fontSize={['12px', '15px', '18px']}
+                data-cy="food-modal-total"
+              >
+                {`${t('total')}: $${modalTotalPrice.toFixed(2)}`}
+              </Text>
             </Flex>
             <Flex w="70%" justifyContent="flex-end">
               <Button
@@ -603,6 +611,7 @@ const Food = ({
                   return handleAddCard({ differentRestaurant: false });
                 }}
                 isTruncated
+                data-cy="food-modal-add-to-cart-button"
               >
                 {updateModal ? t('update') : t('addToCart')}
               </Button>
@@ -610,6 +619,7 @@ const Food = ({
                 colorScheme="pink"
                 w="100px"
                 onClick={handleClose}
+                data-cy="food-modal-close-button"
               >
                 {t('close')}
               </Button>

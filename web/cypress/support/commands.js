@@ -48,11 +48,80 @@ const defaults = {
     }
   ],
   cart: {
-    id: 'cartId',
-    cartTotal: 0,
-    items: [],
-    menu: null,
-    restaurantDetails: null
+    default: {
+      id: 'cartId',
+      cartTotal: 0,
+      items: [],
+      menu: null,
+      restaurantDetails: null
+    },
+    hamburger: {
+      id: 'cartIdHamburger',
+      cartTotal: 8,
+      items: [{
+        drinkType: null,
+        falafelPieces: null,
+        id: '0',
+        item: {
+          itemType: 'hamburger',
+          itemDetails: {
+            falafelPieceDetails: null,
+            includes: ['beef', 'pickles', 'ketchup', 'mustard'],
+            mealDetails: [{
+              includes: ['drink', 'fries'],
+              name: 'meal0',
+              priceDetails: {
+                price: 4.5,
+                sizePriceConstant: 4,
+                '__typename': "MealPriceDetails"
+              },
+              '__typename': "CartMealDetails"
+            }],
+            name: 'hamburger',
+            optionals: ['pickles', 'ketchup', 'mustard'],
+            pizzaSizeDetails: null,
+            price: 8,
+            sides: null,
+            sizeDetails: null,
+            types: null,
+            '__typename': "ItemDetails"
+          },
+          '__typename': "Item"
+        },
+        itemType: null,
+        name: null,
+        optionals: {
+          basil: null,
+          greenPeppers: null,
+          ham: null,
+          ketchup: true,
+          lettuce: null,
+          mayonnaise: null,
+          mushrooms: null,
+          mustard: true,
+          onions: null,
+          pickles: true,
+          redOnion: null,
+          sweetCorn: null,
+          tomatoes: null,
+          '__typename': "Optionals"
+        },
+        pizzaSizeOption: null,
+        price: null,
+        quantity: 1,
+        selectedMealDetails: {
+          mealPrice: 0,
+          name: "",
+          size: "",
+          totalPrice: 0,
+          '__typename': "SelectedMealDetails",
+        },
+        sideSizeOption: null,
+        sweetType: null,
+        totalPrice: 8,
+        __typename: "CartItem",
+      }]
+    }
   },
   creditCards: [
     {
@@ -386,11 +455,26 @@ Cypress.Commands.add(
         })
       } else if (req.body.operationName === 'Cart' && type === 'cart') {
         req.reply((res) => {
-          let cart = { ...defaults.cart };
-          //Will be updated
-          // if(!opts.isEmpty){
-
-          // }
+          let cart = { ...defaults.cart.default };
+          // Will be updated
+          if (!opts.isEmpty) {
+            cart = {
+              ...defaults.cart[opts.type],
+              restaurantDetails: defaults.restaurants[opts.type === 'hamburger' ? 1 : 0],
+              menu: defaults.menu[opts.type]
+            }
+            if (opts.updated) {
+              cart = {
+                ...cart,
+                cartTotal: cart.cartTotal * 2,
+                items: [{
+                  ...defaults.cart[opts.type].items[0],
+                  quantity: defaults.cart[opts.type].items[0].quantity * 2,
+                  totalPrice: defaults.cart[opts.type].items[0].totalPrice * 2
+                }]
+              }
+            }
+          }
           res.body.data.cart = cart;
           res.body.errors = undefined
         })
@@ -454,6 +538,28 @@ Cypress.Commands.add(
       } else if (req.body.operationName === 'EmptyCart' && type === 'emptyCart') {
         req.reply((res) => {
           res.body.data.cart = defaults.cart
+          res.body.errors = undefined
+        })
+      } else if (req.body.operationName === 'AddCartItem' && type === 'addCartItem') {
+        req.reply((res) => {
+          res.body.data.addCartItem = {
+            id: '0',
+            ...variables,
+            '__typename': 'CartItem'
+          };
+          res.body.errors = undefined
+        })
+      } else if (req.body.operationName === 'DeleteCartItem' && type === 'deleteCartItem') {
+        req.reply((res) => {
+          res.body.data.deleteCartItem = true
+          res.body.errors = undefined
+        })
+      } else if (req.body.operationName === 'UpdateCartItem' && type === 'updateCartItem') {
+        req.reply((res) => {
+          res.body.data.updateCartItem = {
+            ...variables,
+            '__typename': 'CartItem'
+          };
           res.body.errors = undefined
         })
       }

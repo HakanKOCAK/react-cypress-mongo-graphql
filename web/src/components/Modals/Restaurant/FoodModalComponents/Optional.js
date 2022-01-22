@@ -27,6 +27,7 @@ const Optional = ({
           <Checkbox
             colorScheme="teal"
             key={index}
+            data-cy={`food-modal-checkbox-${key}`}
             size={windowWidth > 478 ? 'md' : 'sm'}
             isChecked={value}
             onChange={(e) => {

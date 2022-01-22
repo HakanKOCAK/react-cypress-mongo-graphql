@@ -207,6 +207,7 @@ const CartItem = ({ details, onClick, onDelete }) => {
         fontSize={['17px', '19px', '21px']}
         size={getDeleteIconSize()}
         icon={<EditIcon />}
+        data-cy={`cart-item-${prettifiedDetails.name}-edit-button`}
       />
       <IconButton
         variant="ghost"
@@ -214,6 +215,7 @@ const CartItem = ({ details, onClick, onDelete }) => {
         fontSize={['17px', '19px', '21px']}
         size={getDeleteIconSize()}
         onClick={handleDelete}
+        data-cy={`cart-item-${prettifiedDetails.name}-delete-button`}
         icon={<DeleteIcon />}
       />
     </HStack>

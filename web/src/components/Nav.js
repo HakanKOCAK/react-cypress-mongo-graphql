@@ -73,8 +73,9 @@ const Nav = () => {
                   top={-3}
                   left={-1.05}
                   position="relative"
+                  data-cy="nav-cart-total"
                 >
-                  {cartTotal.toFixed(2)}$
+                  {`$${cartTotal.toFixed(2)}`}
                 </Text>
               </Button>
             )

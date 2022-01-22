@@ -13,6 +13,7 @@ const RestaurantMenuItem = ({ details, onClick }) => {
         w="100%"
         p={2}
         onClick={onClick}
+        data-cy={`menu-item-${details.name}`}
         _hover={{ bg: 'gray.100' }}
       >
         <HStack w="100%">
