@@ -30,7 +30,8 @@ export const createRefreshToken = ({ userId = '', version = '' }) => {
 export const setRefreshToken = ({ res = {}, token = '' }) => {
     res.cookie('rid', token, {
         httpOnly: true,
-        path: '/refresh_token'
+        path: '/refresh_token',
+        maxAge: 1000 * 60 * 60 * 24 * 365
     });
 };
 
