@@ -31,7 +31,7 @@ export const setRefreshToken = ({ res = {}, token = '' }) => {
     res.cookie('rid', token, {
         httpOnly: true,
         path: '/refresh_token',
-        maxAge: 1000 * 60 * 60 * 24 * 365
+        maxAge: 1000 * 60 * 60 * 24 * 365 // set 1 year expiry
     });
 };
 

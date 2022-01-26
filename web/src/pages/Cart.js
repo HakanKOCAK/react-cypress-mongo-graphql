@@ -8,7 +8,7 @@ import {
   HStack,
   VStack
 } from '@chakra-ui/react';
-import FoodModal from '../components/Modals/Restaurant/Food';
+import FoodModal from '../components/Modals/Food/Food';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useCart } from '../cart/CartProvider';
 import { useTranslation } from 'react-i18next';

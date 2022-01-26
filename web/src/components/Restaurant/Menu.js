@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Box, Heading, VStack } from '@chakra-ui/react';
-import FoodModal from '../Modals/Restaurant/Food';
+import FoodModal from '../Modals/Food/Food';
 import RestaurantMenuItem from './MenuItem';
 import { useTranslation } from 'react-i18next';
 
