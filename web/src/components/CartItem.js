@@ -9,6 +9,7 @@ import {
 import { isEmpty } from 'lodash';
 import { useTranslation } from 'react-i18next';
 import { DeleteIcon, EditIcon } from '@chakra-ui/icons';
+import { getTitleDetails, prettifyCartItem } from '../utils/cartPrettifier';
 
 const CartItem = ({ details, onClick, onDelete }) => {
   const { t } = useTranslation();
@@ -36,101 +37,12 @@ const CartItem = ({ details, onClick, onDelete }) => {
   }, []);
 
   useEffect(() => {
-    const prettify = () => {
-      const data = {};
-
-      //Prettify incoming details
-      data.name = details.item.itemDetails.name;
-      data.quantity = details.quantity;
-      data.totalPrice = `$${details.totalPrice.toFixed(2)}`;
-
-      if (details.falafelPieces) {
-        data.pieces = details.falafelPieces;
-      }
-
-      if (details.drinkType) {
-        data.drinkType = details.drinkType;
-      }
-
-      if (details.sweetType) {
-        data.sweetType = details.sweetType;
-      }
-
-      if (details.item.itemType === 'falafel' || details.item.itemType === 'pizza') {
-        data.itemType = details.item.itemType;
-      }
-
-      if (details.selectedMealDetails && details.selectedMealDetails.name) {
-        data.mealName = details.selectedMealDetails.name;
-      }
-
-      if (details.optionals) {
-        data.optionals = Object.keys(details.optionals).map((i) => t(i)).join(', ');
-      }
-
-      if (details.sideSizeOption) {
-        data.size = details.sideSizeOption;
-      }
-
-      if (details.pizzaSizeOption) {
-        data.size = details.pizzaSizeOption;
-      }
-
-      return data;
-    };
-
     if (!isEmpty((details))) {
-      setPrettifiedDetails(prettify())
+      setPrettifiedDetails(prettifyCartItem(details, t))
     }
   }, [details, t]);
 
-  const getTitleDetails = () => {
-    if (prettifiedDetails.pieces) {
-      return (
-        <Text
-          fontWeight="semibold"
-          fontSize={['12px', '14px', '16px']}
-        >
-          - {prettifiedDetails.pieces} {t('pieces')}
-        </Text>
-      )
-    }
 
-    if (prettifiedDetails.size) {
-      return (
-        <Text
-          fontWeight="semibold"
-          fontSize={['12px', '14px', '16px']}
-        >
-          - {t(prettifiedDetails.size)}
-        </Text>
-      );
-    }
-
-    if (prettifiedDetails.drinkType) {
-      return (
-        <Text
-          fontWeight="semibold"
-          fontSize={['12px', '14px', '16px']}
-        >
-          - {t(prettifiedDetails.drinkType)}
-        </Text>
-      );
-    }
-
-    if (prettifiedDetails.sweetType) {
-      return (
-        <Text
-          fontWeight="semibold"
-          fontSize={['12px', '14px', '16px']}
-        >
-          - {t(prettifiedDetails.sweetType)}
-        </Text>
-      );
-    }
-
-    return null;
-  };
 
   //Get size of delete icon according to viewport width
   const getDeleteIconSize = () => {
@@ -172,7 +84,7 @@ const CartItem = ({ details, onClick, onDelete }) => {
           >
             {prettifiedDetails.quantity} {t(prettifiedDetails.name)} {t(prettifiedDetails.itemType)}
           </Text>
-          {getTitleDetails()}
+          {getTitleDetails(prettifiedDetails, t)}
         </HStack>
         {
           prettifiedDetails.mealName && (
