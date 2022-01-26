@@ -1,8 +1,20 @@
 import React from 'react';
 import AddressList from '../../components/Address/List';
-import { Box } from '@chakra-ui/react';
+import { Box, Heading, Spinner } from '@chakra-ui/react';
+import { useQuery } from '@apollo/client';
+import { myAddresses } from '../../graphql/queries';
+import { useTranslation } from 'react-i18next';
 
 const Addresses = () => {
+  const { t } = useTranslation();
+  //Get saved addresses of user
+  const { data, error, loading } = useQuery(myAddresses);
+
+  if (error) {
+    <Box textAlign="center">
+      <Heading size="lg">{t('serverError')}</Heading>
+    </Box>
+  }
   return (
     <Box
       w="650px"
@@ -10,11 +22,13 @@ const Addresses = () => {
       overflowY="scroll"
       p={3}
     >
-      <AddressList />
+      {loading ? (
+        <Spinner color="pink.500" size="lg" />
+      ) : (
+        <AddressList addresses={data.myAddresses || []} />
+      )}
     </Box>
   );
 }
-
-
 
 export default Addresses
