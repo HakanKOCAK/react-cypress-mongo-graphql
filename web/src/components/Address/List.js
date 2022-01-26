@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { useMutation, useQuery } from '@apollo/client';
-import { myAddresses, userCartQuery } from '../../graphql/queries';
+import { useMutation } from '@apollo/client';
+import { userCartQuery } from '../../graphql/queries';
 import {
   Button,
   Center,
-  Heading,
-  Spinner
+  Heading
 } from '@chakra-ui/react';
 import Address from './Address';
 import { DeleteIcon } from '@chakra-ui/icons';
@@ -17,6 +16,8 @@ import { useTranslation } from 'react-i18next';
 import { deleteAddressMutation, emptyCartMutation } from '../../graphql/mutations';
 
 const Addresses = ({
+  isCheckout,
+  addresses,
   setSelectedAddress,
   selectedAddress,
   addressContainerCursor
@@ -33,10 +34,6 @@ const Addresses = ({
   const [deleteDialogBody, setDeleteDialogBody] = useState('');
   const [isDeleteDialogOpen, setDeleteDialogOpen] = useState(false);
   const [deleteDialogItemId, setDeleteDialogItemId] = useState('');
-
-
-  //Fetch addresses
-  const { data, loading } = useQuery(myAddresses);
 
   //Delete address mutation -- update cache if successfull
   const [deleteAddress] = useMutation(deleteAddressMutation, {
@@ -56,17 +53,8 @@ const Addresses = ({
     }
   });
 
-
-  if (loading) {
-    return (
-      <Center h="60%">
-        <Spinner color="pink.500" size="lg" />
-      </Center>
-    );
-  }
-
   const getBody = () => {
-    if (isEmpty(data) || isEmpty(data.myAddresses)) {
+    if (isEmpty(addresses)) {
       return (
         <Heading size="md" textAlign="center">
           {t('youDontHaveAnyAddress')}
@@ -74,11 +62,13 @@ const Addresses = ({
       );
     }
 
-    return data.myAddresses.map((item) => (
+    return addresses.map((item) => (
       <Address
         key={item.id}
         onClick={async () => {
-          if (setSelectedAddress) {
+          if (isCheckout && setSelectedAddress) {
+            return setSelectedAddress(item)
+          } else if (setSelectedAddress) {
             //Check clicked item is not already selected
             if (item.id !== selectedAddress) {
               //Clear user cart on address change
@@ -154,6 +144,8 @@ const Addresses = ({
 }
 
 Addresses.propTypes = {
+  addresses: PropTypes.array.isRequired,
+  isCheckout: PropTypes.bool,
   addressContainerCursor: PropTypes.string,
   setSelectedAddress: PropTypes.func,
   selectedAddress: PropTypes.string

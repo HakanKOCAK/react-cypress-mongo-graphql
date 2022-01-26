@@ -14,6 +14,8 @@ import AddresList from '../Address/List';
 //Address List
 const AddressModal = ({
   isOpen,
+  addresses,
+  isCheckout,
   onClose,
   setSelectedAddress,
   selectedId
@@ -33,6 +35,8 @@ const AddressModal = ({
           <ModalHeader>{t('myAddresses')}</ModalHeader>
           <ModalBody>
             <AddresList
+              addresses={addresses}
+              isCheckout={isCheckout}
               addressContainerCursor="pointer"
               setSelectedAddress={setSelectedAddress}
               selectedAddress={selectedId}
@@ -45,6 +49,8 @@ const AddressModal = ({
 };
 
 AddressModal.propTypes = {
+  addresses: PropTypes.array.isRequired,
+  isCheckout: PropTypes.bool,
   isOpen: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,
   setSelectedAddress: PropTypes.func.isRequired,
