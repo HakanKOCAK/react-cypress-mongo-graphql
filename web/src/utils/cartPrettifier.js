@@ -1,5 +1,6 @@
 import { Text } from '@chakra-ui/react';
 import { getDetailsOfObjectLike } from './restaurantMenuPrettifier';
+import { isEmpty } from 'lodash';
 
 const prettifyCart = ({ cart = {} }) => {
   return getDetailsOfObjectLike(cart);
@@ -56,8 +57,26 @@ export const getTitleDetails = (details, t) => {
 export const prettifyCartItem = (details, t) => {
   const data = {};
 
+  const getName = () => {
+    if (!isEmpty(details.item) && !isEmpty(details.item.itemDetails)) {
+      return details.item.itemDetails.name;
+    }
+
+    return details.name || '';
+  };
+
+  const getItemType = () => {
+    if (!isEmpty(details.items)) {
+      if (details.item.itemType === 'falafel' || details.item.itemType === 'pizza') {
+        return details.item.itemType;
+      }
+    }
+
+    return details.itemType || '';
+  };
+
   //Prettify incoming details
-  data.name = details.item.itemDetails.name;
+  data.name = getName();
   data.quantity = details.quantity;
   data.totalPrice = `$${details.totalPrice.toFixed(2)}`;
 
@@ -73,9 +92,7 @@ export const prettifyCartItem = (details, t) => {
     data.sweetType = details.sweetType;
   }
 
-  if (details.item.itemType === 'falafel' || details.item.itemType === 'pizza') {
-    data.itemType = details.item.itemType;
-  }
+  data.itemType = getItemType();
 
   if (details.selectedMealDetails && details.selectedMealDetails.name) {
     data.mealName = details.selectedMealDetails.name;
