@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Box, Center, Heading, Spinner } from '@chakra-ui/react';
 import Addresses from '../../components/Address/List';
 import CreditCards from '../../components/CreditCard/List';
+import Orders from '../../components/Order/List';
 import { useQuery } from '@apollo/client';
 import { myAddresses } from '../../graphql/queries';
 import { useTranslation } from 'react-i18next';
@@ -30,6 +31,8 @@ const Account = ({ selected }) => {
       return <Addresses addresses={data.myAddresses || []} />;
     } else if (selected === 'myCards') {
       return <CreditCards />;
+    } else if (selected === 'myOrders') {
+      return <Orders />
     }
 
     return null;

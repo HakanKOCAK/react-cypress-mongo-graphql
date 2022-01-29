@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { useMutation, useQuery } from '@apollo/client';
 import {
   Button,
@@ -15,7 +16,11 @@ import { isEmpty } from 'lodash';
 import { useTranslation } from 'react-i18next';
 import { deleteCreditCardMutation } from '../../graphql/mutations';
 
-const CreditCards = () => {
+const CreditCards = ({
+  cursor,
+  selectedId,
+  setSelected
+}) => {
   const { t } = useTranslation();
 
   const [isCreditCardModalOpen, setCreditCardModalOpen] = useState(false);
@@ -65,6 +70,8 @@ const CreditCards = () => {
 
     return data.myCreditCards.map((item) => (
       <CreditCard
+        cursor={cursor}
+        onClick={() => setSelected(item)}
         actionIcon={<DeleteIcon />}
         actionIconOnClick={() => {
           //Opens the delete dialog
@@ -73,6 +80,7 @@ const CreditCards = () => {
           setDeleteDialogOpen(true);
         }}
         key={item.id}
+        background={selectedId === item.id ? 'teal.400' : 'gray.100'}
         details={item}
       />
     ));
@@ -116,7 +124,12 @@ const CreditCards = () => {
       {getBody()}
     </>
   )
-
 }
 
-export default CreditCards
+CreditCards.propTypes = {
+  cursor: PropTypes.string,
+  selectedId: PropTypes.string,
+  setSelected: PropTypes.func
+};
+
+export default CreditCards;

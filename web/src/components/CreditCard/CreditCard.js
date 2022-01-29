@@ -11,6 +11,9 @@ import {
 
 const CreditCard = ({
   actionIcon,
+  background,
+  cursor,
+  onClick,
   actionIconOnClick,
   details
 }) => {
@@ -37,12 +40,13 @@ const CreditCard = ({
     <HStack
       spacing={2}
       boxShadow="md"
-      bg="gray.100"
+      cursor={cursor}
+      bg={background ? background : 'gray.100'}
       h="60px"
       w="100%"
       mb={5}
     >
-      <HStack w="100%">
+      <HStack w="100%" onClick={onClick}>
         <Box w={['30px', '40px', '50px']}>
           <Icon as={() => <Image alt="Card" {...getIconSpecs()} />} />
         </Box>
@@ -73,13 +77,16 @@ const CreditCard = ({
 CreditCard.propTypes = {
   actionIcon: PropTypes.element,
   actionIconOnClick: PropTypes.func,
+  background: PropTypes.string,
+  cursor: PropTypes.string,
   icon: PropTypes.string,
   details: PropTypes.shape({
     id: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
     number: PropTypes.string.isRequired,
     issuer: PropTypes.string
-  })
+  }),
+  onClick: PropTypes.func
 }
 
 export default CreditCard

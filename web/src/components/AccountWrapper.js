@@ -27,7 +27,9 @@ const AccountWrapper = ({ Children }) => {
       case '/account/addresses':
         return 'myAddresses';
       case '/account/credit-cards':
-        return 'myCards'
+        return 'myCards';
+      case '/account/orders':
+        return 'myOrders'
 
       default:
         return 'myAddresses';
@@ -45,6 +47,11 @@ const AccountWrapper = ({ Children }) => {
       id: 'myCards',
       route: '/account/credit-cards',
       icon: 'credit_card.svg'
+    },
+    {
+      id: 'myOrders',
+      route: '/account/orders',
+      icon: 'orders.svg'
     }
   ]
 

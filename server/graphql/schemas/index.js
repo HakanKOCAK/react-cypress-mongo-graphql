@@ -4,6 +4,7 @@ import addressDefs from "./address.js";
 import creditCardDefs from "./creditCard.js";
 import restaurantDefs from "./restaurant.js";
 import cartDefs from "./cart.js";
+import orderDefs from "./order.js";
 
 import {
     combineTypes,
@@ -17,7 +18,8 @@ const combinedQueries = combineQueries([
     ...addressDefs.queries,
     ...creditCardDefs.queries,
     ...restaurantDefs.queries,
-    ...cartDefs.queries
+    ...cartDefs.queries,
+    ...orderDefs.queries
 ]);
 
 const combinedMutations = combineMutations([
@@ -25,7 +27,8 @@ const combinedMutations = combineMutations([
     ...addressDefs.mutations,
     ...creditCardDefs.mutations,
     ...restaurantDefs.mutations,
-    ...cartDefs.mutations
+    ...cartDefs.mutations,
+    ...orderDefs.mutations
 ]);
 
 const combinedTypes = combineTypes([
@@ -33,7 +36,8 @@ const combinedTypes = combineTypes([
     ...addressDefs.types,
     ...creditCardDefs.types,
     ...restaurantDefs.types,
-    ...cartDefs.types
+    ...cartDefs.types,
+    ...orderDefs.types
 ]);
 
 const schema = createSchema(combinedTypes, combinedQueries, combinedMutations);

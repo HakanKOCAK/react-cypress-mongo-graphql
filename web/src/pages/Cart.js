@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ArrowBackIcon } from '@chakra-ui/icons';
 import {
   Box,
@@ -6,6 +6,7 @@ import {
   Center,
   Heading,
   HStack,
+  Spinner,
   VStack
 } from '@chakra-ui/react';
 import FoodModal from '../components/Modals/Food/Food';
@@ -14,9 +15,10 @@ import { useCart } from '../cart/CartProvider';
 import { useTranslation } from 'react-i18next';
 import CartItem from '../components/CartItem';
 import CustomAlertDialog from '../components/Modals/CustomAlertDialog';
-import { useMutation } from '@apollo/client';
+import CheckoutModal from '../components/Modals/Checkout';
+import { useQuery, useMutation } from '@apollo/client';
 import { deleteCartItemMutation } from '../graphql/mutations';
-import { userCartQuery } from '../graphql/queries';
+import { myAddresses, userCartQuery } from '../graphql/queries';
 
 const Cart = () => {
   const navigate = useNavigate();
@@ -30,7 +32,7 @@ const Cart = () => {
     name: ''
   });
 
-  //This is food modal - update - options.
+  //These are food modal - update - options.
   const [isFoodModalOpen, setFoodModalOpen] = useState(false);
   const [updateId, setUpdateId] = useState('');
   const [foodModalDetails, setFoodModalDetails] = useState({
@@ -40,6 +42,12 @@ const Cart = () => {
     }
   });
 
+  //These are checkout modal options.
+  const [isCheckoutModalOpen, setCheckoutModalOpen] = useState(false);
+  const { data: userAddresses, loading: loadingUserAddresses } = useQuery(myAddresses);
+  const [servedAddresses, setServedAddresses] = useState([]);
+  const [selectedAddress, setSelectedAddress] = useState({});
+
   //Get cart details and total from CartProvider.js
   const { details, cartTotal } = useCart();
 
@@ -48,6 +56,24 @@ const Cart = () => {
     refetchQueries: [userCartQuery]
   });
 
+  useEffect(() => {
+    if (details.restaurantDetails.id && userAddresses && userAddresses.myAddresses) {
+      try {
+        const userAddressDetails = localStorage.getItem('fooder.last.address');
+        if (userAddressDetails) {
+          const selectedAddress = JSON.parse(userAddressDetails);
+          setSelectedAddress(selectedAddress);
+          const restaurantDetails = details.restaurantDetails;
+          const city = restaurantDetails.city;
+          const county = restaurantDetails.county;
+          const servedDistricts = restaurantDetails.servedDistricts;
+          setServedAddresses(userAddresses.myAddresses.filter((a) => a.city === city && a.county === county && servedDistricts.includes(a.district)))
+        }
+      } catch (error) {
+        throw error;
+      }
+    }
+  }, [details, userAddresses]);
 
   const handleOnClick = (cartItem) => {
     setFoodModalDetails({ ...cartItem, details: { ...cartItem.item } });
@@ -80,37 +106,21 @@ const Cart = () => {
     return itemName;
   };
 
+  const isCheckoutDisabled = () => {
+    if (cartTotal < details.restaurantDetails.deliveryDetails.minAmount) {
+      return true;
+    }
+
+    return false;
+  };
+
+  if (loadingUserAddresses) {
+    <Center h="80vh">
+      <Spinner color="pink.400" />
+    </Center>
+  }
   return (
     <Box h="100%">
-      <FoodModal
-        isOpen={isFoodModalOpen}
-        onClose={() => {
-          setFoodModalOpen(false);
-          setFoodModalDetails({
-            details: {
-              itemDetails: {},
-              itemType: ''
-            }
-          });
-          setUpdateId('');
-        }}
-        restaurantDetails={details.restaurantDetails}
-        updateModal={true}
-        updateId={updateId}
-        {...foodModalDetails}
-      />
-      <CustomAlertDialog
-        isOpen={isAlertDialogOpen}
-        onClose={() => {
-          setAlertDialogOpen(false)
-        }}
-        isSubmitting={isDeleting}
-        confirmButtonColorScheme='red'
-        dialogBody={t('areYouSureWantToDeleteItemFromBasket')}
-        dialogHeader={t(deletedItemDetails.name)}
-        onConfirm={() => handleDelete({ id: deletedItemDetails.id })}
-        onConfirmText={t('delete')}
-      />
       <Button
         display={{ base: 'block', md: 'none' }}
         variant="link"
@@ -133,6 +143,44 @@ const Cart = () => {
           {
             details.restaurantDetails.id ? (
               <>
+                <CheckoutModal
+                  isOpen={isCheckoutModalOpen}
+                  cartTotal={cartTotal}
+                  onClose={() => setCheckoutModalOpen(false)}
+                  items={details.items}
+                  restaurantDetails={details.restaurantDetails}
+                  selectedAddress={selectedAddress}
+                  servedAddresses={servedAddresses}
+                />
+                <FoodModal
+                  isOpen={isFoodModalOpen}
+                  onClose={() => {
+                    setFoodModalOpen(false);
+                    setFoodModalDetails({
+                      details: {
+                        itemDetails: {},
+                        itemType: ''
+                      }
+                    });
+                    setUpdateId('');
+                  }}
+                  restaurantDetails={details.restaurantDetails}
+                  updateModal={true}
+                  updateId={updateId}
+                  {...foodModalDetails}
+                />
+                <CustomAlertDialog
+                  isOpen={isAlertDialogOpen}
+                  onClose={() => {
+                    setAlertDialogOpen(false)
+                  }}
+                  isSubmitting={isDeleting}
+                  confirmButtonColorScheme='red'
+                  dialogBody={t('areYouSureWantToDeleteItemFromBasket')}
+                  dialogHeader={t(deletedItemDetails.name)}
+                  onConfirm={() => handleDelete({ id: deletedItemDetails.id })}
+                  onConfirmText={t('delete')}
+                />
                 <HStack
                   position="relative"
                   borderBottom="1px"
@@ -151,12 +199,17 @@ const Cart = () => {
                     <Heading fontSize={['12px', '14px', '16px']} fontWeight="semibold">
                       {t('location')}: <span style={{ fontWeight: 'lighter' }}>{details.restaurantDetails.city}, {details.restaurantDetails.county}</span>
                     </Heading>
+                    <Heading fontSize={['12px', '14px', '16px']} fontWeight="semibold">
+                      {t('minAmount')}: <span style={{ fontWeight: 'lighter' }}>{`$${details.restaurantDetails.deliveryDetails.minAmount.toFixed(2)}`}</span>
+                    </Heading>
                   </VStack>
                   <Button
                     position="absolute"
                     right={2}
                     fontSize={['12px', '14px', '16px']}
                     colorScheme="teal"
+                    disabled={isCheckoutDisabled()}
+                    onClick={() => setCheckoutModalOpen(true)}
                   >
                     {`${t('checkout')}: $${cartTotal.toFixed(2)}`}
                   </Button>

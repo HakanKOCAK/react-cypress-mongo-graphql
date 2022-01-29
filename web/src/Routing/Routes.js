@@ -22,6 +22,7 @@ import Account from '../pages/Account/Account';
 import AccountWrapper from '../components/AccountWrapper';
 import Addresses from '../pages/Account/Addresses';
 import CreditCards from '../pages/Account/CreditCards';
+import Orders from '../pages/Account/Orders';
 import { Restaurant } from '../pages/Restaurant/Restaurant';
 import RestaurantLayout from '../pages/Restaurant/RestaurantLayout';
 
@@ -119,7 +120,14 @@ export default function AppRoutes() {
                                         </PrivateRoute>
                                     }
                                 />
-
+                                <Route
+                                    exact path='/account/orders'
+                                    element={
+                                        <PrivateRoute>
+                                            <AccountWrapper Children={Orders} />
+                                        </PrivateRoute>
+                                    }
+                                />
                                 <Route
                                     exact path='/cart'
                                     element={

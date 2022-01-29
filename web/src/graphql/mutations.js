@@ -157,3 +157,90 @@ mutation DeleteCartItem($itemId: String!) {
   deleteCartItem(itemId: $itemId)
 }
 `;
+
+export const orderMutation = gql`
+mutation Order($details: OrderInput!) {
+  order(details: $details) {
+    id
+    total
+    items {
+      id
+      drinkType
+      falafelPieces
+      item {
+        itemDetails {
+          falafelPieceDetails {
+            pieces
+            sizePriceConstant
+          }
+          includes
+          mealDetails {
+            includes
+            name
+            priceDetails {
+              price
+              sizePriceConstant
+            }
+          }
+          name
+          optionals
+          pizzaSizeDetails {
+            sizes
+            sizePriceConstant
+          }
+          price
+          sides
+          sizeDetails {
+            options
+            sizePriceConstant
+          }
+          types
+        }
+        itemType
+      }
+      optionals {
+        basil
+        greenPeppers
+        ham
+        ketchup
+        lettuce
+        mayonnaise
+        mushrooms
+        mustard
+        onions
+        pickles
+        redOnion
+        tomatoes
+        sweetCorn
+      }
+      pizzaSizeOption
+      price
+      quantity
+      selectedMealDetails {
+        mealPrice
+        name
+        size
+        totalPrice
+      }
+      sideSizeOption
+      sweetType
+      totalPrice
+    }
+    restaurantDetails {
+      city
+      county
+      name
+    }
+    creditCard
+    createdAt
+    deliveryAddress {
+      address
+      city
+      county
+      district
+      flat
+      floor
+    }
+  }
+}
+`;

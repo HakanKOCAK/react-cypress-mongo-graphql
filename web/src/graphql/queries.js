@@ -688,3 +688,62 @@ query Cart($userDistrict: String) {
   }
 }
 `;
+
+export const ordersQuery = gql`
+query Orders {
+  orders {
+    id
+    createdAt
+    creditCard
+    deliveryAddress {
+      address
+      city
+      county
+      district
+      flat
+      floor
+    }
+    items {
+      id
+      drinkType
+      falafelPieces
+      itemType
+      name
+      optionals {
+        basil
+        greenPeppers
+        ham
+        ketchup
+        lettuce
+        mayonnaise
+        mushrooms
+        mustard
+        onions
+        pickles
+        redOnion
+        tomatoes
+        sweetCorn
+      }
+      pizzaSizeOption
+      price
+      quantity
+      selectedMealDetails {
+        mealPrice
+        name
+        size
+        totalPrice
+      }
+      sideSizeOption
+      sweetType
+      totalPrice
+    }
+    paymentMethod
+    restaurantDetails {
+      city
+      county
+      name
+    }
+    total
+  }
+}
+`;
