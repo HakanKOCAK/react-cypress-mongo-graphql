@@ -264,6 +264,7 @@ const Checkout = ({
               colorScheme="teal"
               isLoading={ordering || emptyingCart}
               onClick={handleCheckout}
+              data-cy="modal-checkout-btn"
               disabled={isCheckoutDisabled()}
             >
               {t('checkout')}: {`$${cartTotal.toFixed(2)}`}

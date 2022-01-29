@@ -209,6 +209,7 @@ const Cart = () => {
                     fontSize={['12px', '14px', '16px']}
                     colorScheme="teal"
                     disabled={isCheckoutDisabled()}
+                    data-cy="cart-checkout-btn"
                     onClick={() => setCheckoutModalOpen(true)}
                   >
                     {`${t('checkout')}: $${cartTotal.toFixed(2)}`}

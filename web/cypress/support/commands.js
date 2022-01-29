@@ -121,6 +121,79 @@ const defaults = {
         totalPrice: 8,
         __typename: "CartItem",
       }]
+    },
+    pizza: {
+      id: 'cartIdPizza',
+      cartTotal: 27,
+      items: [{
+        drinkType: null,
+        falafelPieces: null,
+        id: '0',
+        item: {
+          itemDetails: {
+            falafelPieceDetails: null,
+            includes: ['mozzarella', 'mushrooms', 'greenPeppers', 'sweetCorn'],
+            mealDetails: [
+              {
+                includes: ['drink', 'fries'],
+                name: 'meal0',
+                priceDetails: {
+                  price: 3.5,
+                  sizePriceConstant: 2,
+                  __typename: 'MealPriceDetails'
+                },
+                __typename: 'CartMealDetails'
+              }
+            ],
+            name: 'vegetarian',
+            optionals: ['mushrooms', 'greenPeppers', 'sweetCorn'],
+            pizzaSizeDetails: {
+              sizePriceConstant: 5.5,
+              sizes: ['small', 'medium', 'large'],
+              __typename: 'PizzaSizeDetails'
+            },
+            price: 9,
+            sides: null,
+            sizeDetails: null,
+            types: null,
+            __typename: 'ItemDetails'
+          },
+          itemType: 'pizza',
+          __typename: 'Item'
+        },
+        itemType: null,
+        name: null,
+        optionals: {
+          basil: null,
+          greenPeppers: true,
+          ham: null,
+          ketchup: null,
+          lettuce: null,
+          mayonnaise: null,
+          mushrooms: true,
+          mustard: null,
+          onions: null,
+          pickles: null,
+          redOnion: null,
+          sweetCorn: true,
+          tomatoes: null,
+          __typename: 'Optionals'
+        },
+        pizzaSizeOption: 'small',
+        price: null,
+        quantity: 1,
+        selectedMealDetails: {
+          mealPrice: 0,
+          name: "",
+          size: "",
+          totalPrice: 0,
+          '__typename': "SelectedMealDetails",
+        },
+        sideSizeOption: null,
+        sweetType: null,
+        totalPrice: 27,
+        __typename: "CartItem",
+      }]
     }
   },
   creditCards: [
@@ -370,6 +443,56 @@ const defaults = {
       name: 'Hamburger Test Restaurant',
       servedDistricts: ['Arnavutkoy', 'Bebek', 'Konaklar', 'Kultur']
     }
+  ],
+  orders: [
+    {
+      createdAt: '2022-01-28T08:34:20.083Z',
+      creditCard: '************1111',
+      deliveryAddress: {
+        address: 'Home adress',
+        city: 'Istanbul',
+        county: 'Besiktas',
+        district: 'Bebek',
+        flat: 2,
+        floor: 3,
+        title: 'home',
+        '__typename': 'Address'
+      },
+      id: '0',
+      items: [
+        {
+          drinkType: null,
+          falafelPieces: null,
+          id: '0',
+          itemType: 'hamburger',
+          name: 'hamburger',
+          optionals: null,
+          pizzaSizeOption: null,
+          price: null,
+          quantity: 3,
+          selectedMealDetails: {
+            mealPrice: null,
+            name: null,
+            size: null,
+            totalPrice: null,
+            __typename: 'SelectedMealDetails'
+          },
+          sideSizeOption: null,
+          sweetType: null,
+          totalPrice: 24,
+          __typename: 'CartItem'
+        }
+      ],
+      paymentMethod: 'online',
+      restaurantDetails: {
+        city: 'Istanbul',
+        county: 'Besiktas',
+        name: 'Hamburger Test Restaurant',
+        __typename: 'Restaurant'
+      },
+      total: 24,
+      __typename: 'Order'
+    }
   ]
 };
 
@@ -478,6 +601,20 @@ Cypress.Commands.add(
           res.body.data.cart = cart;
           res.body.errors = undefined
         })
+      } else if (req.body.operationName === 'Orders' && type === 'myOrders') {
+        req.reply((res) => {
+          let orders = [];
+          // Will be updated
+          if (!opts.isEmpty) {
+            orders = defaults.orders
+          }
+
+          if (opts.added) {
+            orders = [opts.added];
+          }
+          res.body.data.orders = orders;
+          res.body.errors = undefined
+        })
       }
     })
   }
@@ -559,6 +696,14 @@ Cypress.Commands.add(
           res.body.data.updateCartItem = {
             ...variables,
             '__typename': 'CartItem'
+          };
+          res.body.errors = undefined
+        })
+      } else if (req.body.operationName === 'Order' && type === 'order') {
+        req.reply((res) => {
+          res.body.data.order = {
+            id: 'newOrderId',
+            ...variables
           };
           res.body.errors = undefined
         })
