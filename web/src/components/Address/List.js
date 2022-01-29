@@ -20,7 +20,8 @@ const Addresses = ({
   addresses,
   setSelectedAddress,
   selectedAddress,
-  addressContainerCursor
+  addressContainerCursor,
+  actionDisabled
 }) => {
   const { t } = useTranslation();
 
@@ -90,13 +91,15 @@ const Addresses = ({
         cursor={addressContainerCursor && 'pointer'}
         icon={`/${item.title}.png`}
         details={item}
-        actionIcon={<DeleteIcon />}
-        actionIconOnClick={() => {
-          //Opens the delete dialog
-          setDeleteDialogItemId(item.id);
-          setDeleteDialogBody(`${t('areYouSureWantToDelete')}: ${item.address}?`);
-          setDeleteDialogOpen(true);
-        }}
+        {...(!actionDisabled ? {
+          actionIcon: <DeleteIcon />,
+          actionIconOnClick: () => {
+            //Opens the delete dialog
+            setDeleteDialogItemId(item.id);
+            setDeleteDialogBody(`${t('areYouSureWantToDelete')}: ${item.address}?`);
+            setDeleteDialogOpen(true);
+          }
+        } : {})}
       />
     ));
   }
@@ -144,6 +147,7 @@ const Addresses = ({
 }
 
 Addresses.propTypes = {
+  actionDisabled: PropTypes.bool,
   addresses: PropTypes.array.isRequired,
   isCheckout: PropTypes.bool,
   addressContainerCursor: PropTypes.string,

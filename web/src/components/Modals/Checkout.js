@@ -193,6 +193,7 @@ const Checkout = ({
                 setAddressModalOpen(false);
               }}
               selectedId={modalSelectedAddress.id}
+              actionDisabled={true}
             />
             <CreditCardListModal
               cursor="pointer"
