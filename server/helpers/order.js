@@ -3,6 +3,44 @@ import CreditCard from "../models/CreditCard.js";
 import Restaurant from "../models/Restaurant.js";
 import Address from "../models/Address.js";
 
+//Create an order for test user
+export const createTestOrders = async (userId = '') => {
+  try {
+    const order = new Order({
+      creditCard: '1111111111111111',
+      deliveryAddress: {
+        address: 'Home adress',
+        city: 'Istanbul',
+        county: 'Besiktas',
+        district: 'Bebek',
+        flat: 2,
+        floor: 3,
+        title: 'home'
+      },
+      items: [
+        {
+          itemType: 'hamburger',
+          name: 'hamburger',
+          quantity: 3,
+          totalPrice: 24,
+        }
+      ],
+      paymentMethod: 'online',
+      restaurantDetails: {
+        city: 'Istanbul',
+        county: 'Besiktas',
+        name: 'Hamburger Test Restaurant'
+      },
+      total: 24,
+      user: userId
+    });
+
+    await order.save();
+  } catch (error) {
+    throw error;
+  }
+};
+
 //Gets user orders
 export const getUserOrders = async ({ userId = '' }) => {
   try {

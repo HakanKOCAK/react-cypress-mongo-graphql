@@ -10,13 +10,22 @@ import schema from "./graphql/schemas/index.js"
 import refreshToken from "./refreshToken.js";
 
 //To create default restaurants
-import { createDefaultRestaurants } from "./helpers/restaurant.js";
+import { createDefaultRestaurants, createTestRestaurants } from "./helpers/restaurant.js";
+//To create test user
+import { createTestUser } from "./helpers/user.js";
 
 (async () => {
     try {
         await connectDB();
         console.log("MongoDb connected");
-        await createDefaultRestaurants();
+
+        //Check if env is test -> create a test user
+        if (process.env.NODE_ENV === 'test') {
+            await createTestUser();
+            await createTestRestaurants();
+        } else {
+            await createDefaultRestaurants();
+        }
     } catch (error) {
         console.log(error);
         return;

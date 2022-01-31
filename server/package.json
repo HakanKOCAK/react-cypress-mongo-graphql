@@ -5,7 +5,8 @@
   "type": "module",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "win-test": "set NODE_ENV=test&& node server.js",
+    "unix-test": "NODE_ENV=test node server.js",
     "dev": "nodemon server.js"
   },
   "author": "Hakan KOCAK",

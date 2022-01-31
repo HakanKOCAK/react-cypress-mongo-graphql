@@ -38,6 +38,185 @@ const createMenus = async ({ rests = [] }) => {
     throw error;
   }
 }
+
+//Create restaurants for testing purposes
+export const createTestRestaurants = async () => {
+  try {
+    const dbRestaurants = await Restaurant.find({});
+
+    if (dbRestaurants.length === 0) {
+      const r1 = new Restaurant({
+        city: 'Istanbul',
+        county: "Besiktas",
+        cuisine: ['Pizza'],
+        deliveryDetails: {
+          Bebek: {
+            minAmount: 15,
+            estimatedDeliveryTime: 45
+          }
+        },
+        image: 'pizza.svg',
+        name: 'Pizza Test Restaurant',
+        servedDistricts: ['Bebek']
+      });
+
+      const menu1 = new Menu({
+        drinks: {
+          coke: { price: 3, types: ['zero'] },
+          fruitJuice: { price: 3, types: ['cherry'] }
+        },
+        pizzaSizeDetails: {
+          sizePriceConstant: 6.5,
+          sizes: ['small', 'medium', 'large']
+        },
+        pizzas: {
+          hawaiian: {
+            includes: ['mozzarella', 'pineapple', 'ham'],
+            optionals: ['ham'],
+            price: 11
+          },
+          margherita: {
+            includes: ['mozzarella', 'tomatoes', 'basil'],
+            optionals: ['tomatoes', 'basil'],
+            price: 10
+          }
+        },
+        sauces: {
+          ketchup: 0.7,
+          buffalo: 0.7,
+          honeyMustard: 0.7,
+          mayonnaise: 0.7,
+          ranch: 0.7,
+          sweetNSour: 0.7
+        },
+        sides: {
+          chickenFries: {
+            price: 7,
+            sizeDetails: {
+              options: ['4pcs', '6pcs', '8pcs'],
+              sizePriceConstant: 3
+            }
+          },
+          fries: {
+            price: 5,
+            sizeDetails: {
+              options: ['small', 'medium', 'large'],
+              sizePriceConstant: 3
+            }
+          },
+          mozzarellaSticks: {
+            price: 6,
+            sizeDetails: {
+              options: ['4pcs', '6pcs', '8pcs'],
+              sizePriceConstant: 3
+            }
+          },
+          nuggets: {
+            price: 7,
+            sizeDetails: {
+              options: ['4pcs', '6pcs', '8pcs'],
+              sizePriceConstant: 3
+            }
+          }
+        },
+        restaurant: r1._id
+      });
+
+      const r2 = new Restaurant({
+        city: 'Istanbul',
+        county: "Besiktas",
+        cuisine: ['Hamburger'],
+        deliveryDetails: {
+          Bebek: {
+            minAmount: 20,
+            estimatedDeliveryTime: 40
+          }
+        },
+        image: 'burger.svg',
+        name: 'Hamburger Test Restaurant',
+        servedDistricts: ['Bebek']
+      });
+
+      const menu2 = new Menu({
+        drinks: {
+          fruitJuice: { price: 3, types: ['cherry', 'orange', 'peach'] },
+          iceTea: { price: 3, types: ['lemon', 'peach'] },
+          sprite: { price: 3, types: ['light', 'normal'] }
+        },
+        hamburgers: {
+          hamburger: {
+            price: 8,
+            includes: ['beef', 'pickles', 'ketchup', 'mustard'],
+            optionals: ['pickles', 'ketchup', 'mustard']
+          },
+          quarterPounder: {
+            price: 10,
+            includes: ['beef', 'cheddarCheese', 'pickles', 'onions', 'ketchup', 'mustard'],
+            optionals: ['pickles', 'onions', 'ketchup', 'mustard']
+          }
+        },
+        mealDetails: {
+          hamburger: [
+            {
+              includes: ['drink', 'fries'],
+              name: 'Meal0',
+              priceDetails: {
+                price: 4.5,
+                sizePriceConstant: 4
+              }
+            }
+          ]
+        },
+        sauces: {
+          bbq: 0.7,
+          buffalo: 0.7,
+          honeyMustard: 0.7,
+          ketchup: 0.7,
+          mayonnaise: 0.7,
+          mustard: 0.7,
+          ranch: 0.7,
+          sweetNSour: 0.7,
+          tartar: 0.7
+        },
+        sides: {
+          chickenFries: {
+            price: 7,
+            sizeDetails: {
+              options: ['4pcs', '6pcs', '8pcs'],
+              sizePriceConstant: 3
+            }
+          },
+          fries: {
+            price: 5,
+            sizeDetails: {
+              options: ['small', 'medium', 'large'],
+              sizePriceConstant: 3
+            }
+          },
+          onionRings: {
+            price: 6,
+            sizeDetails: {
+              options: ['4pcs', '6pcs', '8pcs'],
+              sizePriceConstant: 3
+            }
+          }
+        },
+        restaurant: r2._id
+      });
+
+      await r1.save();
+      await r2.save();
+      await menu1.save();
+      await menu2.save();
+
+      console.log('Test restaurants and menus created');
+    };
+
+  } catch (error) {
+    throw error;
+  }
+};
+
 export const createDefaultRestaurants = async () => {
   try {
     const dbRestaurants = await Restaurant.find({});
