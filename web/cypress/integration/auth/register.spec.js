@@ -1,9 +1,17 @@
 /// <reference types="cypress" />
 
 describe('Register tests', () => {
-  beforeEach(() => {
+  before(() => {
     //Go to register
     cy.visit('/register');
+  });
+
+  beforeEach(() => {
+    cy.get('[data-cy="name-input"]').clear();
+    cy.get('[data-cy="surname-input"]').clear();
+    cy.get('[data-cy="email-input"]').clear();
+    cy.get('[data-cy="password-input"]').clear();
+    cy.get('[data-cy="confirm-password-input"]').clear();
   });
 
   it('should display required message when name input is empty', () => {
@@ -65,41 +73,25 @@ describe('Register tests', () => {
 
   it('should navigate to login page when login link clicked', () => {
     cy.get('[href="/login"]').click();
-    cy.contains('h2', 'Login').should('be.visible')
+    cy.contains('h2', 'Login').should('be.visible');
+    cy.get('[href="/register"]').click();
   });
 
   it('should display email in use when try to register with same email address', () => {
-    //Mock request
-    cy.intercept('POST', 'http://localhost:4000/graphql', {
-      body: { data: { register: null }, errors: [{ message: 'emailInUse' }] }
-    }).as('gqlRegisterMutation');
-
     cy.get('[data-cy="name-input"]').type('Hakan');
     cy.get('[data-cy="surname-input"]').type('Kocak');
-    cy.get('[data-cy="email-input"]').type('random@mail.com');
+    cy.get('[data-cy="email-input"]').type('testaccount@test.com');
     cy.get('[data-cy="password-input"]').type('123456');
     cy.get('[data-cy="confirm-password-input"]').type('123456');
     cy.get('[data-cy="register-button"]').click('');
-
-    cy.wait('@gqlRegisterMutation');
     cy.contains('Email already in use').should('be.visible');
-
   });
 
   it('should redirect to restaurants page when register is successful', () => {
-    const variables = {
-      id: 'randomId',
-      name: 'Hakan',
-      surname: 'Kocak',
-      email: 'random@mail.com',
-      accessToken: 'accessToken'
-    }
-    //Mock request
-    cy.gqlMutation({ type: 'register', variables });
-    cy.gqlQuery({ type: 'myAddresses', opts: { isEmpty: false } });
+    const email = Date.now().toString()
     cy.get('[data-cy="name-input"]').type('Hakan');
     cy.get('[data-cy="surname-input"]').type('Hakan');
-    cy.get('[data-cy="email-input"]').type('random@mail.com');
+    cy.get('[data-cy="email-input"]').type(`${email}@mail.com`);
     cy.get('[data-cy="password-input"]').type('123456');
     cy.get('[data-cy="confirm-password-input"]').type('123456');
     cy.get('[data-cy="register-button"]').click('');

@@ -19,6 +19,7 @@ const Address = ({
   containerStyle,
   details,
   icon,
+  index,
   onClick,
   cursor
 }) => {
@@ -56,7 +57,7 @@ const Address = ({
         rounded="3xl"
         bg="gray.100"
         w="620px"
-        data-cy={`address${details.id}`}
+        data-cy={`address-${index}`}
         {...containerStyle}
       >
         <HStack
@@ -121,7 +122,7 @@ const Address = ({
             justifyContent="center"
             onClick={actionIconOnClick}
             cursor="pointer"
-            data-cy={`delete-btn${details.id}`}
+            data-cy={`delete-btn-${details.address.split(' ').join('-')}`}
           >
             {actionIcon}
           </HStack>
@@ -147,6 +148,7 @@ Address.propTypes = {
     title: PropTypes.string
   }),
   icon: PropTypes.string,
+  index: PropTypes.number,
   onClick: PropTypes.func
 };
 

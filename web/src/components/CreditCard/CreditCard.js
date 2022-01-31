@@ -64,7 +64,7 @@ const CreditCard = ({
           justifyContent="center"
           onClick={actionIconOnClick}
           cursor="pointer"
-          data-cy={`delete-card-${details.id}-btn`}
+          data-cy={`delete-card-${details.description.split(' ').join('-')}-btn`}
         >
           {actionIcon}
         </HStack>

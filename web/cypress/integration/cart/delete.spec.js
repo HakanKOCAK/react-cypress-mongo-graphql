@@ -1,27 +1,23 @@
 /// <reference types="cypress" />
 
 describe('Delete Cart Item', () => {
-  beforeEach(() => {
-    //Assume there is an authenticated user
-    cy.refreshToken();
-    cy.gqlQuery({ type: 'me' });
+  before(() => {
+    //Login user
+    cy.visit('/login');
+    cy.get('[data-cy="email-input"]').type('testaccount@test.com');
+    cy.get('[data-cy="password-input"]').type('123456');
+    cy.get('[data-cy="login-button"]').click();
 
-    localStorage.setItem('fooder.last.address', JSON.stringify({
-      id: '0',
-      address: 'Home adress',
-      city: 'Istanbul',
-      county: 'Besiktas',
-      district: 'Bebek',
-      flat: 2,
-      floor: 3,
-      title: 'home'
-    }));
-    cy.gqlQuery({ type: 'myAddresses', opts: { isEmpty: false } });
-    cy.gqlQuery({ type: 'restaurants', opts: { isEmpty: false } });
-    cy.gqlQuery({ type: 'cart', opts: { isEmpty: false, type: 'hamburger' } });
+    //Set address
+    cy.contains('Please select an address').click();
+    cy.contains('Home address').click();
 
-    //Go to cart
-    cy.visit('/cart');
+    //Go to restaurant page
+    cy.contains('Hamburger Test Restaurant').click();
+    cy.get('[data-cy="menu-item-hamburger"]').click();
+    cy.get('[data-cy="food-modal-add-to-cart-button"]').click();
+    cy.wait(1000);
+    cy.get('[data-cy="navbar-cart-button"]').click();
   });
 
   it('should close delete dialog when close button clicked', () => {
@@ -31,10 +27,8 @@ describe('Delete Cart Item', () => {
   });
 
   it('should delete cart item when delete button clicked', () => {
-    cy.gqlMutation({ type: 'deleteCartItem', variables: { id: '0' } })
     cy.get('[data-cy="cart-item-hamburger-delete-button"]').click();
     cy.get('[data-cy="dialog-confirm-btn"]').click()
-    cy.gqlQuery({ type: 'cart', opts: { isEmpty: true } });
     cy.contains('There are no items in the cart.').should('be.visible');
   });
 });

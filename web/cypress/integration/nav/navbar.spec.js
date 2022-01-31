@@ -2,21 +2,6 @@
 
 describe('Navbar Tests', () => {
   context('Tests without authenticated user', () => {
-    beforeEach(() => {
-      cy.intercept('http://localhost:4000/graphql', {
-        body: { accessToken: '' }
-      }).as('refreshToken');
-
-      cy.intercept('POST', 'http://localhost:4000/graphql', (req) => {
-        if (req.body.operationName === 'Me') {
-          req.reply((res) => {
-            res.body.errors = null;
-            res.body.data.me = null;
-          });
-        }
-      });
-    });
-
     it('navbar should display login and register button when there is not an authenticated user', () => {
       cy.visit('/restaurants');
       cy.get('[data-cy="navbar-login-btn"]').should('be.visible');
@@ -45,12 +30,12 @@ describe('Navbar Tests', () => {
   });
 
   context('Tests with authenticated user', () => {
-    beforeEach(() => {
-      cy.visit('/restaurants');
-      cy.refreshToken();
-      cy.gqlQuery({ type: 'me' });
-      cy.gqlQuery({ type: 'myAddresses', opts: { isEmpty: true } });
-      cy.gqlQuery({ type: 'cart', opts: { isEmpty: true } });
+    before(() => {
+      //Login user
+      cy.visit('/login');
+      cy.get('[data-cy="email-input"]').type('testaccount@test.com');
+      cy.get('[data-cy="password-input"]').type('123456');
+      cy.get('[data-cy="login-button"]').click();
     });
 
     it('navbar should contain button after with auth user\'s name when there is an authenticated user', () => {
@@ -69,42 +54,29 @@ describe('Navbar Tests', () => {
     });
 
     it('should navigate to /account when account element clicked ', () => {
-      cy.get('[data-cy="navbar-user-btn"]').click();
-      cy.contains('Account').click();
+      cy.get('[data-cy="navbar-go-to-account-btn"]').click();
       cy.url().should('contain', '/account');
     });
 
     it('<- Restaurants button should be visible when user is not at restaurants page', () => {
-      cy.get('[data-cy="navbar-user-btn"]').click();
-      cy.contains('Account').click();
-      cy.get('[data-cy="navbar-go-back-to-restaurants-btn"]').should('be.visible')
+      cy.get('[data-cy="navbar-go-back-to-restaurants-btn"]').should('be.visible');
     });
 
     it('should navigate to restaurants page when fooder clicked', () => {
-      cy.get('[data-cy="navbar-user-btn"]').click();
-      cy.contains('Account').click();
       cy.get('[data-cy="navbar-fooder-container"]').children().click();
       cy.url().should('contain', '/restaurants');
     });
 
     it('should navigate to restaurants page when <- Restaurants button clicked', () => {
       cy.get('[data-cy="navbar-user-btn"]').click();
-      cy.contains('Account').click();
+      cy.get('[data-cy="navbar-go-to-account-btn"]').click();
       cy.get('[data-cy="navbar-go-back-to-restaurants-btn"]').click();
       cy.url().should('contain', '/restaurants');
     });
 
     it('should logout user navigate to login page logout clicked', () => {
-      cy.intercept('POST', 'http://localhost:4000/graphql', (req) => {
-        if (req.body.operationName === 'Logout') {
-          req.reply((res) => {
-            res.body.errors = null;
-            res.body.data.logout = true;
-          })
-        }
-      })
       cy.get('[data-cy="navbar-user-btn"]').click();
-      cy.contains('Logout').click();
+      cy.get('[data-cy="navbar-logout-btn"]').click();
       cy.url().should('contain', '/login');
     });
   });

@@ -1,127 +1,56 @@
 /// <reference types="cypress" />
 
 describe('Address List', () => {
-  beforeEach(() => {
+  before(() => {
     //Go to restaurants
     cy.visit('/restaurants');
-  })
+  });
 
   it('should redirect to /login when authenticated user is not exists', () => {
-    //Assume there is no authenticated user
-    cy.intercept('http://localhost:4000/refresh_token', {
-      body: { accessToken: '' }
-    }).as('refreshToken');
-
-    cy.intercept('POST', 'http://localhost:4000/graphql', {
-      body: {
-        data: {
-          me: null
-        }
-      }
-    }).as('gqlMeQuery');
-
     cy.url().should('include', '/login')
-  })
+  });
 
-  it('should display please select an address when there is an authenticated user', () => {
-    //Assume there is an authenticated user
-    cy.refreshToken();
-    cy.gqlQuery({ type: 'me' });
+  context('Authenticated User', () => {
+    before(() => {
+      //Login user
+      cy.visit('/login');
+      cy.get('[data-cy="email-input"]').type('testaccount@test.com');
+      cy.get('[data-cy="password-input"]').type('123456');
+      cy.get('[data-cy="login-button"]').click();
+    });
 
-    cy.gqlQuery({ type: 'myAddresses', opts: { isEmpty: true } })
-    cy.gqlQuery({ type: 'cart', opts: { isEmpty: true } });
+    it('should display please select an address when there is an authenticated user', () => {
+      cy.contains('Please select an address').should('be.visible')
+    });
 
-    cy.contains('Please select an address').should('be.visible')
-  })
+    it('should open address list when please select an address clicked', () => {
+      cy.contains('Please select an address').click();
+      cy.contains('My Addresses').should('be.visible');
+    });
 
-  it('should display address details when there is pre saved address on localStorage', () => {
-    localStorage.setItem('fooder.last.address', JSON.stringify({
-      id: '0',
-      address: 'Home adress',
-      city: 'Istanbul',
-      county: 'Besiktas',
-      district: 'Bebek',
-      flat: 2,
-      floor: 3,
-      title: 'home'
-    }));
-    //Assume there is an authenticated user
-    cy.refreshToken();
-    cy.gqlQuery({ type: 'me' });
+    it('should close address list when close button clicked', () => {
+      cy.get('[data-cy="address-list-close-btn"]').click()
+      cy.contains('Please select an address').should('be.visible')
+    });
+
+    it('should change background to teal to inform user that address is selected when clicked on an address', () => {
+      cy.contains('Please select an address').click();
+      cy.contains('Home address').click();
+      cy.contains('Home address').click();
+      cy.get('[data-cy="address-1"]').should('have.css', 'background-color', 'rgb(56, 178, 172)');
+    });
+
+    it('should open new address modal when add an address clicked', () => {
+      cy.contains('Add an address').click();
+      cy.contains('New Address').should('be.visible');
+    });
+
+    it('should open delete modal when delete button of an address clicked', () => {
+      cy.contains('Close').click();
+      cy.get('[data-cy="delete-btn-Other-address"]').click();
+      cy.contains('Delete Address').should('be.visible');
+    });
+  });
 
 
-    cy.gqlQuery({ type: 'myAddresses', opts: { isEmpty: false } });
-    cy.gqlQuery({ type: 'cart', opts: { isEmpty: true } });
-
-    cy.contains('HOME').should('be.visible');
-  })
-
-  it('should open address list when please select an address clicked', () => {
-    //Assume there is an authenticated user
-    cy.refreshToken()
-    cy.gqlQuery({ type: 'me' });
-
-    cy.gqlQuery({ type: 'myAddresses', opts: { isEmpty: false } });
-    cy.gqlQuery({ type: 'cart', opts: { isEmpty: true } });
-    cy.gqlQuery({ type: 'cities' });
-
-    cy.contains('Please select an address').click();
-    cy.contains('My Addresses').should('be.visible');
-  })
-
-  it('should close address list when close button clicked', () => {
-    //Assume there is an authenticated user
-    cy.refreshToken()
-    cy.gqlQuery({ type: 'me' });
-
-    cy.gqlQuery({ type: 'myAddresses', opts: { isEmpty: false } });
-    cy.gqlQuery({ type: 'cart', opts: { isEmpty: true } });
-    cy.gqlQuery({ type: 'cities' });
-
-    cy.contains('Please select an address').click()
-    cy.get('[data-cy="address-list-close-btn"]').click()
-    cy.contains('Please select an address').should('be.visible')
-  })
-
-  it('should change background to teal to inform user that address is selected when clicked on an address', () => {
-    //Assume there is an authenticated user
-    cy.refreshToken()
-    cy.gqlQuery({ type: 'me' });
-
-    cy.gqlQuery({ type: 'myAddresses', opts: { isEmpty: false } });
-    cy.gqlQuery({ type: 'cart', opts: { isEmpty: true } });
-    cy.gqlMutation({ type: 'emptyCart' });
-    cy.gqlQuery({ type: 'cities' });
-
-    cy.contains('Please select an address').click()
-    cy.get('[data-cy="address1"]').click().should('have.css', 'background-color', 'rgb(56, 178, 172)')
-  })
-
-  it('should open new address modal when add an address clicked', () => {
-    //Assume there is an authenticated user
-    cy.refreshToken()
-    cy.gqlQuery({ type: 'me' });
-
-    cy.gqlQuery({ type: 'myAddresses', opts: { isEmpty: false } });
-    cy.gqlQuery({ type: 'cart', opts: { isEmpty: true } });
-    cy.gqlQuery({ type: 'cities' });
-
-    cy.contains('Please select an address').click()
-    cy.contains('Add an address').click()
-    cy.contains('New Address').should('be.visible')
-  })
-
-  it('should open delete modal when delete button of an address clicked', () => {
-    //Assume there is an authenticated user
-    cy.refreshToken()
-    cy.gqlQuery({ type: 'me' });
-
-    cy.gqlQuery({ type: 'myAddresses', opts: { isEmpty: false } });
-    cy.gqlQuery({ type: 'cart', opts: { isEmpty: true } });
-    cy.gqlQuery({ type: 'cities' });
-
-    cy.contains('Please select an address').click()
-    cy.get('[data-cy="delete-btn1"]').click()
-    cy.contains('Delete Address').should('be.visible')
-  })
 })

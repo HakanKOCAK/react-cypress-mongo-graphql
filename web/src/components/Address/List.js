@@ -63,9 +63,10 @@ const Addresses = ({
       );
     }
 
-    return addresses.map((item) => (
+    return addresses.map((item, index) => (
       <Address
         key={item.id}
+        index={index}
         onClick={async () => {
           if (isCheckout && setSelectedAddress) {
             return setSelectedAddress(item)

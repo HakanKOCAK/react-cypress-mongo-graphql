@@ -58,6 +58,7 @@ const Nav = () => {
                 _hover={{ textStyle: 'none' }}
                 colorScheme="pink"
                 p={1.5}
+                data-cy="navbar-cart-button"
                 fontSize={['10px', 'sm']}
                 onClick={() => navigate('/cart')}
               >
