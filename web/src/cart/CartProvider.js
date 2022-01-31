@@ -12,6 +12,7 @@ import { userCartQuery } from '../graphql/queries';
 import { isEmpty } from 'lodash';
 import prettifyRestaurantMenu from '../utils/restaurantMenuPrettifier';
 import prettifyCart from '../utils/cartPrettifier';
+import { useAddress } from '../AddressProvider';
 
 //Custom cart context
 const CartContext = createContext({
@@ -42,11 +43,11 @@ const CartProvider = ({ children }) => {
   const { t } = useTranslation();
 
   //Get saved user address details.
-  const userAddressDetails = localStorage.getItem('fooder.last.address');
+  const { details: userAddressDetails } = useAddress();
   const { data, loading, error } = useQuery(userCartQuery, {
-    skip: !userAddressDetails, // skip fetching cart details if an adress is not set.
+    skip: !userAddressDetails.id, // skip fetching cart details if an adress is not set.
     variables: {
-      userDistrict: userAddressDetails ? JSON.parse(userAddressDetails).district : ''
+      userDistrict: userAddressDetails.district
     }
   });
 

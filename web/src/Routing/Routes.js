@@ -28,6 +28,7 @@ import RestaurantLayout from '../pages/Restaurant/RestaurantLayout';
 
 import Cart from '../pages/Cart';
 import CartProvider from '../cart/CartProvider';
+import AddressProvider from '../AddressProvider';
 
 export default function AppRoutes() {
     const [height, setHeight] = useState(window.innerHeight);
@@ -45,100 +46,102 @@ export default function AppRoutes() {
         <Box h={`${height}px`}>
             <BrowserRouter>
                 <AuthProvider>
-                    <CartProvider>
-                        <Nav />
-                        <Box h={`${parseInt(height) - 69}px`} w="100%" p={5} overflowY>
-                            <Routes>
-                                <Route exact path="/" element={<Navigate replace to="/restaurants" />} />
-                                <Route
-                                    exact path='/login'
-                                    element={
-                                        <PublicRoute>
-                                            <AuthWrapper>
-                                                <Login />
-                                            </AuthWrapper>
-                                        </PublicRoute>
-                                    }
-                                />
-                                <Route
-                                    exact path='/register'
-                                    element={
-                                        <PublicRoute>
-                                            <AuthWrapper>
-                                                <Register />
-                                            </AuthWrapper>
-                                        </PublicRoute>
-                                    }
-                                />
-                                <Route
-                                    exact path='/restaurants'
-                                    element={
-                                        <PrivateRoute>
-                                            <RestaurantLayout />
-                                        </PrivateRoute>
-                                    }
-                                >
+                    <AddressProvider>
+                        <CartProvider>
+                            <Nav />
+                            <Box h={`${parseInt(height) - 69}px`} w="100%" p={5} overflowY>
+                                <Routes>
+                                    <Route exact path="/" element={<Navigate replace to="/restaurants" />} />
                                     <Route
-                                        path="/restaurants/:restaurantId"
+                                        exact path='/login'
                                         element={
-                                            <PrivateRoute>
-                                                <Restaurant />
-                                            </PrivateRoute>
+                                            <PublicRoute>
+                                                <AuthWrapper>
+                                                    <Login />
+                                                </AuthWrapper>
+                                            </PublicRoute>
                                         }
                                     />
                                     <Route
-                                        index
+                                        exact path='/register'
                                         element={
-                                            <PrivateRoute>
-                                                <Restaurants />
-                                            </PrivateRoute>
+                                            <PublicRoute>
+                                                <AuthWrapper>
+                                                    <Register />
+                                                </AuthWrapper>
+                                            </PublicRoute>
                                         }
                                     />
-                                </Route>
+                                    <Route
+                                        exact path='/restaurants'
+                                        element={
+                                            <PrivateRoute>
+                                                <RestaurantLayout />
+                                            </PrivateRoute>
+                                        }
+                                    >
+                                        <Route
+                                            path="/restaurants/:restaurantId"
+                                            element={
+                                                <PrivateRoute>
+                                                    <Restaurant />
+                                                </PrivateRoute>
+                                            }
+                                        />
+                                        <Route
+                                            index
+                                            element={
+                                                <PrivateRoute>
+                                                    <Restaurants />
+                                                </PrivateRoute>
+                                            }
+                                        />
+                                    </Route>
 
-                                <Route
-                                    exact path='/account'
-                                    element={
-                                        <PrivateRoute>
-                                            <AccountWrapper Children={Account} />
-                                        </PrivateRoute>
-                                    }
-                                />
-                                <Route
-                                    exact path='/account/addresses'
-                                    element={
-                                        <PrivateRoute>
-                                            <AccountWrapper Children={Addresses} />
-                                        </PrivateRoute>
-                                    }
-                                />
-                                <Route
-                                    exact path='/account/credit-cards'
-                                    element={
-                                        <PrivateRoute>
-                                            <AccountWrapper Children={CreditCards} />
-                                        </PrivateRoute>
-                                    }
-                                />
-                                <Route
-                                    exact path='/account/orders'
-                                    element={
-                                        <PrivateRoute>
-                                            <AccountWrapper Children={Orders} />
-                                        </PrivateRoute>
-                                    }
-                                />
-                                <Route
-                                    exact path='/cart'
-                                    element={
-                                        <PrivateRoute>
-                                            <Cart />
-                                        </PrivateRoute>
-                                    }
-                                />
-                            </Routes>
-                        </Box>
-                    </CartProvider>
+                                    <Route
+                                        exact path='/account'
+                                        element={
+                                            <PrivateRoute>
+                                                <AccountWrapper Children={Account} />
+                                            </PrivateRoute>
+                                        }
+                                    />
+                                    <Route
+                                        exact path='/account/addresses'
+                                        element={
+                                            <PrivateRoute>
+                                                <AccountWrapper Children={Addresses} />
+                                            </PrivateRoute>
+                                        }
+                                    />
+                                    <Route
+                                        exact path='/account/credit-cards'
+                                        element={
+                                            <PrivateRoute>
+                                                <AccountWrapper Children={CreditCards} />
+                                            </PrivateRoute>
+                                        }
+                                    />
+                                    <Route
+                                        exact path='/account/orders'
+                                        element={
+                                            <PrivateRoute>
+                                                <AccountWrapper Children={Orders} />
+                                            </PrivateRoute>
+                                        }
+                                    />
+                                    <Route
+                                        exact path='/cart'
+                                        element={
+                                            <PrivateRoute>
+                                                <Cart />
+                                            </PrivateRoute>
+                                        }
+                                    />
+                                </Routes>
+                            </Box>
+                        </CartProvider>
+                    </AddressProvider>
                 </AuthProvider>
             </BrowserRouter>
         </Box>

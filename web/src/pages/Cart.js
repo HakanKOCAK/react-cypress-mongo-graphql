@@ -6,7 +6,6 @@ import {
   Center,
   Heading,
   HStack,
-  Spinner,
   VStack
 } from '@chakra-ui/react';
 import FoodModal from '../components/Modals/Food/Food';
@@ -16,14 +15,18 @@ import { useTranslation } from 'react-i18next';
 import CartItem from '../components/CartItem';
 import CustomAlertDialog from '../components/Modals/CustomAlertDialog';
 import CheckoutModal from '../components/Modals/Checkout';
-import { useQuery, useMutation } from '@apollo/client';
+import { useMutation } from '@apollo/client';
 import { deleteCartItemMutation } from '../graphql/mutations';
-import { myAddresses, userCartQuery } from '../graphql/queries';
+import { userCartQuery } from '../graphql/queries';
+import { useAddress } from '../AddressProvider';
 
 const Cart = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { t } = useTranslation();
+
+  //Get user address details
+  const { details: selectedAddress, myAddresses } = useAddress();
 
   //This the delete dialog options
   const [isAlertDialogOpen, setAlertDialogOpen] = useState(false);
@@ -44,9 +47,7 @@ const Cart = () => {
 
   //These are checkout modal options.
   const [isCheckoutModalOpen, setCheckoutModalOpen] = useState(false);
-  const { data: userAddresses, loading: loadingUserAddresses } = useQuery(myAddresses);
   const [servedAddresses, setServedAddresses] = useState([]);
-  const [selectedAddress, setSelectedAddress] = useState({});
 
   //Get cart details and total from CartProvider.js
   const { details, cartTotal } = useCart();
@@ -57,23 +58,16 @@ const Cart = () => {
   });
 
   useEffect(() => {
-    if (details.restaurantDetails.id && userAddresses && userAddresses.myAddresses) {
-      try {
-        const userAddressDetails = localStorage.getItem('fooder.last.address');
-        if (userAddressDetails) {
-          const selectedAddress = JSON.parse(userAddressDetails);
-          setSelectedAddress(selectedAddress);
-          const restaurantDetails = details.restaurantDetails;
-          const city = restaurantDetails.city;
-          const county = restaurantDetails.county;
-          const servedDistricts = restaurantDetails.servedDistricts;
-          setServedAddresses(userAddresses.myAddresses.filter((a) => a.city === city && a.county === county && servedDistricts.includes(a.district)))
-        }
-      } catch (error) {
-        throw error;
+    if (details.restaurantDetails.id) {
+      if (selectedAddress.id) {
+        const restaurantDetails = details.restaurantDetails;
+        const city = restaurantDetails.city;
+        const county = restaurantDetails.county;
+        const servedDistricts = restaurantDetails.servedDistricts;
+        setServedAddresses(myAddresses.filter((a) => a.city === city && a.county === county && servedDistricts.includes(a.district)))
       }
     }
-  }, [details, userAddresses]);
+  }, [details, selectedAddress, myAddresses]);
 
   const handleOnClick = (cartItem) => {
     setFoodModalDetails({ ...cartItem, details: { ...cartItem.item } });
@@ -114,11 +108,6 @@ const Cart = () => {
     return false;
   };
 
-  if (loadingUserAddresses) {
-    <Center h="80vh">
-      <Spinner color="pink.400" />
-    </Center>
-  }
   return (
     <Box h="100%">
       <Button

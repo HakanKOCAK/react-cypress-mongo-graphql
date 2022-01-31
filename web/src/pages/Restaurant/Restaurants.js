@@ -1,7 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import {
     Box,
-    Center,
     Heading,
     Spinner,
     Flex,
@@ -15,10 +14,9 @@ import {
     MenuOptionGroup,
     MenuItemOption
 } from '@chakra-ui/react';
-import { useLazyQuery, useQuery } from '@apollo/client'
-import { getRestaurantsQuery, myAddresses } from '../../graphql/queries';
+import { useLazyQuery } from '@apollo/client'
+import { getRestaurantsQuery } from '../../graphql/queries';
 import { useTranslation } from 'react-i18next';
-import Loading from '../../components/Loading';
 import Address from '../../components/Address/Address';
 import { ChevronDownIcon } from '@chakra-ui/icons';
 import AddressModal from '../../components/Modals/AddressList';
@@ -26,6 +24,7 @@ import { isEmpty, get, cloneDeep } from 'lodash';
 import RestaurantListItem from '../../components/Restaurant/ListItem';
 import RestaurantFilter from '../../components/Modals/Restaurant/Filter';
 import { Outlet } from 'react-router-dom';
+import { useAddress } from '../../AddressProvider';
 
 //Page that user is redirected after authentication
 const Restaurants = () => {
@@ -49,19 +48,8 @@ const Restaurants = () => {
     const [isFiltered, setIsFiltered] = useState(false);
 
     //Selected address details
-    const [selectedAddress, setSelectedAddress] = useState({
-        address: '',
-        city: '',
-        county: '',
-        district: '',
-        flat: 0,
-        floor: 0,
-        id: '',
-        title: ''
-    });
+    const { details: selectedAddress, setDetails: setSelectedAddress, myAddresses } = useAddress()
 
-    //Get saved addresses of user
-    const { data, error, loading } = useQuery(myAddresses);
     const [isModalOpen, setModalOpen] = useState(false);
 
     //Get restaurants lazy query -> will be triggered on address change
@@ -183,19 +171,6 @@ const Restaurants = () => {
             }
         }
     }, [filters, setToDisplay, restaurantList, sortBy]);
-    useEffect(() => {
-        //Check if an address is saved to local storage before and if so check if user still have the address
-        const lastAddress = localStorage.getItem('fooder.last.address');
-        if (lastAddress && !isEmpty(data)) {
-            let parsedAddress = {}
-            try {
-                parsedAddress = JSON.parse(lastAddress);
-            } catch (error) {
-                console.log(error);
-            }
-            setSelectedAddress(data.myAddresses.find((a) => a.id === parsedAddress.id) || {});
-        }
-    }, [setSelectedAddress, data]);
 
     useEffect(() => {
         //Query restaurant on address change
@@ -219,18 +194,6 @@ const Restaurants = () => {
         }
     }, [restaurantData]);
 
-    if (loading) {
-        return <Center h="100vh" ><Loading /></Center>;
-    }
-
-    if (error) {
-        console.log(error);
-        return (
-            <Box textAlign="center">
-                <Heading size="lg">{t('serverError')}</Heading>
-            </Box>
-        );
-    }
 
     //To display loading spinner, empty message or restaurant list..
     const getRestaurantView = () => {
@@ -267,7 +230,7 @@ const Restaurants = () => {
         <Box textAlign="center">
             <AddressModal
                 isOpen={isModalOpen}
-                addresses={data.myAddresses || []}
+                addresses={myAddresses}
                 onClose={() => setModalOpen(false)}
                 setSelectedAddress={setSelectedAddress}
                 selectedId={selectedAddress.id}
