@@ -10,6 +10,7 @@ import {
 } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
 import CreditCardList from '../../CreditCard/List';
+import getModalSize from '../../../utils/modalSize';
 
 //Address List
 const CreditCardListModal = ({
@@ -18,6 +19,7 @@ const CreditCardListModal = ({
   selectedId,
   setSelected,
   onClose,
+  width: windowWidth
 }) => {
   const { t } = useTranslation();
   return (
@@ -25,7 +27,7 @@ const CreditCardListModal = ({
       isOpen={isOpen}
       onClose={onClose}
       isCentered
-      size="2xl"
+      size={getModalSize(windowWidth)}
       scrollBehavior="inside"
     >
       <ModalOverlay>
@@ -52,7 +54,8 @@ CreditCardListModal.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   selectedId: PropTypes.string,
   setSelected: PropTypes.func,
-  onClose: PropTypes.func.isRequired
+  onClose: PropTypes.func.isRequired,
+  width: PropTypes.number.isRequired
 };
 
 export default CreditCardListModal

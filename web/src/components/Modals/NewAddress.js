@@ -28,8 +28,9 @@ import {
   getDistricts
 } from '../../graphql/queries';
 import { addAddressMutation } from '../../graphql/mutations';
+import getModalSize from '../../utils/modalSize';
 
-const NewAddress = ({ isOpen, onClose }) => {
+const NewAddress = ({ isOpen, onClose, width: windowWidth }) => {
   const { t } = useTranslation();
   //Check if submitting
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -131,7 +132,7 @@ const NewAddress = ({ isOpen, onClose }) => {
       isOpen={isOpen}
       onClose={onClose}
       isCentered
-      size="2xl"
+      size={getModalSize(windowWidth)}
       scrollBehavior="inside"
     >
       <ModalOverlay>
@@ -276,7 +277,8 @@ const NewAddress = ({ isOpen, onClose }) => {
 
 NewAddress.propTypes = {
   isOpen: PropTypes.bool.isRequired,
-  onClose: PropTypes.func.isRequired
+  onClose: PropTypes.func.isRequired,
+  width: PropTypes.number.isRequired
 };
 
 export default NewAddress

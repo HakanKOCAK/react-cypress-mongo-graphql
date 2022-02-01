@@ -18,11 +18,13 @@ import {
 } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
 import { prettifyCreatedAt, restructureOrderItems } from '../../utils/orderPrettifier';
+import getModalSize from '../../utils/modalSize';
 
 const Order = ({
   isOpen,
   details,
-  onClose
+  onClose,
+  width: windowWidth
 }) => {
   const { t } = useTranslation();
   const {
@@ -89,7 +91,7 @@ const Order = ({
       isOpen={isOpen}
       onClose={onClose}
       isCentered
-      size="2xl"
+      size={getModalSize(windowWidth)}
       scrollBehavior="inside"
     >
       <ModalOverlay>
@@ -252,7 +254,8 @@ Order.propTypes = {
     total: PropTypes.number.isRequired
   }).isRequired,
   isOpen: PropTypes.bool.isRequired,
-  onClose: PropTypes.func.isRequired
+  onClose: PropTypes.func.isRequired,
+  width: PropTypes.number.isRequired
 };
 
 export default Order;

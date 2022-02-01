@@ -5,7 +5,7 @@ import { useQuery } from '@apollo/client';
 import { myAddresses } from '../../graphql/queries';
 import { useTranslation } from 'react-i18next';
 
-const Addresses = () => {
+const Addresses = ({ width }) => {
   const { t } = useTranslation();
   //Get saved addresses of user
   const { data, error, loading } = useQuery(myAddresses);
@@ -25,7 +25,7 @@ const Addresses = () => {
       {loading ? (
         <Spinner color="pink.500" size="lg" />
       ) : (
-        <AddressList addresses={data.myAddresses || []} />
+        <AddressList addresses={data.myAddresses || []} width={width} />
       )}
     </Box>
   );

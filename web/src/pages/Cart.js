@@ -171,6 +171,7 @@ const Cart = ({ width }) => {
                   dialogHeader={t(deletedItemDetails.name)}
                   onConfirm={() => handleDelete({ id: deletedItemDetails.id })}
                   onConfirmText={t('delete')}
+                  width={width}
                 />
                 <HStack
                   position="relative"

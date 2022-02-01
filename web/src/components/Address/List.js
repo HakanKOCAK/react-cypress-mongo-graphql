@@ -21,7 +21,8 @@ const Addresses = ({
   setSelectedAddress,
   selectedAddress,
   addressContainerCursor,
-  actionDisabled
+  actionDisabled,
+  width
 }) => {
   const { t } = useTranslation();
 
@@ -126,11 +127,13 @@ const Addresses = ({
           }
         }}
         onConfirmText={t('delete')}
+        width={width}
       />
       {/*Render new address dialog*/}
       <NewAddressDialog
         isOpen={isNewAddressDialogOpen}
         onClose={() => setNewAddressDialogOpen(false)}
+        width={width}
       />
       <Center>
         <Button
@@ -153,7 +156,8 @@ Addresses.propTypes = {
   isCheckout: PropTypes.bool,
   addressContainerCursor: PropTypes.string,
   setSelectedAddress: PropTypes.func,
-  selectedAddress: PropTypes.string
+  selectedAddress: PropTypes.string,
+  width: PropTypes.number.isRequired
 }
 
 export default Addresses

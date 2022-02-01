@@ -22,6 +22,7 @@ import { gql, useMutation } from '@apollo/client';
 import { emptyCartMutation, orderMutation } from '../../graphql/mutations';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { userCartQuery } from '../../graphql/queries';
+import getModalSize from '../../utils/modalSize';
 
 const Checkout = ({
   isOpen,
@@ -160,7 +161,7 @@ const Checkout = ({
       isOpen={isOpen}
       onClose={handleClose}
       isCentered
-      size="2xl"
+      size={getModalSize(windowWidth)}
       scrollBehavior="inside"
     >
       <ModalOverlay>
@@ -181,6 +182,7 @@ const Checkout = ({
               }}
               selectedId={modalSelectedAddress.id}
               actionDisabled={true}
+              width={windowWidth}
             />
             <CreditCardListModal
               cursor="pointer"
@@ -188,6 +190,7 @@ const Checkout = ({
               setSelected={(item) => setCreditCardDetails(item)}
               selectedId={creditCardDetails.id}
               onClose={() => setCreditCardModalOpen(false)}
+              width={windowWidth}
             />
             <Heading fontSize={['12px', '14px', '16px']}>
               {t('restaurant')}: <span style={{ marginLeft: 3, fontWeight: 'lighter' }}>{restaurantDetails.name}</span>

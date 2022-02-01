@@ -8,7 +8,7 @@ import { ordersQuery } from '../../graphql/queries';
 import { isEmpty } from 'lodash';
 import { prettifyOrderItem } from '../../utils/orderPrettifier';
 
-const List = () => {
+const List = ({ width }) => {
   const { t } = useTranslation();
   const { data, loading, error } = useQuery(ordersQuery);
   const [isOrderModalOpen, setOrderModalOpen] = useState(false);
@@ -74,6 +74,7 @@ const List = () => {
           isOpen={isOrderModalOpen}
           details={selectedOrderDetails}
           onClose={() => setOrderModalOpen(false)}
+          width={width}
         />
         {
           data.orders.map((item) => (

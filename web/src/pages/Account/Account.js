@@ -8,7 +8,7 @@ import { useQuery } from '@apollo/client';
 import { myAddresses } from '../../graphql/queries';
 import { useTranslation } from 'react-i18next';
 
-const Account = ({ selected }) => {
+const Account = ({ selected, width }) => {
   const { t } = useTranslation();
   //Get saved addresses of user
   const { data, error, loading } = useQuery(myAddresses);
@@ -28,11 +28,11 @@ const Account = ({ selected }) => {
           </Center>
         )
       }
-      return <Addresses addresses={data.myAddresses || []} />;
+      return <Addresses addresses={data.myAddresses || []} width={width} />;
     } else if (selected === 'myCards') {
-      return <CreditCards />;
+      return <CreditCards width={width} />;
     } else if (selected === 'myOrders') {
-      return <Orders />
+      return <Orders width={width} />
     }
 
     return null;

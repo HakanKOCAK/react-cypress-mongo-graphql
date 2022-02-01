@@ -11,6 +11,7 @@ import {
   Text
 } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
+import getModalSize from '../../utils/modalSize';
 
 const CustomAlertDialog = ({
   confirmButtonColorScheme,
@@ -20,7 +21,8 @@ const CustomAlertDialog = ({
   isSubmitting,
   isOpen,
   onClose,
-  onConfirm
+  onConfirm,
+  width: windowWidth
 }) => {
   const { t } = useTranslation();
 
@@ -46,6 +48,7 @@ const CustomAlertDialog = ({
     <AlertDialog
       isCentered
       isOpen={isOpen}
+      size={getModalSize(windowWidth)}
       leastDestructiveRef={cancelRef}
       onClose={onDialogClose}
     >
@@ -106,7 +109,8 @@ CustomAlertDialog.propTypes = {
   isSubmitting: PropTypes.bool,
   onClose: PropTypes.func.isRequired,
   onConfirm: PropTypes.func,
-  onConfirmText: PropTypes.string
+  onConfirmText: PropTypes.string,
+  width: PropTypes.number.isRequired
 }
 
 export default CustomAlertDialog

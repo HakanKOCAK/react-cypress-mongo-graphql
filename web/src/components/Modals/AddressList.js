@@ -10,6 +10,7 @@ import {
 } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
 import AddresList from '../Address/List';
+import getModalSize from '../../utils/modalSize';
 
 //Address List
 const AddressModal = ({
@@ -19,7 +20,8 @@ const AddressModal = ({
   isCheckout,
   onClose,
   setSelectedAddress,
-  selectedId
+  selectedId,
+  width: windowWidth
 }) => {
   const { t } = useTranslation();
   return (
@@ -27,7 +29,7 @@ const AddressModal = ({
       isOpen={isOpen}
       onClose={onClose}
       isCentered
-      size={['xs', 'md', '2xl']}
+      size={getModalSize(windowWidth)}
       scrollBehavior="inside"
     >
       <ModalOverlay>
@@ -42,6 +44,7 @@ const AddressModal = ({
               addressContainerCursor="pointer"
               setSelectedAddress={setSelectedAddress}
               selectedAddress={selectedId}
+              width={windowWidth}
             />
           </ModalBody>
         </ModalContent>
@@ -57,7 +60,8 @@ AddressModal.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,
   setSelectedAddress: PropTypes.func.isRequired,
-  selectedId: PropTypes.string
+  selectedId: PropTypes.string,
+  width: PropTypes.number.isRequired
 };
 
 export default AddressModal

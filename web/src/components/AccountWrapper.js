@@ -16,7 +16,7 @@ import { useTranslation } from 'react-i18next';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { ArrowBackIcon } from '@chakra-ui/icons';
 
-const AccountWrapper = ({ Children }) => {
+const AccountWrapper = ({ Children, width }) => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const location = useLocation();
@@ -141,7 +141,7 @@ const AccountWrapper = ({ Children }) => {
             }
           </List>
         </VStack>
-        <Children selected={selected} setSelected={setSelected} />
+        <Children selected={selected} setSelected={setSelected} width={width} />
       </Box>
     </>
   )

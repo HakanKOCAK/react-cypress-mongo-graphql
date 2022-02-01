@@ -23,11 +23,12 @@ import 'react-credit-cards/es/styles-compiled.css'
 import { useTranslation } from 'react-i18next';
 import { gql, useMutation } from '@apollo/client';
 import { addCreditCardMutation } from '../../graphql/mutations';
+import getModalSize from '../../utils/modalSize';
 
 //Expiry pattern (min: 01/21, max: 12/99)
 const expiryPattern = /^(0[1-9]|1[0-2])\/([2-9][1-9])$/;
 
-const CreditCardModal = ({ isOpen, onClose }) => {
+const CreditCardModal = ({ isOpen, onClose, width: windowWidth }) => {
   const { t } = useTranslation();
 
   const errorRef = useRef(null);
@@ -246,7 +247,7 @@ const CreditCardModal = ({ isOpen, onClose }) => {
       isOpen={isOpen}
       onClose={onClose}
       isCentered
-      size="2xl"
+      size={getModalSize(windowWidth)}
       scrollBehavior="inside"
     >
       <ModalOverlay>
@@ -403,7 +404,8 @@ const CreditCardModal = ({ isOpen, onClose }) => {
 
 CreditCardModal.propTypes = {
   isOpen: PropTypes.bool.isRequired,
-  onClose: PropTypes.func.isRequired
+  onClose: PropTypes.func.isRequired,
+  width: PropTypes.number.isRequired
 }
 
 export default CreditCardModal

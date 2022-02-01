@@ -27,6 +27,7 @@ import CustomAlertDialog from '../CustomAlertDialog';
 import { useMutation } from '@apollo/client';
 import { addCartItemMutation, updateCartItemMutation } from '../../../graphql/mutations';
 import { userCartQuery } from '../../../graphql/queries';
+import getModalSize from '../../../utils/modalSize';
 
 const Food = ({
   details: { itemDetails, itemType },
@@ -534,7 +535,7 @@ const Food = ({
       isOpen={isOpen}
       onClose={onClose}
       isCentered
-      size="2xl"
+      size={getModalSize(windowWidth)}
       scrollBehavior="inside"
     >
       <ModalOverlay>
@@ -549,6 +550,7 @@ const Food = ({
             handleAddCard({ differentRestaurant: true })
           }}
           onConfirmText={t('yes')}
+          width={windowWidth}
         />
         <ModalContent>
           <ModalCloseButton onClick={handleClose} />

@@ -21,12 +21,14 @@ import {
 } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
 import { isEqual } from 'lodash';
+import getModalSize from '../../../utils/modalSize';
 
 const RestaurantFilter = ({
   defaultFilters,
   isOpen,
   onClose,
-  setFilters
+  setFilters,
+  width: windowWidth
 }) => {
 
   //Comes from props. check /pages/Restaurant.js
@@ -56,7 +58,7 @@ const RestaurantFilter = ({
       isOpen={isOpen}
       onClose={onClose}
       isCentered
-      size="2xl"
+      size={getModalSize(windowWidth)}
       scrollBehavior="inside"
     >
       <ModalOverlay>
@@ -266,7 +268,8 @@ RestaurantFilter.propTypes = {
   }).isRequired,
   isOpen: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,
-  setFilters: PropTypes.func.isRequired
+  setFilters: PropTypes.func.isRequired,
+  width: PropTypes.number.isRequired
 };
 
 export default RestaurantFilter

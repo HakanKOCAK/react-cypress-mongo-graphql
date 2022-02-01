@@ -93,7 +93,7 @@ export default function AppRoutes() {
                                             index
                                             element={
                                                 <PrivateRoute>
-                                                    <Restaurants />
+                                                    <Restaurants width={width} />
                                                 </PrivateRoute>
                                             }
                                         />
@@ -103,7 +103,7 @@ export default function AppRoutes() {
                                         exact path='/account'
                                         element={
                                             <PrivateRoute>
-                                                <AccountWrapper Children={Account} />
+                                                <AccountWrapper Children={Account} width={width} />
                                             </PrivateRoute>
                                         }
                                     />
@@ -111,7 +111,7 @@ export default function AppRoutes() {
                                         exact path='/account/addresses'
                                         element={
                                             <PrivateRoute>
-                                                <AccountWrapper Children={Addresses} />
+                                                <AccountWrapper Children={Addresses} width={width} />
                                             </PrivateRoute>
                                         }
                                     />
@@ -119,7 +119,7 @@ export default function AppRoutes() {
                                         exact path='/account/credit-cards'
                                         element={
                                             <PrivateRoute>
-                                                <AccountWrapper Children={CreditCards} />
+                                                <AccountWrapper Children={CreditCards} width={width} />
                                             </PrivateRoute>
                                         }
                                     />
@@ -127,7 +127,7 @@ export default function AppRoutes() {
                                         exact path='/account/orders'
                                         element={
                                             <PrivateRoute>
-                                                <AccountWrapper Children={Orders} />
+                                                <AccountWrapper Children={Orders} width={width} />
                                             </PrivateRoute>
                                         }
                                     />

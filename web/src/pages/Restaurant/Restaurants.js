@@ -27,7 +27,7 @@ import { Outlet } from 'react-router-dom';
 import { useAddress } from '../../AddressProvider';
 
 //Page that user is redirected after authentication
-const Restaurants = () => {
+const Restaurants = ({ width }) => {
     const { t } = useTranslation();
 
     //Filter modal options
@@ -234,6 +234,7 @@ const Restaurants = () => {
                 onClose={() => setModalOpen(false)}
                 setSelectedAddress={setSelectedAddress}
                 selectedId={selectedAddress.id}
+                width={width}
             />
             <Address
                 icon={`/${selectedAddress.title}.png`}
@@ -254,6 +255,7 @@ const Restaurants = () => {
                 isOpen={isFilterModalOpen}
                 onClose={() => setFilterModalOpen(false)}
                 setFilters={setFilters}
+                width={width}
             />
             <Box mt={10}>
                 <Flex justifyContent="center" mb={5}>

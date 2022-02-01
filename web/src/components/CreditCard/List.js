@@ -19,7 +19,8 @@ import { deleteCreditCardMutation } from '../../graphql/mutations';
 const CreditCards = ({
   cursor,
   selectedId,
-  setSelected
+  setSelected,
+  width: windowWidth
 }) => {
   const { t } = useTranslation();
 
@@ -109,8 +110,13 @@ const CreditCards = ({
           }
         }}
         onConfirmText={t('delete')}
+        width={windowWidth}
       />
-      <CreditCardModal isOpen={isCreditCardModalOpen} onClose={() => setCreditCardModalOpen(false)} />
+      <CreditCardModal
+        isOpen={isCreditCardModalOpen}
+        onClose={() => setCreditCardModalOpen(false)}
+        width={windowWidth}
+      />
       <Center>
         <Button
           variant="link"
@@ -129,7 +135,8 @@ const CreditCards = ({
 CreditCards.propTypes = {
   cursor: PropTypes.string,
   selectedId: PropTypes.string,
-  setSelected: PropTypes.func
+  setSelected: PropTypes.func,
+  width: PropTypes.number.isRequired
 };
 
 export default CreditCards;
