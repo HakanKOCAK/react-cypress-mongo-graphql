@@ -76,130 +76,127 @@ const Register = () => {
   };
 
   return (
-    <GridItem>
-      <Center h="100%" boxShadow="xl" rounded="md" bg="white">
-        <VStack p={5}>
-          <Brand containerStyles={{ mb: '5' }} headingStyles={{ size: 'xl' }} />
+    <GridItem h="100%" overflowY="scroll">
+      <VStack p={5} boxShadow="xl" rounded="md" bg="white">
+        <Brand containerStyles={{ mb: '5' }} headingStyles={{ size: 'xl' }} />
+        <Center mb={5}>
+          <Heading size="sm">{t('register')}</Heading>
+        </Center>
 
-          <Center mb={5}>
-            <Heading size="sm">{t('register')}</Heading>
-          </Center>
+        <Box>
+          <Formik
+            initialValues={{
+              name: '',
+              surname: '',
+              email: '',
+              password: '',
+              confirmPassword: ''
+            }}
+            validate={({ email, name, surname, password, confirmPassword }) => {
+              const errors = {};
 
-          <Box >
-            <Formik
-              initialValues={{
-                name: '',
-                surname: '',
-                email: '',
-                password: '',
-                confirmPassword: ''
-              }}
-              validate={({ email, name, surname, password, confirmPassword }) => {
-                const errors = {};
+              if (!name) {
+                errors.name = t('required');
+              }
 
-                if (!name) {
-                  errors.name = t('required');
-                }
+              if (!surname) {
+                errors.surname = t('required');
+              }
 
-                if (!surname) {
-                  errors.surname = t('required');
-                }
+              if (password.length < 6) {
+                errors.password = `${t('invalidPassword')}, ${t('minLength')}: 6`
+              }
 
-                if (password.length < 6) {
-                  errors.password = `${t('invalidPassword')}, ${t('minLength')}: 6`
-                }
+              if (confirmPassword.length < 6) {
+                errors.confirmPassword = `${t('invalidPassword')}, ${t('minLength')}: 6`
+              }
 
-                if (confirmPassword.length < 6) {
-                  errors.confirmPassword = `${t('invalidPassword')}, ${t('minLength')}: 6`
-                }
+              if (!email) {
+                errors.email = t('required');
+              } else if (!isEmailValid(email)) {
+                errors.email = t('invalidEmail');
+              }
 
-                if (!email) {
-                  errors.email = t('required');
-                } else if (!isEmailValid(email)) {
-                  errors.email = t('invalidEmail');
-                }
+              return errors;
+            }}
 
-                return errors;
-              }}
+            onSubmit={handleSubmit}
+          >
+            {({ errors, isSubmitting }) => (
+              <Form>
+                <InputField
+                  name="name"
+                  placeholder={t('name')}
+                  label={t('name')}
+                  data-cy="name-input"
+                />
 
-              onSubmit={handleSubmit}
-            >
-              {({ errors, isSubmitting }) => (
-                <Form>
+                <Box mt={4}>
                   <InputField
-                    name="name"
-                    placeholder={t('name')}
-                    label={t('name')}
-                    data-cy="name-input"
+                    name="surname"
+                    placeholder={t('surname')}
+                    label={t('surname')}
+                    data-cy="surname-input"
                   />
+                </Box>
 
-                  <Box mt={4}>
-                    <InputField
-                      name="surname"
-                      placeholder={t('surname')}
-                      label={t('surname')}
-                      data-cy="surname-input"
-                    />
-                  </Box>
+                <Box mt={4}>
+                  <InputField
+                    name="email"
+                    placeholder={t('email')}
+                    label={t('email')}
+                    data-cy="email-input"
+                  />
+                </Box>
 
-                  <Box mt={4}>
-                    <InputField
-                      name="email"
-                      placeholder={t('email')}
-                      label={t('email')}
-                      data-cy="email-input"
-                    />
-                  </Box>
+                <Box mt={4}>
+                  <InputField
+                    name="password"
+                    placeholder={t('password')}
+                    label={t('password')}
+                    type="password"
+                    data-cy="password-input"
+                  />
+                </Box>
 
-                  <Box mt={4}>
-                    <InputField
-                      name="password"
-                      placeholder={t('password')}
-                      label={t('password')}
-                      type="password"
-                      data-cy="password-input"
-                    />
-                  </Box>
+                <Box mt={4}>
+                  <InputField
+                    name="confirmPassword"
+                    placeholder={t('confirmPassword')}
+                    label={t('confirmPassword')}
+                    type="password"
+                    data-cy="confirm-password-input"
+                  />
+                </Box>
 
-                  <Box mt={4}>
-                    <InputField
-                      name="confirmPassword"
-                      placeholder={t('confirmPassword')}
-                      label={t('confirmPassword')}
-                      type="password"
-                      data-cy="confirm-password-input"
-                    />
-                  </Box>
+                <Center mt={4}>
+                  {errors.register && (
+                    <Text size="sm" color="red.500">{t(errors.register)}</Text>
+                  )}
+                  {errors.passwordsDontMatch && (
+                    <Text size="sm" color="red.500">{t(errors.passwordsDontMatch)}</Text>
+                  )}
+                </Center>
 
-                  <Center mt={4}>
-                    {errors.register && (
-                      <Text size="sm" color="red.500">{t(errors.register)}</Text>
-                    )}
-                    {errors.passwordsDontMatch && (
-                      <Text size="sm" color="red.500">{t(errors.passwordsDontMatch)}</Text>
-                    )}
-                  </Center>
+                <Box mt={4}>
+                  <Text>{t('alreadyHaveAnAccount')} <Link to="/login" style={{ color: '#3182CE' }}>{t('login')}</Link></Text>
+                </Box>
 
-                  <Box mt={4}>
-                    <Text>{t('alreadyHaveAnAccount')} <Link to="/login" style={{ color: '#3182CE' }}>{t('login')}</Link></Text>
-                  </Box>
-
-                  <Center mt={4}>
-                    <Button
-                      type="submit"
-                      isLoading={isSubmitting}
-                      colorScheme="teal"
-                      data-cy="register-button"
-                    >
-                      {t('register')}
-                    </Button>
-                  </Center>
-                </Form>
-              )}
-            </Formik>
-          </Box>
-        </VStack>
-      </Center >
+                <Center mt={4}>
+                  <Button
+                    type="submit"
+                    isLoading={isSubmitting}
+                    colorScheme="teal"
+                    data-cy="register-button"
+                  >
+                    {t('register')}
+                  </Button>
+                </Center>
+              </Form>
+            )}
+          </Formik>
+        </Box>
+      </VStack>
     </GridItem >
   )
 }
