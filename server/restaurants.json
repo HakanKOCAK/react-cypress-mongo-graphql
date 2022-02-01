@@ -20,6 +20,7 @@
         "estimatedDeliveryTime": 45
       }
     },
+    "district": "Bahcelievler",
     "image": "burger.svg",
     "name": "Fast and Food Ank",
     "servedDistricts": [
@@ -44,6 +45,7 @@
         "estimatedDeliveryTime": 40
       }
     },
+    "district": "Emek",
     "image": "burger.svg",
     "name": "OnlyBurger",
     "servedDistricts": [
@@ -75,6 +77,7 @@
         "estimatedDeliveryTime": 25
       }
     },
+    "district": "Bahcelievler",
     "image": "kebab.svg",
     "name": "My Kebab",
     "servedDistricts": [
@@ -112,6 +115,7 @@
         "estimatedDeliveryTime": 30
       }
     },
+    "district": "Emek",
     "image": "falafel.png",
     "name": "Falllllafel",
     "servedDistricts": [
@@ -142,6 +146,7 @@
         "estimatedDeliveryTime": 45
       }
     },
+    "district": "Ahiboz",
     "image": "falafel.png",
     "name": "Golbasi Falafel",
     "servedDistricts": [
@@ -170,6 +175,7 @@
         "estimatedDeliveryTime": 50
       }
     },
+    "district": "Ahiboz",
     "image": "burger.svg",
     "name": "Golbasi Burger",
     "servedDistricts": [
@@ -198,6 +204,7 @@
         "estimatedDeliveryTime": 40
       }
     },
+    "district": "Ahiboz",
     "image": "pizza.svg",
     "name": "Golbasi Pizza",
     "servedDistricts": [
@@ -218,6 +225,7 @@
         "estimatedDeliveryTime": 20
       }
     },
+    "district": "Ahiboz",
     "image": "kebab.svg",
     "name": "Golbasi Kebab",
     "servedDistricts": [
@@ -241,12 +249,12 @@
         "estimatedDeliveryTime": 40
       }
     },
+    "district": "Boyalik",
     "image": "pizza.svg",
     "name": "Fast and Food Ank",
     "servedDistricts": [
-      "Bahcelievler",
-      "Beytepe",
-      "Cayyolu"
+      "Boyalik",
+      "Eymir"
     ]
   },
   {
@@ -265,11 +273,12 @@
         "estimatedDeliveryTime": 40
       }
     },
+    "district": "Emek",
     "image": "burger.svg",
     "name": "Fast and Food",
     "servedDistricts": [
-      "Boyalik",
-      "Eymir"
+      "Emek",
+      "Kizilay"
     ]
   },
   {
@@ -289,30 +298,31 @@
         "estimatedDeliveryTime": 45
       }
     },
+    "district": "Arnavutkoy",
     "image": "burger.svg",
     "name": "Fast and Food Ank",
     "servedDistricts": [
-      "Bahcelievler",
-      "Beytepe",
-      "Cayyolu"
+      "Arnavutkoy",
+      "Bebek"
     ]
   },
   {
-    "city": "Ankara",
-    "county": "Cankaya",
+    "city": "Istanbul",
+    "county": "Besiktas",
     "cuisine": [
       "Hamburger"
     ],
     "deliveryDetails": {
-      "Emek": {
+      "Arnavutkoy": {
         "minAmount": 10,
         "estimatedDeliveryTime": 20
       },
-      "Kizilay": {
+      "Bebek": {
         "minAmount": 15,
         "estimatedDeliveryTime": 40
       }
     },
+    "district": "Arnavutkoy",
     "image": "burger.svg",
     "name": "Fast and Food",
     "servedDistricts": [
@@ -344,6 +354,7 @@
         "estimatedDeliveryTime": 50
       }
     },
+    "district": "Bebek",
     "image": "pizza.svg",
     "name": "Just Pizza",
     "servedDistricts": [
@@ -377,6 +388,7 @@
         "estimatedDeliveryTime": 50
       }
     },
+    "district": "Konaklar",
     "image": "burger.svg",
     "name": "Just Burger",
     "servedDistricts": [
@@ -406,6 +418,7 @@
         "estimatedDeliveryTime": 45
       }
     },
+    "district": "Kultur",
     "image": "kebab.svg",
     "name": "Kebabci",
     "servedDistricts": [
@@ -434,6 +447,7 @@
         "estimatedDeliveryTime": 40
       }
     },
+    "district": "Acibadem",
     "image": "falafel.png",
     "name": "Falafeller",
     "servedDistricts": [
@@ -466,6 +480,7 @@
         "estimatedDeliveryTime": 40
       }
     },
+    "district": "Bostanci",
     "image": "burger.svg",
     "name": "Awesomeger",
     "servedDistricts": [
@@ -495,6 +510,7 @@
         "estimatedDeliveryTime": 40
       }
     },
+    "district": "Dumlupinar",
     "image": "pizza.svg",
     "name": "Pizza&Pizza",
     "servedDistricts": [
@@ -527,6 +543,7 @@
         "estimatedDeliveryTime": 35
       }
     },
+    "district": "Erenkoy",
     "image": "kebab.svg",
     "name": "Best Kebab",
     "servedDistricts": [
@@ -577,6 +594,7 @@
         "estimatedDeliveryTime": 35
       }
     },
+    "district": "Erenkoy",
     "image": "burger.svg",
     "name": "Burger&Pizza",
     "servedDistricts": [
@@ -607,6 +625,7 @@
         "estimatedDeliveryTime": 25
       }
     },
+    "district": "Birlik",
     "image": "burger.svg",
     "name": "Bornova's Fastest Food",
     "servedDistricts": [
@@ -630,6 +649,7 @@
         "estimatedDeliveryTime": 25
       }
     },
+    "district": "Birlik",
     "image": "kebab.svg",
     "name": "Don't We Love Kebab",
     "servedDistricts": [
@@ -649,6 +669,7 @@
         "estimatedDeliveryTime": 35
       }
     },
+    "district": "Birlik",
     "image": "pizza.svg",
     "name": "Italian Pizza",
     "servedDistricts": [
@@ -667,6 +688,7 @@
         "estimatedDeliveryTime": 30
       }
     },
+    "district": "Doganlar",
     "image": "falafel.png",
     "name": "Kofteci",
     "servedDistricts": [
@@ -689,6 +711,7 @@
         "estimatedDeliveryTime": 35
       }
     },
+    "district": "Birlik",
     "image": "falafel.png",
     "name": "Koftecix",
     "servedDistricts": [
@@ -716,6 +739,7 @@
         "estimatedDeliveryTime": 35
       }
     },
+    "district": "Atakent",
     "image": "falafel.png",
     "name": "Koftecix",
     "servedDistricts": [
@@ -740,6 +764,7 @@
         "estimatedDeliveryTime": 30
       }
     },
+    "district": "Atakent",
     "image": "pizza.svg",
     "name": "Karsi Pizza",
     "servedDistricts": [
@@ -763,6 +788,7 @@
         "estimatedDeliveryTime": 35
       }
     },
+    "district": "Bostanli",
     "image": "burger.svg",
     "name": "Yeah Burger",
     "servedDistricts": [
@@ -791,6 +817,7 @@
         "estimatedDeliveryTime": 35
       }
     },
+    "district": "Atakent",
     "image": "burger.svg",
     "name": "Fastest Karsiyaka",
     "servedDistricts": [
@@ -819,6 +846,7 @@
         "estimatedDeliveryTime": 35
       }
     },
+    "district": "Cumhuriyet",
     "image": "kebab.svg",
     "name": "Alo Kebab",
     "servedDistricts": [

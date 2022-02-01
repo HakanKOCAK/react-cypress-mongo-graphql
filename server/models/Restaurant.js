@@ -25,6 +25,12 @@ const restaurantSchema = new mongoose.Schema(
       isRequired: true
     },
 
+    district: {
+      type: String,
+      index: true,
+      required: true
+    },
+
     image: {
       type: String,
       required: true

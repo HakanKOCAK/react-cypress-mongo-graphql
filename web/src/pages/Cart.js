@@ -186,7 +186,7 @@ const Cart = () => {
                       {t('restaurant')}: <span style={{ marginLeft: 3, fontWeight: 'lighter' }}>{details.restaurantDetails.name}</span>
                     </Button>
                     <Heading fontSize={['12px', '14px', '16px']} fontWeight="semibold">
-                      {t('location')}: <span style={{ fontWeight: 'lighter' }}>{details.restaurantDetails.city}, {details.restaurantDetails.county}</span>
+                      {t('location')}: <span style={{ fontWeight: 'lighter' }}>{details.restaurantDetails.district}, {details.restaurantDetails.city}/{details.restaurantDetails.county}</span>
                     </Heading>
                     <Heading fontSize={['12px', '14px', '16px']} fontWeight="semibold">
                       {t('minAmount')}: <span style={{ fontWeight: 'lighter' }}>{`$${details.restaurantDetails.deliveryDetails.minAmount.toFixed(2)}`}</span>

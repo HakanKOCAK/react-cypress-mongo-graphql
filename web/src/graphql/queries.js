@@ -66,6 +66,7 @@ query Restaurants($city: String!, $county: String!, $district: String!) {
       minAmount
       estimatedDeliveryTime
     }
+    district
     image
     name
     servedDistricts
@@ -681,6 +682,7 @@ query Cart($userDistrict: String) {
         minAmount
         estimatedDeliveryTime
       }
+      district
       image
       name
       servedDistricts

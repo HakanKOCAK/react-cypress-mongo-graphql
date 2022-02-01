@@ -12,6 +12,7 @@ type Restaurant {
   county: String
   cuisine: [String]
   deliveryDetails: DeliveryDetails
+  district: String
   image: String
   name: String
   servedDistricts: [String]
