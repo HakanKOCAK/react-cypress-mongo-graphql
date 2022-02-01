@@ -102,19 +102,19 @@ query Menu($restaurantId: String) {
     falafels {
       classic {
         price
-        includes
+        ingredients
       }
       rawCarrot {
         price
-        includes
+        ingredients
       }
       mexican {
         price
-        includes
+        ingredients
       }
       sweetPotato {
         price
-        includes
+        ingredients
       }
     }
     falafelPieceDetails {
@@ -124,42 +124,42 @@ query Menu($restaurantId: String) {
     hamburgers {
       hamburger {
         price
-        includes
+        ingredients
         optionals
       }
       cheeseburger {
         price
-        includes
+        ingredients
         optionals
       }
       chickenburger {
         price
-        includes
+        ingredients
         optionals
       }
       quarterPounder {
         price
-        includes
+        ingredients
         optionals
       }
       doubleHamburger {
         price
-        includes
+        ingredients
         optionals
       }
       doubleCheeseburger {
         price
-        includes
+        ingredients
         optionals
       }
       doubleChickenburger {
         price
-        includes
+        ingredients
         optionals
       }
       doubleQuarterPounder {
         price
-        includes
+        ingredients
         optionals
       }
     }
@@ -237,32 +237,32 @@ query Menu($restaurantId: String) {
     pizzas {
       margherita {
         price
-        includes
+        ingredients
         optionals
       }
       pepperoni {
         price
-        includes
+        ingredients
         optionals
       }
       hawaiian {
         price
-        includes
+        ingredients
         optionals
       }
       vegetarian {
         price
-        includes
+        ingredients
         optionals
       }
       bbqChicken {
         price
-        includes
+        ingredients
         optionals
       }
       meaty {
         price
-        includes
+        ingredients
         optionals
       }
     }
@@ -355,7 +355,7 @@ query Cart($userDistrict: String) {
             pieces
             sizePriceConstant
           }
-          includes
+          ingredients
           mealDetails {
             includes
             name
@@ -437,19 +437,19 @@ query Cart($userDistrict: String) {
       falafels {
         classic {
           price
-          includes
+          ingredients
         }
         rawCarrot {
           price
-          includes
+          ingredients
         }
         mexican {
           price
-          includes
+          ingredients
         }
         sweetPotato {
           price
-          includes
+          ingredients
         }
       }
       falafelPieceDetails {
@@ -459,42 +459,42 @@ query Cart($userDistrict: String) {
       hamburgers {
         hamburger {
           price
-          includes
+          ingredients
           optionals
         }
         cheeseburger {
           price
-          includes
+          ingredients
           optionals
         }
         chickenburger {
           price
-          includes
+          ingredients
           optionals
         }
         quarterPounder {
           price
-          includes
+          ingredients
           optionals
         }
         doubleHamburger {
           price
-          includes
+          ingredients
           optionals
         }
         doubleCheeseburger {
           price
-          includes
+          ingredients
           optionals
         }
         doubleChickenburger {
           price
-          includes
+          ingredients
           optionals
         }
         doubleQuarterPounder {
           price
-          includes
+          ingredients
           optionals
         }
       }
@@ -572,32 +572,32 @@ query Cart($userDistrict: String) {
       pizzas {
         margherita {
           price
-          includes
+          ingredients
           optionals
         }
         pepperoni {
           price
-          includes
+          ingredients
           optionals
         }
         hawaiian {
           price
-          includes
+          ingredients
           optionals
         }
         vegetarian {
           price
-          includes
+          ingredients
           optionals
         }
         bbqChicken {
           price
-          includes
+          ingredients
           optionals
         }
         meaty {
           price
-          includes
+          ingredients
           optionals
         }
       }

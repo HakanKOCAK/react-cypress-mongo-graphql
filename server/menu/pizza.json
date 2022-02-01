@@ -27,7 +27,7 @@
         8,
         10
       ],
-      "includes": [
+      "ingredients": [
         "mozzarella"
       ],
       "optionals": "margherita"
@@ -38,7 +38,7 @@
         10,
         11
       ],
-      "includes": [
+      "ingredients": [
         "mozzarella",
         "pepperoni"
       ],
@@ -50,7 +50,7 @@
         10,
         11
       ],
-      "includes": [
+      "ingredients": [
         "mozzarella",
         "pineapple"
       ],
@@ -62,7 +62,7 @@
         10,
         11
       ],
-      "includes": [
+      "ingredients": [
         "mozzarella"
       ],
       "optionals": "vegetarian"
@@ -73,7 +73,7 @@
         12,
         13
       ],
-      "includes": [
+      "ingredients": [
         "mozzarella",
         "chicken",
         "bbqSauce"
@@ -86,7 +86,7 @@
         12,
         13
       ],
-      "includes": [
+      "ingredients": [
         "mozzarella",
         "pepperoni",
         "ham",

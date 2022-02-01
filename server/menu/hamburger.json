@@ -27,7 +27,7 @@
         7,
         8
       ],
-      "includes": [
+      "ingredients": [
         "beef"
       ],
       "optionals": "hamburger"
@@ -38,7 +38,7 @@
         8,
         9
       ],
-      "includes": [
+      "ingredients": [
         "beef",
         "cheddarCheese"
       ],
@@ -50,7 +50,7 @@
         6,
         7
       ],
-      "includes": [
+      "ingredients": [
         "chicken"
       ],
       "optionals": "chickenburger"
@@ -61,7 +61,7 @@
         12,
         13
       ],
-      "includes": [
+      "ingredients": [
         "beef"
       ],
       "optionals": "hamburger"
@@ -72,7 +72,7 @@
         13,
         14
       ],
-      "includes": [
+      "ingredients": [
         "beef",
         "cheddarCheese"
       ],
@@ -84,7 +84,7 @@
         11,
         12
       ],
-      "includes": [
+      "ingredients": [
         "chicken"
       ],
       "optionals": "chickenburger"
@@ -95,7 +95,7 @@
         9,
         10
       ],
-      "includes": [
+      "ingredients": [
         "beef",
         "cheddarCheese"
       ],
@@ -107,7 +107,7 @@
         14,
         15
       ],
-      "includes": [
+      "ingredients": [
         "beef",
         "cheddarCheese"
       ],

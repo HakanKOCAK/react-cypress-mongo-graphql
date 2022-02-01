@@ -52,7 +52,7 @@ const createHamburgers = ({ basePriceIndex = 0 }) => {
   //     ...,
   //     hamburger: {
   //       possiblePrices: [1, 2, 3],
-  //       includes: ['something'],
+  //       ingredients: ['something'],
   //       optional: 'hamburger'
   //     }
   //   }
@@ -61,8 +61,8 @@ const createHamburgers = ({ basePriceIndex = 0 }) => {
     const details = hamburgerMenu.burgerDetails[b]
     const price = details.possiblePrices[basePriceIndex];
     const optionals = hamburgerMenu.optionals[details.optionals] || [];
-    const includes = [...details.includes, ...optionals];
-    hamburgers[b] = { price, includes, optionals };
+    const ingredients = [...details.ingredients, ...optionals];
+    hamburgers[b] = { price, ingredients, optionals };
   })
 
   return hamburgers;
@@ -82,7 +82,7 @@ const createPizzas = ({ basePriceIndex = 0 }) => {
   //     ...,
   //     margherita: {
   //       possiblePrices: [1, 2, 3],
-  //       includes: ['something'],
+  //       ingredients: ['something'],
   //       optional: 'margherita'
   //     }
   //   }
@@ -91,8 +91,8 @@ const createPizzas = ({ basePriceIndex = 0 }) => {
     const details = pizzaMenu.pizzaDetails[p]
     const price = details.possiblePrices[basePriceIndex];
     const optionals = pizzaMenu.optionals[details.optionals] || [];
-    const includes = [...details.includes, ...optionals];
-    pizzas[p] = { price, includes, optionals };
+    const ingredients = [...details.ingredients, ...optionals];
+    pizzas[p] = { price, ingredients, optionals };
   });
 
   return pizzas;
@@ -135,7 +135,7 @@ const createFalafels = ({ basePriceIndex = 0 }) => {
   //   falafelDetails: {
   //     classic: {
   //       possiblePrices: [1, 2, 3],
-  //       includes: ['item1', 'item2']
+  //       ingredients: ['item1', 'item2']
   //     }
   //   },
   //   falafelPieceDetails: {
@@ -147,8 +147,8 @@ const createFalafels = ({ basePriceIndex = 0 }) => {
   randomFalafes.forEach((f) => {
     const details = falafelMenu.falafelDetails[f];
     const price = details.possiblePrices[basePriceIndex];
-    const includes = details.includes;
-    falafels[f] = { price, includes };
+    const ingredients = details.ingredients;
+    falafels[f] = { price, ingredients };
   });
 
   return falafels;

@@ -173,7 +173,7 @@ mutation Order($details: OrderInput!) {
             pieces
             sizePriceConstant
           }
-          includes
+          ingredients
           mealDetails {
             includes
             name

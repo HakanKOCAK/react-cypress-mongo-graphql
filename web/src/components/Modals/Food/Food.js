@@ -282,7 +282,7 @@ const Food = ({
     if (itemType === 'falafel') {
       return (
         <Falafel
-          ingredients={itemDetails.includes}
+          ingredients={itemDetails.ingredients}
           meals={itemDetails.mealDetails || []}
           pieceDetails={itemDetails.falafelPieceDetails}
           setPieces={(value) => {
@@ -359,7 +359,7 @@ const Food = ({
           meal={modalSelectedMealDetails}
           setMeal={(value) => handleMealSelection(value)}
           windowWidth={windowWidth}
-          ingredients={itemDetails.includes}
+          ingredients={itemDetails.ingredients}
           meals={itemDetails.mealDetails || []}
           optionals={modalOptionals}
           setOptionals={(key, value) => {
@@ -375,7 +375,7 @@ const Food = ({
           meal={modalSelectedMealDetails}
           setMeal={(value) => handleMealSelection(value)}
           windowWidth={windowWidth}
-          ingredients={itemDetails.includes}
+          ingredients={itemDetails.ingredients}
           meals={itemDetails.mealDetails || []}
           optionals={modalOptionals}
           setOptionals={(key, value) => {
@@ -637,7 +637,7 @@ Food.propTypes = {
       name: PropTypes.string,
       price: PropTypes.number,
       optionals: PropTypes.array,
-      includes: PropTypes.array,
+      ingredients: PropTypes.array,
       sides: PropTypes.array,
       sizeDetails: PropTypes.shape({
         options: PropTypes.array,

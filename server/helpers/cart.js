@@ -18,7 +18,7 @@ const prettifyItems = ({ items = [], menu = {} }) => {
           { key: `falafels.${name}`, onlyValue: true },
           { key: 'falafelPieceDetails', onlyValue: false, displayKey: 'falafelPieceDetails' },
           { key: 'mealDetails.falafel', onlyValue: false, displayKey: 'mealDetails' },
-          { key: 'includes', onlyValue: false, displayKey: 'includes' }
+          { key: 'ingredients', onlyValue: false, displayKey: 'ingredients' }
         ]
       };
     } else if (type === 'side') {
@@ -69,7 +69,7 @@ const prettifyItems = ({ items = [], menu = {} }) => {
         menuFields: [
           { key: `hamburgers.${name}.optionals`, onlyValue: false, displayKey: 'optionals' },
           { key: 'mealDetails.hamburger', onlyValue: false, displayKey: 'mealDetails' },
-          { key: `hamburgers.${name}.includes`, onlyValue: false, displayKey: 'includes' }
+          { key: `hamburgers.${name}.ingredients`, onlyValue: false, displayKey: 'ingredients' }
         ]
       };
     } else if (type === 'pizza') {
@@ -83,7 +83,7 @@ const prettifyItems = ({ items = [], menu = {} }) => {
           { key: `pizzas.${name}.optionals`, onlyValue: false, displayKey: 'optionals' },
           { key: 'mealDetails.pizza', onlyValue: false, displayKey: 'mealDetails' },
           { key: 'pizzaSizeDetails', onlyValue: false, displayKey: 'pizzaSizeDetails' },
-          { key: `pizzas.${name}.includes`, onlyValue: false, displayKey: 'includes' }
+          { key: `pizzas.${name}.ingredients`, onlyValue: false, displayKey: 'ingredients' }
         ]
       };
     }

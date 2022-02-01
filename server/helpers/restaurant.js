@@ -71,12 +71,12 @@ export const createTestRestaurants = async () => {
         },
         pizzas: {
           hawaiian: {
-            includes: ['mozzarella', 'pineapple', 'ham'],
+            ingredients: ['mozzarella', 'pineapple', 'ham'],
             optionals: ['ham'],
             price: 11
           },
           margherita: {
-            includes: ['mozzarella', 'tomatoes', 'basil'],
+            ingredients: ['mozzarella', 'tomatoes', 'basil'],
             optionals: ['tomatoes', 'basil'],
             price: 10
           }
@@ -146,12 +146,12 @@ export const createTestRestaurants = async () => {
         hamburgers: {
           hamburger: {
             price: 8,
-            includes: ['beef', 'pickles', 'ketchup', 'mustard'],
+            ingredients: ['beef', 'pickles', 'ketchup', 'mustard'],
             optionals: ['pickles', 'ketchup', 'mustard']
           },
           quarterPounder: {
             price: 10,
-            includes: ['beef', 'cheddarCheese', 'pickles', 'onions', 'ketchup', 'mustard'],
+            ingredients: ['beef', 'cheddarCheese', 'pickles', 'onions', 'ketchup', 'mustard'],
             optionals: ['pickles', 'onions', 'ketchup', 'mustard']
           }
         },

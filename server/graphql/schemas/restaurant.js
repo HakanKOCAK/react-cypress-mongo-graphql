@@ -38,7 +38,7 @@ type Drinks {
 const Falafel = `
 type Falafel {
   price: Float
-  includes: [String]
+  ingredients: [String]
 }
 `;
 
@@ -61,7 +61,7 @@ type FalafelPieceDetails {
 const Hamburger = `
 type Hamburger {
   price: Float
-  includes: [String]
+  ingredients: [String]
   optionals: [String]
 }
 `;
@@ -127,7 +127,7 @@ type MealDetails {
 const Pizza = `
 type Pizza {
   price: Float
-  includes: [String]
+  ingredients: [String]
   optionals: [String]
 }
 `;

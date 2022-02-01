@@ -39,7 +39,7 @@ input CartSizeDetailsInput {
 const ItemDetails = `
 type ItemDetails {
   falafelPieceDetails: FalafelPieceDetails
-  includes: [String]
+  ingredients: [String]
   mealDetails: [CartMealDetails]
   name: String!
   optionals: [String]
@@ -68,7 +68,7 @@ input PizzaSizeDetailsInput {
 const ItemDetailsInput = `
 input ItemDetailsInput {
   falafelPieceDetails: FalafelPieceDetailsInput
-  includes: [String]
+  ingredients: [String]
   mealDetails: [CartMealDetailsInput]
   name: String!
   optionals: [String]

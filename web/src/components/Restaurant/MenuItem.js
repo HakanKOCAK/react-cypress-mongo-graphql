@@ -33,7 +33,7 @@ RestaurantMenuItem.propTypes = {
     name: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
     optionals: PropTypes.array,
-    includes: PropTypes.array,
+    ingredients: PropTypes.array,
     sides: PropTypes.array,
     sizeDetails: PropTypes.shape({
       options: PropTypes.array.isRequired,
