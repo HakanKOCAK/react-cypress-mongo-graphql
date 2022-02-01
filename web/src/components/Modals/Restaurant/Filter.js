@@ -103,7 +103,7 @@ const RestaurantFilter = ({
             </VStack>
 
             <VStack spacing={1} alignItems="flex-start" mt={6}>
-              <Text fontWeight="semibold">{t('minAmount')}</Text>
+              <Text fontWeight="semibold">{t('minAmount')} - {`$${modalMinAmount}`}</Text>
               <Slider
                 defaultValue={modalMinAmount}
                 min={0}
@@ -156,7 +156,7 @@ const RestaurantFilter = ({
             </VStack>
 
             <VStack spacing={1} alignItems="flex-start" mt={8} mb={10}>
-              <Text fontWeight="semibold">{t('maxArrival')}</Text>
+              <Text fontWeight="semibold">{t('maxArrival')} - {modalMaxArrival}{t('min')}</Text>
               <Slider
                 defaultValue={modalMaxArrival}
                 min={10}
@@ -172,28 +172,21 @@ const RestaurantFilter = ({
                   mt={3}
                   ml={-2.5}
                 >
-                  10min
+                  10{t('min')}
                 </SliderMark>
                 <SliderMark
-                  value={30}
+                  value={35}
                   mt={3}
                   ml={-2.5}
                 >
-                  30min
-                </SliderMark>
-                <SliderMark
-                  value={45}
-                  mt={3}
-                  ml={-2.5}
-                >
-                  45min
+                  35{t('min')}
                 </SliderMark>
                 <SliderMark
                   value={60}
                   mt={3}
-                  ml={-2.5}
+                  ml={-7}
                 >
-                  60min
+                  60{t('min')}
                 </SliderMark>
                 <SliderTrack>
                   <SliderFilledTrack bg="teal.400" />
