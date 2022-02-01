@@ -32,10 +32,11 @@ import AddressProvider from '../AddressProvider';
 
 export default function AppRoutes() {
     const [height, setHeight] = useState(window.innerHeight);
-
+    const [width, setWidth] = useState(window.innerWidth)
     useEffect(() => {
         const handleResize = () => {
             setHeight(window.innerHeight);
+            setWidth(window.innerWidth)
         };
         window.addEventListener('resize', handleResize);
 
@@ -84,7 +85,7 @@ export default function AppRoutes() {
                                             path="/restaurants/:restaurantId"
                                             element={
                                                 <PrivateRoute>
-                                                    <Restaurant />
+                                                    <Restaurant width={width} />
                                                 </PrivateRoute>
                                             }
                                         />
@@ -134,7 +135,7 @@ export default function AppRoutes() {
                                         exact path='/cart'
                                         element={
                                             <PrivateRoute>
-                                                <Cart />
+                                                <Cart width={width} />
                                             </PrivateRoute>
                                         }
                                     />

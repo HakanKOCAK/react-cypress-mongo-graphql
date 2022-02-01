@@ -27,7 +27,7 @@ const AddressModal = ({
       isOpen={isOpen}
       onClose={onClose}
       isCentered
-      size="2xl"
+      size={['xs', 'md', '2xl']}
       scrollBehavior="inside"
     >
       <ModalOverlay>

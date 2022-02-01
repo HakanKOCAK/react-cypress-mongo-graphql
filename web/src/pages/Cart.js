@@ -20,7 +20,7 @@ import { deleteCartItemMutation } from '../graphql/mutations';
 import { userCartQuery } from '../graphql/queries';
 import { useAddress } from '../AddressProvider';
 
-const Cart = () => {
+const Cart = ({ width }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const { t } = useTranslation();
@@ -140,6 +140,7 @@ const Cart = () => {
                   restaurantDetails={details.restaurantDetails}
                   selectedAddress={selectedAddress}
                   servedAddresses={servedAddresses}
+                  width={width}
                 />
                 <FoodModal
                   isOpen={isFoodModalOpen}
@@ -156,6 +157,7 @@ const Cart = () => {
                   restaurantDetails={details.restaurantDetails}
                   updateModal={true}
                   updateId={updateId}
+                  width={width}
                   {...foodModalDetails}
                 />
                 <CustomAlertDialog
@@ -223,6 +225,7 @@ const Cart = () => {
 
                         return setAlertDialogOpen(true);
                       }}
+                      width={width}
                     />
                   ))}
                 </Box>

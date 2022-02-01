@@ -30,14 +30,12 @@ const Checkout = ({
   items,
   restaurantDetails,
   selectedAddress,
-  servedAddresses
+  servedAddresses,
+  width: windowWidth
 }) => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const location = useLocation();
-
-  //Listen for window width changes
-  const [windowWidth, setWindowWidth] = useState(0);
 
   //Address modal options 
   const [isAddressModalOpen, setAddressModalOpen] = useState(false);
@@ -86,17 +84,6 @@ const Checkout = ({
   const [emptyCart, { loading: emptyingCart }] = useMutation(emptyCartMutation, {
     refetchQueries: [userCartQuery]
   });
-
-
-  useEffect(() => {
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth);
-    };
-    window.addEventListener('resize', handleResize);
-
-    return () => window.removeEventListener('resize', handleResize)
-  }, []);
-
 
   useEffect(() => {
     setModalSelecteddAddress(selectedAddress);
@@ -319,7 +306,8 @@ Checkout.propTypes = {
     floor: PropTypes.number.isRequired,
     id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired
-  }))
+  })),
+  width: PropTypes.number.isRequired
 };
 
 export default Checkout;

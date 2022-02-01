@@ -42,7 +42,8 @@ const Food = ({
   sideSizeOption,
   sweetType,
   updateId,
-  updateModal
+  updateModal,
+  width: windowWidth
 }) => {
   const { t } = useTranslation();
 
@@ -59,9 +60,6 @@ const Food = ({
       userCartQuery
     ]
   });
-
-  //To set window width dynamically
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   //Quantity selected from modal
   const [modalQuantity, setModalQuantity] = useState(1);
@@ -103,15 +101,6 @@ const Food = ({
 
   //To set different restaurant item modal
   const [isAlertDialogOpen, setAlertDialogOpen] = useState(false);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth);
-    };
-    window.addEventListener('resize', handleResize);
-
-    return () => window.removeEventListener('resize', handleResize)
-  }, []);
 
   const clearModalSelections = () => {
     //Clear modal details onclose
@@ -669,7 +658,8 @@ Food.propTypes = {
   sideSizeOption: PropTypes.string,
   sweetType: PropTypes.string,
   updateId: PropTypes.string,
-  updateModal: PropTypes.bool
+  updateModal: PropTypes.bool,
+  width: PropTypes.number.isRequired
 };
 
 export default Food;

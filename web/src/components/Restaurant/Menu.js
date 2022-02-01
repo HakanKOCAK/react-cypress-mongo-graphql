@@ -5,7 +5,7 @@ import FoodModal from '../Modals/Food/Food';
 import RestaurantMenuItem from './MenuItem';
 import { useTranslation } from 'react-i18next';
 
-const RestaurantMenu = ({ details, restaurantDetails }) => {
+const RestaurantMenu = ({ details, restaurantDetails, width }) => {
   const { t } = useTranslation();
   const getItemType = (key) => {
     return key.slice(0, key.length - 1);
@@ -26,6 +26,7 @@ const RestaurantMenu = ({ details, restaurantDetails }) => {
           onClose={() => setFoodModalOpen(false)}
           details={foodModalDetails}
           restaurantDetails={restaurantDetails}
+          width={width}
         />
         <Box w="100%">
           <Box w="100%" borderBottom="1px" borderColor="gray.500" p={1}>

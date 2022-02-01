@@ -10,7 +10,7 @@ import prettifyRestaurantMenu from '../../utils/restaurantMenuPrettifier';
 import apiUrl from '../../utils/apiUrl';
 import { ArrowBackIcon } from '@chakra-ui/icons';
 
-export const Restaurant = () => {
+export const Restaurant = ({ width }) => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const params = useParams();
@@ -57,6 +57,7 @@ export const Restaurant = () => {
 
     return <RestaurantMenu
       details={menu}
+      width={width}
       restaurantDetails={details}
     />;
   };

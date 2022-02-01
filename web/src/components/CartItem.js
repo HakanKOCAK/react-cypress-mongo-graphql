@@ -11,9 +11,8 @@ import { useTranslation } from 'react-i18next';
 import { DeleteIcon, EditIcon } from '@chakra-ui/icons';
 import { getTitleDetails, prettifyCartItem } from '../utils/cartPrettifier';
 
-const CartItem = ({ details, onClick, onDelete }) => {
+const CartItem = ({ details, onClick, onDelete, width: windowWidth }) => {
   const { t } = useTranslation();
-  const [windowWidth, setWindowWidth] = useState(0);
   const [prettifiedDetails, setPrettifiedDetails] = useState({
     drinkType: '',
     itemType: '',
@@ -28,20 +27,10 @@ const CartItem = ({ details, onClick, onDelete }) => {
   });
 
   useEffect(() => {
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth);
-    };
-    window.addEventListener('resize', handleResize);
-
-    return () => window.removeEventListener('resize', handleResize)
-  }, []);
-
-  useEffect(() => {
     if (!isEmpty((details))) {
       setPrettifiedDetails(prettifyCartItem(details, t))
     }
   }, [details, t]);
-
 
 
   //Get size of delete icon according to viewport width
@@ -142,7 +131,8 @@ CartItem.propTypes = {
     totalPrice: PropTypes.number.isRequired,
   }).isRequired,
   onClick: PropTypes.func.isRequired,
-  onDelete: PropTypes.func.isRequired
+  onDelete: PropTypes.func.isRequired,
+  width: PropTypes.number
 };
 
 export default CartItem;
