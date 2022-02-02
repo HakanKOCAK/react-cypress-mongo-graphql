@@ -81,6 +81,12 @@ export default function Description() {
         <Text letterSpacing={1.2}>
           {t('seeTestResults')} <Code>npx cypress open</Code> {i18n.language === 'tr' ? 'komutunu çalıştırınız.' : '.'}
         </Text>
+        <Text letterSpacing={1.2}>
+          {t('ifYouAreUsingWindowsOStoRunBackendForTesting')} <Code>yarn win-test</Code> {i18n.language === 'tr' ? 'komutunu çalıştırınız.' : '.'}
+        </Text>
+        <Text letterSpacing={1.2}>
+          {t('ifYouAreUsingLinuxOrMacOStoRunBackendForTesting')} <Code>yarn unix-test</Code> {i18n.language === 'tr' ? 'komutunu çalıştırınız.' : '.'}
+        </Text>
       </Container>
     </Box >
   );
