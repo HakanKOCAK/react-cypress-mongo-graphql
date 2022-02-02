@@ -92,6 +92,7 @@ export const newOrder = async ({ details = {} }) => {
       restaurantDetails: {
         city: restaurant.city,
         county: restaurant.county,
+        district: restaurant.district,
         name: restaurant.name
       },
       total: details.total,
