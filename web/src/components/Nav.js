@@ -15,9 +15,34 @@ const Nav = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [logout] = useMutation(logoutMutation)
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const auth = useAuth();
   const { cartTotal } = useCart();
+
+  const getLangContent = () => {
+    const lang = i18n.language;
+
+    if (lang === 'en') {
+      return (
+        <>
+          <Icon as={() => <Image src="/en.png" alt="EN" boxSize="14px" />} />
+          <Text>EN</Text>
+        </>
+      );
+    }
+
+    return (
+      <>
+        <Icon as={() => <Image src="/tr.png" alt="TR" boxSize="14px" />} />
+        <Text>TR</Text>
+      </>
+    );
+  };
+
+  const setLang = (lang) => {
+    localStorage.setItem('fooder.lang', lang);
+    return i18n.changeLanguage(lang);
+  }
 
   return (
     <Box>
@@ -79,6 +104,38 @@ const Nav = () => {
                   {`$${cartTotal.toFixed(2)}`}
                 </Text>
               </Button>
+            )
+          }
+          {
+            auth.user && (
+              <Menu>
+                <MenuButton
+                  _hover={{ textDecoration: 'underline' }}
+                  lineHeight="normal"
+                  fontWeight="semibold"
+                  fontSize={['sm', 'md']}
+                  color="teal.500"
+                >
+                  <HStack spacing={1}>
+                    {getLangContent()}
+                    <ChevronDownIcon />
+                  </HStack>
+                </MenuButton>
+                <MenuList>
+                  <MenuItem
+                    icon={<Image src="/en.png" alt="EN" boxSize="14px" />}
+                    onClick={() => setLang('en')}
+                  >
+                    EN
+                  </MenuItem>
+                  <MenuItem
+                    icon={<Image src="/tr.png" alt="TR" boxSize="14px" />}
+                    onClick={() => setLang('tr')}
+                  >
+                    TR
+                  </MenuItem>
+                </MenuList>
+              </Menu>
             )
           }
           {auth.user ? (
