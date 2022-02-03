@@ -55,7 +55,7 @@ yarn unix-test
 
 Frontend
 ```sh
-cd fooder/wen
+cd fooder/web
 npx cypress open
 ```
 
